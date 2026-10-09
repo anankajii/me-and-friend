@@ -1,0 +1,221 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_s8qq2"]
+[ext_resource type="Texture2D" path="res://assets/characters/ervania1-walkfix.png" id="2_ysupg"]
+
+[sub_resource type="RectangleShape2D" id="PlayerShape"]
+size = Vector2(32, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hur5"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(0, 384, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbqcv"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(96, 384, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85udr"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(192, 384, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7arq"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(288, 384, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlhr4"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(384, 384, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60frs"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(0, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_li6of"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(96, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1x4p3"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(192, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn3uw"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(288, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7k5g"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(384, 288, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l5gi"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixrgc"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxrmw"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d8las"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88k5u"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adr2b"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3jmv"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(96, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el5fo"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htuq6"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(288, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0itq"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(384, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdhn1"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(0, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3po56"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ushrf"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(192, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v638d"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(288, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6481r"]
+atlas = ExtResource("2_ysupg")
+region = Rect2(384, 96, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qptl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hur5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbqcv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85udr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7arq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlhr4")
+}],
+"loop": 1,
+"name": &"coding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60frs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_li6of")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1x4p3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn3uw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7k5g")
+}],
+"loop": 1,
+"name": &"damaged",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l5gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixrgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxrmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d8las")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88k5u")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adr2b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3jmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el5fo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htuq6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0itq")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hdhn1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3po56")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ushrf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v638d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6481r")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Ervania" type="CharacterBody2D" unique_id=279824123]
+script = ExtResource("1_s8qq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1177051370]
+shape = SubResource("PlayerShape")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=344951532]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_7qptl")
+animation = &"idle"

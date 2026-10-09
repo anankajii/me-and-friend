@@ -1,0 +1,257 @@
+[gd_scene format=3 uid="uid://46bs1syjqrj"]
+
+[ext_resource type="Script" uid="uid://djr02ytshgvir" path="res://scripts/managers/main_menu_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://biasa7fk1icjn" path="res://assets/backgrounds/BG_Menu.png" id="2_bg"]
+[ext_resource type="Texture2D" uid="uid://cf7wdvil2tyyl" path="res://assets/ui/judul.png" id="3_title"]
+[ext_resource type="Texture2D" uid="uid://dilxwtjcwtkx8" path="res://assets/ui/play.png" id="4_0bauv"]
+[ext_resource type="Texture2D" uid="uid://cmcftnnjtrsbp" path="res://assets/ui/settings.png" id="5_settings"]
+[ext_resource type="Texture2D" uid="uid://cmyna0d22eqp6" path="res://assets/ui/quit.png" id="6_quit"]
+[ext_resource type="PackedScene" path="res://scenes/player/Khanan.tscn" id="7_khanan"]
+[ext_resource type="PackedScene" path="res://scenes/player/Jeki.tscn" id="8_jeki"]
+[ext_resource type="PackedScene" path="res://scenes/player/Bayu.tscn" id="9_bayu"]
+[ext_resource type="PackedScene" path="res://scenes/player/Reni.tscn" id="10_reni"]
+[ext_resource type="PackedScene" path="res://scenes/player/Ervania.tscn" id="11_ervania"]
+[ext_resource type="PackedScene" path="res://scenes/player/Laras.tscn" id="12_laras"]
+
+[node name="MainMenuUI" type="CanvasLayer" unique_id=1660500882]
+script = ExtResource("1_script")
+
+[node name="UI" type="Control" parent="." unique_id=1692436076]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UI" unique_id=1343440874]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Overlay" type="ColorRect" parent="UI" unique_id=1864853663]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.025, 0.055, 0.11, 0.48)
+
+[node name="Title" type="TextureRect" parent="UI" unique_id=343793471]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 31.0
+offset_right = 835.0
+offset_bottom = 286.0
+mouse_filter = 2
+texture = ExtResource("3_title")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Subtitle" type="Label" parent="UI" unique_id=168494201]
+visible = false
+layout_mode = 0
+offset_left = 276.0
+offset_top = 185.0
+offset_right = 876.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0.82, 0.93, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Platformer Coding Adventure"
+horizontal_alignment = 1
+
+[node name="Buttons" type="Control" parent="UI" unique_id=2078040218]
+anchors_preset = 0
+
+[node name="MainButton" type="TextureButton" parent="UI/Buttons" unique_id=920836774]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 298.0
+offset_right = 726.0
+offset_bottom = 365.0
+pivot_offset = Vector2(150, 33.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_0bauv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Buttons/MainButton" unique_id=1781803118]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "MAIN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingButton" type="TextureButton" parent="UI/Buttons" unique_id=1842050047]
+layout_mode = 0
+offset_left = 426.0
+offset_top = 380.0
+offset_right = 726.0
+offset_bottom = 447.0
+pivot_offset = Vector2(150, 33.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("5_settings")
+ignore_texture_size = true
+stretch_mode = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI/Buttons/SettingButton" unique_id=1046493305]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "SETTING"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="UI/Buttons" unique_id=488808414]
+layout_mode = 0
+offset_left = 428.0
+offset_top = 459.0
+offset_right = 728.0
+offset_bottom = 526.0
+pivot_offset = Vector2(150, 33.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_quit")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="UI/Buttons/QuitButton" unique_id=1833132052]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "QUIT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Characters" type="Node2D" parent="UI"]
+
+[node name="Khanan" parent="UI/Characters" instance=ExtResource("7_khanan")]
+position = Vector2(276, 574)
+scale = Vector2(0.58, 0.58)
+
+[node name="Jeki" parent="UI/Characters" instance=ExtResource("8_jeki")]
+position = Vector2(396, 574)
+scale = Vector2(0.58, 0.58)
+
+[node name="Bayu" parent="UI/Characters" instance=ExtResource("9_bayu")]
+position = Vector2(516, 574)
+scale = Vector2(0.58, 0.58)
+
+[node name="Reni" parent="UI/Characters" instance=ExtResource("10_reni")]
+position = Vector2(636, 574)
+scale = Vector2(0.58, 0.58)
+
+[node name="Ervania" parent="UI/Characters" instance=ExtResource("11_ervania")]
+position = Vector2(756, 574)
+scale = Vector2(0.58, 0.58)
+
+[node name="Laras" parent="UI/Characters" instance=ExtResource("12_laras")]
+position = Vector2(876, 574)
+scale = Vector2(0.58, 0.58)
+
+[node name="Controls" type="Label" parent="UI" unique_id=251777140]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 615.0
+offset_right = 976.0
+offset_bottom = 642.0
+theme_override_colors/font_color = Color(0.9, 0.95, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.9)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_font_sizes/font_size = 17
+text = "A / ←  KIRI        D / →  KANAN        SPACE  LOMPAT"
+horizontal_alignment = 1
+
+[node name="SettingsPanel" type="ColorRect" parent="UI" unique_id=1574677513]
+visible = false
+layout_mode = 0
+offset_left = 326.0
+offset_top = 180.0
+offset_right = 826.0
+offset_bottom = 480.0
+color = Color(0.04, 0.08, 0.14, 0.94)
+
+[node name="Title" type="Label" parent="UI/SettingsPanel" unique_id=1830632186]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 30.0
+offset_right = 460.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 28
+text = "SETTING"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="UI/SettingsPanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 88.0
+offset_right = 180.0
+offset_bottom = 120.0
+theme_override_font_sizes/font_size = 18
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="UI/SettingsPanel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 88.0
+offset_right = 420.0
+offset_bottom = 120.0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="SfxLabel" type="Label" parent="UI/SettingsPanel"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 145.0
+offset_right = 180.0
+offset_bottom = 177.0
+theme_override_font_sizes/font_size = 18
+text = "SOUND EFFECT"
+
+[node name="SfxSlider" type="HSlider" parent="UI/SettingsPanel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 145.0
+offset_right = 420.0
+offset_bottom = 177.0
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+value = 80.0
+
+[node name="BackButton" type="Button" parent="UI/SettingsPanel" unique_id=1467001999]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 220.0
+offset_right = 350.0
+offset_bottom = 265.0
+theme_override_font_sizes/font_size = 18
+text = "KEMBALI"

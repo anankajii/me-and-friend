@@ -1,0 +1,63 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/bosses/syntax_king_hd.png" id="1_tex"]
+
+[sub_resource type="AtlasTexture" id="S1"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 0, 362, 362)
+[sub_resource type="AtlasTexture" id="S2"]
+atlas = ExtResource("1_tex")
+region = Rect2(362, 0, 362, 362)
+[sub_resource type="AtlasTexture" id="S3"]
+atlas = ExtResource("1_tex")
+region = Rect2(724, 0, 362, 362)
+[sub_resource type="AtlasTexture" id="S4"]
+atlas = ExtResource("1_tex")
+region = Rect2(1086, 0, 362, 362)
+[sub_resource type="AtlasTexture" id="I1"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 362, 362, 362)
+[sub_resource type="AtlasTexture" id="I2"]
+atlas = ExtResource("1_tex")
+region = Rect2(362, 362, 362, 362)
+[sub_resource type="AtlasTexture" id="I3"]
+atlas = ExtResource("1_tex")
+region = Rect2(724, 362, 362, 362)
+[sub_resource type="AtlasTexture" id="I4"]
+atlas = ExtResource("1_tex")
+region = Rect2(1086, 362, 362, 362)
+[sub_resource type="AtlasTexture" id="D1"]
+atlas = ExtResource("1_tex")
+region = Rect2(0, 724, 362, 362)
+[sub_resource type="AtlasTexture" id="D2"]
+atlas = ExtResource("1_tex")
+region = Rect2(362, 724, 362, 362)
+[sub_resource type="AtlasTexture" id="D3"]
+atlas = ExtResource("1_tex")
+region = Rect2(724, 724, 362, 362)
+[sub_resource type="AtlasTexture" id="D4"]
+atlas = ExtResource("1_tex")
+region = Rect2(1086, 724, 362, 362)
+[sub_resource type="SpriteFrames" id="Frames"]
+animations = [{
+"frames": [{"duration": 1.0, "texture": SubResource("D1")}, {"duration": 1.0, "texture": SubResource("D2")}, {"duration": 1.0, "texture": SubResource("D3")}, {"duration": 1.0, "texture": SubResource("D4")}],
+"loop": false,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("I1")}, {"duration": 1.0, "texture": SubResource("I2")}, {"duration": 1.0, "texture": SubResource("I3")}, {"duration": 1.0, "texture": SubResource("I4")}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{"duration": 1.0, "texture": SubResource("S1")}, {"duration": 1.0, "texture": SubResource("S2")}, {"duration": 1.0, "texture": SubResource("S3")}, {"duration": 1.0, "texture": SubResource("S4")}],
+"loop": false,
+"name": &"spawn",
+"speed": 4.0
+}]
+
+[node name="BossBase" type="Node2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("Frames")
+animation = &"idle"
+scale = Vector2(0.28, 0.28)

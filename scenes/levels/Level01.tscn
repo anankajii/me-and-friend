@@ -1,0 +1,165 @@
+[gd_scene format=4 uid="uid://dobotbrampksx"]
+
+[ext_resource type="Texture2D" uid="uid://ckr64flcefqbb" path="res://assets/backgrounds/BG_Level01_Pixel.png" id="1_uq7hp"]
+[ext_resource type="PackedScene" path="res://scenes/tiles/Floor.tscn" id="2_floor"]
+[ext_resource type="PackedScene" uid="uid://d12vmlqtnoaq4" path="res://scenes/enemies/Coin.tscn" id="5_coin"]
+[ext_resource type="PackedScene" uid="uid://c6ee0ibnwyaas" path="res://scenes/enemies/Enemy.tscn" id="6_enemy"]
+[ext_resource type="PackedScene" path="res://scenes/bosses/Boss.tscn" id="7_boss"]
+[ext_resource type="PackedScene" uid="uid://b2eb38iofeouv" path="res://scenes/tiles/Platform.tscn" id="8_platform"]
+[ext_resource type="PackedScene" uid="uid://cvp24hlc1odul" path="res://scenes/tiles/Obstacle.tscn" id="9_obstacle"]
+
+[node name="Level01" type="Node2D" unique_id=1156672223]
+
+[node name="CampusBackground" type="Sprite2D" parent="." unique_id=1808549392]
+position = Vector2(2401.5, 470.5)
+scale = Vector2(2.21142, 1.29972)
+texture = ExtResource("1_uq7hp")
+
+[node name="Floor" parent="." unique_id=509323952 instance=ExtResource("2_floor")]
+position = Vector2(2404, 951)
+
+[node name="Coins" type="Node2D" parent="." unique_id=812655982]
+
+[node name="Coin01" parent="Coins" unique_id=302662109 instance=ExtResource("5_coin")]
+position = Vector2(350, 790)
+
+[node name="Coin02" parent="Coins" unique_id=954861834 instance=ExtResource("5_coin")]
+position = Vector2(760, 790)
+
+[node name="Coin03" parent="Coins" unique_id=567657906 instance=ExtResource("5_coin")]
+position = Vector2(1157, 716)
+
+[node name="Coin04" parent="Coins" unique_id=1673984638 instance=ExtResource("5_coin")]
+position = Vector2(1550, 790)
+
+[node name="Coin05" parent="Coins" unique_id=1885858992 instance=ExtResource("5_coin")]
+position = Vector2(2050, 790)
+
+[node name="Coin06" parent="Coins" unique_id=920474274 instance=ExtResource("5_coin")]
+position = Vector2(2420, 790)
+
+[node name="Coin07" parent="Coins" unique_id=29138282 instance=ExtResource("5_coin")]
+position = Vector2(2850, 790)
+
+[node name="Coin08" parent="Coins" unique_id=109116762 instance=ExtResource("5_coin")]
+position = Vector2(3180, 790)
+
+[node name="Coin09" parent="Coins" unique_id=1520587366 instance=ExtResource("5_coin")]
+position = Vector2(551, 676)
+
+[node name="Coin10" parent="Coins" unique_id=512806572 instance=ExtResource("5_coin")]
+position = Vector2(767, 544)
+
+[node name="Coin11" parent="Coins" unique_id=445194042 instance=ExtResource("5_coin")]
+position = Vector2(620, 607)
+
+[node name="Coin12" parent="Coins" unique_id=1521218689 instance=ExtResource("5_coin")]
+position = Vector2(936, 608)
+
+[node name="Coin13" parent="Coins" unique_id=849826731 instance=ExtResource("5_coin")]
+position = Vector2(1350, 640)
+
+[node name="Coin14" parent="Coins" unique_id=2095837645 instance=ExtResource("5_coin")]
+position = Vector2(1631, 592)
+
+[node name="Coin15" parent="Coins" unique_id=573858990 instance=ExtResource("5_coin")]
+position = Vector2(1709, 503)
+
+[node name="Coin16" parent="Coins" unique_id=650486683 instance=ExtResource("5_coin")]
+position = Vector2(1807, 502)
+
+[node name="Coin17" parent="Coins" unique_id=438136800 instance=ExtResource("5_coin")]
+position = Vector2(2260, 657)
+
+[node name="Coin18" parent="Coins" unique_id=1084425662 instance=ExtResource("5_coin")]
+position = Vector2(2582, 602)
+
+[node name="Coin19" parent="Coins" unique_id=72655845 instance=ExtResource("5_coin")]
+position = Vector2(2660, 530)
+
+[node name="Coin20" parent="Coins" unique_id=1459880520 instance=ExtResource("5_coin")]
+position = Vector2(2737, 591)
+
+[node name="Coin21" parent="Coins" unique_id=1547562872 instance=ExtResource("5_coin")]
+position = Vector2(2956, 649)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=1084902109]
+
+[node name="EnemyPatrol01" parent="Enemies" unique_id=811239931 instance=ExtResource("6_enemy")]
+position = Vector2(850, 832)
+patrol_enabled = true
+
+[node name="EnemyIdle01" parent="Enemies" unique_id=1719342058 instance=ExtResource("6_enemy")]
+position = Vector2(1450, 832)
+
+[node name="EnemyPatrol02" parent="Enemies" unique_id=1557160110 instance=ExtResource("6_enemy")]
+position = Vector2(2150, 832)
+patrol_enabled = true
+
+[node name="EnemyIdle02" parent="Enemies" unique_id=2067709720 instance=ExtResource("6_enemy")]
+position = Vector2(2750, 832)
+
+[node name="Boss" parent="." unique_id=1214513974 instance=ExtResource("7_boss")]
+visible = false
+position = Vector2(3650, 745)
+scale = Vector2(3, 3)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1608910836]
+position = Vector2(120, 790)
+
+[node name="Checkpoint" type="Marker2D" parent="." unique_id=2006675895]
+position = Vector2(2050, 790)
+
+[node name="BossTrigger" type="Marker2D" parent="." unique_id=135420842]
+position = Vector2(3150, 805)
+
+[node name="DeathLimit" type="Marker2D" parent="." unique_id=1040122239]
+position = Vector2(0, 1061)
+
+[node name="CameraStart" type="Marker2D" parent="." unique_id=1951615330]
+
+[node name="CameraEnd" type="Marker2D" parent="." unique_id=1785428808]
+position = Vector2(4600, 941)
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform01" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(576, 704)
+
+[node name="Platform02" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(960, 640)
+
+[node name="Platform03" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(1344, 704)
+
+[node name="Platform04" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(1792, 640)
+
+[node name="Platform05" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(2240, 704)
+
+[node name="Platform06" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(2624, 640)
+
+[node name="Platform07" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(3008, 704)
+
+[node name="Platform08" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(3648, 640)
+
+[node name="Platform09" parent="Platforms" instance=ExtResource("8_platform")]
+position = Vector2(4096, 704)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle01" parent="Obstacles" instance=ExtResource("9_obstacle")]
+position = Vector2(2496, 832)
+
+[node name="Obstacle02" parent="Obstacles" instance=ExtResource("9_obstacle")]
+position = Vector2(1792, 576)
+
+[node name="Obstacle03" parent="Obstacles" instance=ExtResource("9_obstacle")]
+position = Vector2(2624, 576)
+
+[node name="Obstacle04" parent="Obstacles" instance=ExtResource("9_obstacle")]
+position = Vector2(1152, 768)

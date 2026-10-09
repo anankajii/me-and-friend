@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cvp24hlc1odul"]
+
+[ext_resource type="Texture2D" uid="uid://djgunu4m5kyqg" path="res://assets/tiles/campus_tileset.png" id="1_tileset"]
+
+[sub_resource type="AtlasTexture" id="CrateTexture"]
+atlas = ExtResource("1_tileset")
+region = Rect2(0, 362, 362, 362)
+
+[sub_resource type="RectangleShape2D" id="ObstacleShape"]
+size = Vector2(64, 64)
+
+[node name="Obstacle" type="StaticBody2D" unique_id=1598533566]
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1259535327]
+scale = Vector2(0.31, 0.31)
+texture = SubResource("CrateTexture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=944870352]
+position = Vector2(4, 1)
+shape = SubResource("ObstacleShape")

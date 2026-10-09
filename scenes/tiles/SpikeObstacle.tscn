@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://4aduhg0djwsw"]
+
+[ext_resource type="Texture2D" uid="uid://djgunu4m5kyqg" path="res://assets/tiles/campus_tileset.png" id="1_tileset"]
+
+[sub_resource type="AtlasTexture" id="SpikeTexture"]
+atlas = ExtResource("1_tileset")
+region = Rect2(724, 724, 362, 362)
+
+[sub_resource type="RectangleShape2D" id="SpikeShape"]
+size = Vector2(105, 30)
+
+[node name="SpikeObstacle" type="StaticBody2D" unique_id=987731064]
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=1077869991]
+position = Vector2(0, -25)
+scale = Vector2(0.5, 0.5)
+texture = SubResource("SpikeTexture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=118098632]
+position = Vector2(15, -16)
+shape = SubResource("SpikeShape")

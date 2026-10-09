@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b2eb38iofeouv"]
+
+[ext_resource type="Texture2D" uid="uid://djgunu4m5kyqg" path="res://assets/tiles/campus_tileset.png" id="1_tileset"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iba6h"]
+
+[sub_resource type="AtlasTexture" id="PlatformTexture"]
+atlas = ExtResource("1_tileset")
+region = Rect2(362, 0, 362, 362)
+
+[sub_resource type="RectangleShape2D" id="PlatformShape"]
+size = Vector2(145, 22)
+
+[node name="Platform" type="StaticBody2D" unique_id=625445215]
+physics_material_override = SubResource("PhysicsMaterial_iba6h")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=84629187]
+position = Vector2(-2, -5.999996)
+scale = Vector2(0.5208839, 0.1523757)
+texture = SubResource("PlatformTexture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1641985862]
+position = Vector2(-1, 1)
+shape = SubResource("PlatformShape")
