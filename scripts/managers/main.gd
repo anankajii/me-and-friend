@@ -9,12 +9,11 @@ const DefaultCharacterScene = preload("res://scenes/player/Jeki.tscn")
 const LevelScene        = preload("res://scenes/levels/Level01.tscn")
 const MainMenuScene     = preload("res://scenes/main_menu/MainMenuUI.tscn")
 const CharacterSelectScene = preload("res://scenes/main_menu/CharacterSelectUI.tscn")
+const LevelResultScene = preload("res://scenes/ui/LevelResult.tscn")
+const BossDefeatFadeScene = preload("res://scenes/ui/BossDefeatFade.tscn")
 
 # ─── Preload scripts ──────────────────────────────────────────
-const GameData          = preload("res://scripts/managers/game_data.gd")
-const UIHelper          = preload("res://scripts/managers/ui_helper.gd")
 const HUDScript         = preload("res://scripts/managers/hud.gd")
-const BossChallenge     = preload("res://scripts/boss/boss_challenge.gd")
 
 # ─── State game ───────────────────────────────────────────────
 var selected_char_id := "Khanan"   # id karakter yang dipilih
@@ -22,6 +21,8 @@ var level_index      := 0
 var hp               := 3
 var coins            := 0
 var respawn_position := Vector2.ZERO
+var _total_coins := 0
+var _level_started_at := 0
 
 # ─── Referensi node aktif ─────────────────────────────────────
 var player: CharacterBody2D
@@ -33,6 +34,7 @@ var enemies:    Array = []
 var coin_nodes: Array[Area2D] = []
 
 var _boss_open := false
+var _result_open := false
 
 # ═════════════════════════════════════════════════════════════
 #  INISIALISASI
@@ -71,10 +73,13 @@ func start_level(index: int) -> void:
 	hp           = 3
 	coins        = 0
 	_boss_open   = false
+	_result_open  = false
 
 	world = LevelScene.instantiate()
 	add_child(world)
 	_read_level_nodes()
+	_total_coins = coin_nodes.size()
+	_level_started_at = Time.get_ticks_msec()
 	_build_player()
 	_build_hud()
 
@@ -114,19 +119,23 @@ func _build_hud() -> void:
 	hud = HUDScript.new()
 	add_child(hud)
 	hud.setup()
+	hud.restart_requested.connect(func(): start_level(level_index))
+	hud.main_menu_requested.connect(show_menu)
 	_refresh_hud()
 
 # ═════════════════════════════════════════════════════════════
 #  REGION: PHYSICS LOOP (setiap frame)
 # ═════════════════════════════════════════════════════════════
 func _physics_process(delta: float) -> void:
-	if player == null or _boss_open: return
+	if player == null or world == null or _boss_open: return
 
 	player.move_player(delta)
 	_check_fall()
 	_check_checkpoint()
 	_check_coins()
 	_check_enemies()
+	if player == null or world == null or _boss_open:
+		return
 	_check_boss_trigger()
 
 func _check_fall() -> void:
@@ -147,6 +156,7 @@ func _check_coins() -> void:
 			coin.queue_free()
 			coin_nodes.erase(coin)
 			coins += 1
+			AudioManager.play_sfx(&"coin")
 			_refresh_hud()
 
 func _check_enemies() -> void:
@@ -161,6 +171,8 @@ func _check_enemies() -> void:
 			break
 
 func _check_boss_trigger() -> void:
+	if player == null or world == null:
+		return
 	var trigger := world.get_node("BossTrigger") as Marker2D
 	if player.position.x > trigger.position.x:
 		_open_boss()
@@ -173,9 +185,8 @@ func _take_damage() -> void:
 	hp -= 1
 	_refresh_hud()
 	if hp <= 0:
-		hp = 3
-		_refresh_hud()
-		hud.show_message("HP habis — kembali ke checkpoint!", 2.0)
+		_show_level_result(false)
+		return
 	respawn()
 
 func respawn() -> void:
@@ -205,16 +216,14 @@ func _open_boss() -> void:
 		await get_tree().create_timer(0.55).timeout
 		await _return_camera_to_player()
 
-	# Percakapan singkat sebelum coding challenge dibuka.
-	hud.show_message(GameData.LEVELS[level_index].boss + ": Berhenti!\nKau tidak bisa melewatiku begitu saja.", 2.4)
-	await get_tree().create_timer(2.5).timeout
-	hud.show_message("Buktikan kemampuan coding-mu!", 1.8)
-	await get_tree().create_timer(1.9).timeout
-
+	# Percakapan boss ditampilkan dan dikontrol klik di panel bawah.
 	var challenge := BossChallenge.new()
 	add_child(challenge)
 	challenge.setup(GameData.LEVELS[level_index])
-	player.show_coding()
+	challenge.code_phase_started.connect(func():
+		if player and is_instance_valid(player):
+			player.show_coding()
+	)
 	challenge.submitted.connect(
 		func(answer: String): _validate_answer(answer, challenge)
 	)
@@ -244,64 +253,78 @@ func _return_camera_to_player() -> void:
 func _validate_answer(given: String, challenge: BossChallenge) -> void:
 	var expected: String = GameData.LEVELS[level_index].answer
 	if given.strip_edges() == expected:
-		challenge.show_result("✔ BENAR!  Raja dikalahkan!", true)
+		challenge.show_result("✔ BENAR!  Dosen Bug dikalahkan!", true)
 		await get_tree().create_timer(0.8).timeout
 		if boss_visual and is_instance_valid(boss_visual):
 			await boss_visual.play_death()
+		challenge.hide()
 		challenge.queue_free()
 		_boss_open = false
-		if level_index + 1 < GameData.LEVELS.size():
-			start_level(level_index + 1)
-		else:
-			show_victory()
+		await _start_boss_defeat_transition()
+		return
 	else:
 		player.show_damage()
 		hp -= 1
 		_refresh_hud()
 		if hp <= 0:
-			hp = 3
-			_refresh_hud()
-			challenge.queue_free() # TextEdit hilang bersama challenge saat HP habis.
-			_boss_open = false
-			respawn()
-			hud.show_message("HP habis — kembali ke checkpoint!", 2.0)
+			_show_level_result(false)
+			return
 		else:
 			challenge.show_result("✘ Salah! HP berkurang. Coba lagi.", false)
 
 # ═════════════════════════════════════════════════════════════
 #  REGION: VICTORY
 # ═════════════════════════════════════════════════════════════
+func _start_boss_defeat_transition() -> void:
+	AudioManager.stop_sfx()
+	AudioManager.stop_music()
+	var fade = BossDefeatFadeScene.instantiate()
+	add_child(fade)
+	await fade.covered
+	_show_level_result(true, fade)
+	await get_tree().process_frame
+	AudioManager.play_sfx(&"game_win")
+	if is_instance_valid(fade):
+		fade.reveal_result()
+
+func _show_level_result(won: bool, fade = null) -> void:
+	if _result_open:
+		return
+	_result_open = true
+	if fade == null:
+		AudioManager.stop_sfx()
+		if not won:
+			AudioManager.play_sfx(&"game_over")
+	var elapsed_seconds := int((Time.get_ticks_msec() - _level_started_at) / 1000)
+	_clear_world(fade)
+	var result: LevelResult = LevelResultScene.instantiate()
+	add_child(result)
+	var has_next_level := won and level_index + 1 < GameData.LEVELS.size()
+	var action_label := "LEVEL BERIKUTNYA" if has_next_level else ("MENU UTAMA" if won else "ULANGI LEVEL")
+	result.setup(won, coins, _total_coins, elapsed_seconds, action_label)
+	result.action_requested.connect(_on_result_action.bind(won))
+	if won and fade == null:
+		AudioManager.play_sfx(&"game_win")
+
+func _on_result_action(_button_was_success: bool, won: bool) -> void:
+	if won and level_index + 1 < GameData.LEVELS.size():
+		start_level(level_index + 1)
+	elif won:
+		show_menu()
+	else:
+		start_level(level_index)
+
 func show_victory() -> void:
-	_clear_world()
-	var ui := CanvasLayer.new()
-	add_child(ui)
-
-	ui.add_child(UIHelper.full_bg(Color("1a3a2a")))
-
-	var title := UIHelper.label("🏆  VICTORY!", 56)
-	title.position = Vector2(230, 160)
-	title.size     = Vector2(690, 80)
-	ui.add_child(title)
-
-	var sub := UIHelper.label("Semua level telah diselesaikan!", 24)
-	sub.position = Vector2(230, 255)
-	sub.size     = Vector2(690, 40)
-	sub.modulate = Color("aaffaa")
-	ui.add_child(sub)
-
-	var coin_lbl := UIHelper.label("Coin terkumpul: %d" % coins, 20)
-	coin_lbl.position = Vector2(230, 305)
-	coin_lbl.size     = Vector2(690, 35)
-	coin_lbl.modulate = Color("ffdd88")
-	ui.add_child(coin_lbl)
-
-	ui.add_child(UIHelper.button("MAIN LAGI", Vector2(405, 385), Vector2(340, 65), 26, show_menu))
+	_show_level_result(true)
 
 # ═════════════════════════════════════════════════════════════
 #  REGION: UTILITAS INTERNAL
 # ═════════════════════════════════════════════════════════════
-func _clear_world() -> void:
+func _clear_world(kept_child: Node = null) -> void:
+	get_tree().paused = false
 	for child in get_children():
+		if child == kept_child:
+			continue
 		child.queue_free()
 	player     = null
 	player_camera = null

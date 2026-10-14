@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://d5cwju0mjm2l"]
+
+[ext_resource type="Script" uid="uid://nukt7efg3js8" path="res://scripts/ui/code_challenge_editor.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cgh6w2tytqapv" path="res://assets/ui/code_editor/code_editor_board.png" id="2_board"]
+[ext_resource type="FontFile" uid="uid://dehia10bkdpqw" path="res://assets/fonts/JetBrainsMono-Regular.ttf" id="3_mono"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="4_title"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBox_empty"]
+
+[node name="CodeChallengeEditor" type="Control" unique_id=1224743236]
+custom_minimum_size = Vector2(470, 316)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 470.0
+offset_bottom = 316.0
+visible = false
+script = ExtResource("1_script")
+
+[node name="Board" type="TextureRect" parent="." unique_id=1851513882]
+texture_filter = 1
+layout_mode = 0
+offset_right = 470.0
+offset_bottom = 316.0
+mouse_filter = 2
+texture = ExtResource("2_board")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Question" type="Label" parent="." unique_id=425197702]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 49.0
+offset_right = 426.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(0.71, 0.85, 0.94, 1)
+theme_override_fonts/font = ExtResource("3_mono")
+theme_override_font_sizes/font_size = 12
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="LineNumbers" type="Label" parent="." unique_id=1606767476]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 97.0
+offset_right = 45.0
+offset_bottom = 224.0
+theme_override_colors/font_color = Color(0.39, 0.5, 0.61, 1)
+theme_override_fonts/font = ExtResource("3_mono")
+theme_override_font_sizes/font_size = 13
+text = "1
+2
+3
+4
+5
+6"
+horizontal_alignment = 2
+
+[node name="CodeInput" type="CodeEdit" parent="." unique_id=1062445345]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 93.0
+offset_right = 434.0
+offset_bottom = 239.0
+theme_override_colors/caret_color = Color(1, 0.85, 0.42, 1)
+theme_override_colors/font_color = Color(0.9, 0.96, 1, 1)
+theme_override_fonts/font = ExtResource("3_mono")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBox_empty")
+theme_override_styles/focus = SubResource("StyleBox_empty")
+placeholder_text = "Tulis jawaban kode di sini..."
+highlight_current_line = true
+
+[node name="Feedback" type="Label" parent="." unique_id=876655948]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 258.0
+offset_right = 260.0
+offset_bottom = 285.0
+theme_override_colors/font_color = Color(1, 0.95, 0.66, 1)
+theme_override_fonts/font = ExtResource("3_mono")
+theme_override_font_sizes/font_size = 11
+vertical_alignment = 1
+
+[node name="SendButton" type="Button" parent="." unique_id=825645237]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 265.0
+offset_right = 438.0
+offset_bottom = 298.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBox_empty")
+theme_override_styles/pressed = SubResource("StyleBox_empty")
+theme_override_styles/hover = SubResource("StyleBox_empty")
+flat = true
+
+[node name="Label" type="Label" parent="SendButton" unique_id=1126591636]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -11.0
+offset_right = 13.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.97, 0.79, 1)
+theme_override_colors/font_outline_color = Color(0.04, 0.13, 0.07, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_title")
+theme_override_font_sizes/font_size = 18
+text = "KIRIM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="SendButton" to="." method="_on_send_pressed"]

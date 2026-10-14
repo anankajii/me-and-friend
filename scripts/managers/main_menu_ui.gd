@@ -19,13 +19,14 @@ var _title_position: Vector2
 var _button_positions: Array[Vector2] = []
 
 func _ready() -> void:
+	AudioManager.play_background_music()
 	_title_position = title.position
 	var buttons := [main_button, setting_button, quit_button]
 	for button in buttons:
 		_button_positions.append(button.position)
 		button.mouse_entered.connect(_animate_button_hover.bind(button, true))
 		button.mouse_exited.connect(_animate_button_hover.bind(button, false))
-	main_button.pressed.connect(func(): play_requested.emit())
+	main_button.pressed.connect(_on_play_pressed)
 	setting_button.pressed.connect(_show_settings)
 	quit_button.pressed.connect(func(): get_tree().quit())
 	$UI/SettingsPanel/BackButton.pressed.connect(_hide_settings)
@@ -63,6 +64,10 @@ func _animate_button_hover(button: Control, hovered: bool) -> void:
 	create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT) \
 		.tween_property(button, "scale", target_scale, 0.16)
 
+func _on_play_pressed() -> void:
+	AudioManager.play_sfx(&"game_start")
+	play_requested.emit()
+
 func _show_settings() -> void:
 	settings_panel.visible = true
 	settings_panel.modulate.a = 0.0
@@ -86,22 +91,10 @@ func _setup_character_preview() -> void:
 		bob.tween_property(preview, "position:y", base_y, 1.0 + i * 0.04)
 
 func _setup_audio_controls() -> void:
-	_ensure_audio_bus("Music")
-	_ensure_audio_bus("SFX")
+	music_slider.value = AudioManager.get_bus_volume(&"Music")
+	sfx_slider.value = AudioManager.get_bus_volume(&"SFX")
 	music_slider.value_changed.connect(_set_bus_volume.bind("Music"))
 	sfx_slider.value_changed.connect(_set_bus_volume.bind("SFX"))
-	_set_bus_volume(music_slider.value, "Music")
-	_set_bus_volume(sfx_slider.value, "SFX")
-
-func _ensure_audio_bus(bus_name: String) -> void:
-	if AudioServer.get_bus_index(bus_name) >= 0:
-		return
-	AudioServer.add_bus()
-	AudioServer.set_bus_name(AudioServer.bus_count - 1, bus_name)
 
 func _set_bus_volume(value: float, bus_name: String) -> void:
-	var bus_index := AudioServer.get_bus_index(bus_name)
-	if bus_index < 0:
-		return
-	AudioServer.set_bus_mute(bus_index, value <= 0.0)
-	AudioServer.set_bus_volume_db(bus_index, linear_to_db(max(value / 100.0, 0.001)))
+	AudioManager.set_bus_volume(value, StringName(bus_name))

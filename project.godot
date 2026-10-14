@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main_menu/Main.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioManager="*res://scripts/managers/audio_manager.gd"
+
 [display]
 
 window/stretch/mode="canvas_items"

@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dobotbrampksx"]
+[gd_scene format=3 uid="uid://dobotbrampksx"]
 
 [ext_resource type="Texture2D" uid="uid://ckr64flcefqbb" path="res://assets/backgrounds/BG_Level01_Pixel.png" id="1_uq7hp"]
 [ext_resource type="PackedScene" path="res://scenes/tiles/Floor.tscn" id="2_floor"]
@@ -16,7 +16,7 @@ scale = Vector2(2.21142, 1.29972)
 texture = ExtResource("1_uq7hp")
 
 [node name="Floor" parent="." unique_id=509323952 instance=ExtResource("2_floor")]
-position = Vector2(2404, 951)
+position = Vector2(2404, 944)
 
 [node name="Coins" type="Node2D" parent="." unique_id=812655982]
 
@@ -86,18 +86,18 @@ position = Vector2(2956, 649)
 [node name="Enemies" type="Node2D" parent="." unique_id=1084902109]
 
 [node name="EnemyPatrol01" parent="Enemies" unique_id=811239931 instance=ExtResource("6_enemy")]
-position = Vector2(850, 832)
+position = Vector2(856, 806)
 patrol_enabled = true
 
 [node name="EnemyIdle01" parent="Enemies" unique_id=1719342058 instance=ExtResource("6_enemy")]
-position = Vector2(1450, 832)
+position = Vector2(1447, 807)
 
 [node name="EnemyPatrol02" parent="Enemies" unique_id=1557160110 instance=ExtResource("6_enemy")]
 position = Vector2(2150, 832)
 patrol_enabled = true
 
 [node name="EnemyIdle02" parent="Enemies" unique_id=2067709720 instance=ExtResource("6_enemy")]
-position = Vector2(2750, 832)
+position = Vector2(2751, 802)
 
 [node name="Boss" parent="." unique_id=1214513974 instance=ExtResource("7_boss")]
 visible = false
@@ -121,45 +121,39 @@ position = Vector2(0, 1061)
 [node name="CameraEnd" type="Marker2D" parent="." unique_id=1785428808]
 position = Vector2(4600, 941)
 
-[node name="Platforms" type="Node2D" parent="."]
+[node name="Platforms" type="Node2D" parent="." unique_id=1971667123]
 
-[node name="Platform01" parent="Platforms" instance=ExtResource("8_platform")]
-position = Vector2(576, 704)
+[node name="Platform01" parent="Platforms" unique_id=1078615314 instance=ExtResource("8_platform")]
+position = Vector2(576, 719)
 
-[node name="Platform02" parent="Platforms" instance=ExtResource("8_platform")]
+[node name="Platform02" parent="Platforms" unique_id=1944760277 instance=ExtResource("8_platform")]
 position = Vector2(960, 640)
 
-[node name="Platform03" parent="Platforms" instance=ExtResource("8_platform")]
+[node name="Platform03" parent="Platforms" unique_id=1705583212 instance=ExtResource("8_platform")]
 position = Vector2(1344, 704)
 
-[node name="Platform04" parent="Platforms" instance=ExtResource("8_platform")]
+[node name="Platform04" parent="Platforms" unique_id=142933453 instance=ExtResource("8_platform")]
 position = Vector2(1792, 640)
 
-[node name="Platform05" parent="Platforms" instance=ExtResource("8_platform")]
+[node name="Platform05" parent="Platforms" unique_id=1190973143 instance=ExtResource("8_platform")]
 position = Vector2(2240, 704)
 
-[node name="Platform06" parent="Platforms" instance=ExtResource("8_platform")]
+[node name="Platform06" parent="Platforms" unique_id=575204762 instance=ExtResource("8_platform")]
 position = Vector2(2624, 640)
 
-[node name="Platform07" parent="Platforms" instance=ExtResource("8_platform")]
+[node name="Platform07" parent="Platforms" unique_id=1999793079 instance=ExtResource("8_platform")]
 position = Vector2(3008, 704)
 
-[node name="Platform08" parent="Platforms" instance=ExtResource("8_platform")]
-position = Vector2(3648, 640)
+[node name="Obstacles" type="Node2D" parent="." unique_id=440553086]
 
-[node name="Platform09" parent="Platforms" instance=ExtResource("8_platform")]
-position = Vector2(4096, 704)
+[node name="Obstacle01" parent="Obstacles" unique_id=770673101 instance=ExtResource("9_obstacle")]
+position = Vector2(2492, 788)
 
-[node name="Obstacles" type="Node2D" parent="."]
-
-[node name="Obstacle01" parent="Obstacles" instance=ExtResource("9_obstacle")]
-position = Vector2(2496, 832)
-
-[node name="Obstacle02" parent="Obstacles" instance=ExtResource("9_obstacle")]
+[node name="Obstacle02" parent="Obstacles" unique_id=1500065211 instance=ExtResource("9_obstacle")]
 position = Vector2(1792, 576)
 
-[node name="Obstacle03" parent="Obstacles" instance=ExtResource("9_obstacle")]
+[node name="Obstacle03" parent="Obstacles" unique_id=49594642 instance=ExtResource("9_obstacle")]
 position = Vector2(2624, 576)
 
-[node name="Obstacle04" parent="Obstacles" instance=ExtResource("9_obstacle")]
+[node name="Obstacle04" parent="Obstacles" unique_id=144009162 instance=ExtResource("9_obstacle")]
 position = Vector2(1152, 768)

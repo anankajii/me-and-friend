@@ -1,0 +1,193 @@
+[gd_scene format=3 uid="uid://cp011ymgd0yuw"]
+
+[ext_resource type="Script" uid="uid://bevp6cwensopq" path="res://scripts/ui/level_result.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://c6qotaobpa614" path="res://assets/ui/level_result/result_panel.png" id="2_panel"]
+[ext_resource type="Texture2D" uid="uid://ceoqg8gqp2trs" path="res://assets/ui/level_result/reward_star.png" id="3_star"]
+[ext_resource type="Texture2D" uid="uid://byw15xmsfa41j" path="res://assets/ui/hud/coin.png" id="4_coin"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="5_font"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBox_empty"]
+
+[node name="LevelResult" type="CanvasLayer" unique_id=512813207]
+process_mode = 3
+layer = 20
+script = ExtResource("1_script")
+
+[node name="UI" type="Control" parent="." unique_id=1906991389]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="UI" unique_id=1332099561]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.01, 0.025, 0.07, 0.7)
+
+[node name="Panel" type="TextureRect" parent="UI" unique_id=755344269]
+texture_filter = 1
+layout_mode = 0
+offset_left = 384.0
+offset_top = 36.0
+offset_right = 768.0
+offset_bottom = 612.0
+mouse_filter = 2
+texture = ExtResource("2_panel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="UI" unique_id=843304242]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 82.0
+offset_right = 740.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(1, 0.84, 0.29, 1)
+theme_override_colors/font_outline_color = Color(0.15, 0.06, 0.02, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 26
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Star1" type="TextureRect" parent="UI" unique_id=1672676163]
+texture_filter = 1
+layout_mode = 0
+offset_left = 426.0
+offset_top = 189.0
+offset_right = 529.0
+offset_bottom = 299.0
+pivot_offset = Vector2(45, 45)
+mouse_filter = 2
+texture = ExtResource("3_star")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star2" type="TextureRect" parent="UI" unique_id=463278351]
+texture_filter = 1
+layout_mode = 0
+offset_left = 518.0
+offset_top = 189.0
+offset_right = 634.0
+offset_bottom = 299.0
+pivot_offset = Vector2(50.5, 50.5)
+mouse_filter = 2
+texture = ExtResource("3_star")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Star3" type="TextureRect" parent="UI" unique_id=1479463925]
+texture_filter = 1
+layout_mode = 0
+offset_left = 621.0
+offset_top = 182.0
+offset_right = 727.0
+offset_bottom = 308.0
+pivot_offset = Vector2(45, 45)
+mouse_filter = 2
+texture = ExtResource("3_star")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="UI" unique_id=1005675316]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 340.0
+offset_right = 528.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(0.84, 0.91, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 24
+text = "KOIN"
+horizontal_alignment = 1
+
+[node name="CoinIcon" type="TextureRect" parent="UI" unique_id=895576377]
+texture_filter = 1
+layout_mode = 0
+offset_left = 458.0
+offset_top = 365.0
+offset_right = 496.0
+offset_bottom = 405.0
+mouse_filter = 2
+texture = ExtResource("4_coin")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CoinValue" type="Label" parent="UI" unique_id=37345361]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 367.0
+offset_right = 549.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(1, 0.84, 0.29, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="UI" unique_id=868940255]
+layout_mode = 0
+offset_left = 622.0
+offset_top = 343.0
+offset_right = 689.0
+offset_bottom = 360.0
+theme_override_colors/font_color = Color(0.84, 0.91, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 24
+text = "WAKTU"
+horizontal_alignment = 1
+
+[node name="TimeValue" type="Label" parent="UI" unique_id=487467151]
+layout_mode = 0
+offset_left = 594.0
+offset_top = 369.0
+offset_right = 732.0
+offset_bottom = 405.0
+theme_override_colors/font_color = Color(0.91, 0.96, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 19
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NextButton" type="Button" parent="UI" unique_id=1592768752]
+layout_mode = 0
+offset_left = 449.0
+offset_top = 492.0
+offset_right = 703.0
+offset_bottom = 538.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBox_empty")
+theme_override_styles/pressed = SubResource("StyleBox_empty")
+theme_override_styles/hover = SubResource("StyleBox_empty")
+flat = true
+
+[node name="Label" type="Label" parent="UI/NextButton" unique_id=1583507252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.16, 0.06, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_font")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UI/NextButton" to="." method="_on_next_button_pressed"]

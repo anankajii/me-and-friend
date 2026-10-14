@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c1eujyk8dihh8"]
+
+[ext_resource type="Script" uid="uid://cd4cutjnju5oo" path="res://scripts/ui/boss_dialogue_panel.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bbhnspcxdub7h" path="res://assets/ui/boss_dialog/dosen_bug_dialogue_box.png" id="2_box"]
+[ext_resource type="Texture2D" uid="uid://3ohnujdwfwt0" path="res://assets/ui/boss_dialog/dosen_bug_card_portrait.png" id="3_portrait"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="4_font"]
+
+[node name="BossDialoguePanel" type="Control" unique_id=616965924]
+custom_minimum_size = Vector2(842, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 842.0
+offset_bottom = 200.0
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=433655720]
+texture_filter = 1
+layout_mode = 0
+offset_right = 842.0
+offset_bottom = 200.0
+mouse_filter = 2
+texture = ExtResource("2_box")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="." unique_id=620503988]
+texture_filter = 1
+layout_mode = 0
+offset_left = 46.0
+offset_top = 42.0
+offset_right = 167.0
+offset_bottom = 159.0
+mouse_filter = 2
+texture = ExtResource("3_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CardName" type="Label" parent="." unique_id=2095731161]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 140.0
+offset_right = 180.0
+offset_bottom = 162.0
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Speaker" type="Label" parent="." unique_id=1518222626]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 41.0
+offset_right = 661.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 0.86, 0.42, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 17
+vertical_alignment = 1
+
+[node name="DialogueText" type="Label" parent="." unique_id=1160698933]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 73.0
+offset_right = 782.0
+offset_bottom = 124.0
+theme_override_colors/font_color = Color(1, 0.96, 0.84, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 24
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ContinueHint" type="Label" parent="." unique_id=654283756]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 134.0
+offset_right = 782.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0.66, 0.84, 0.96, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_font")
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 2
+vertical_alignment = 1

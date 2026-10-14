@@ -7,8 +7,8 @@ extends RefCounted
 const LEVELS := [
 	{
 		"name"    : "Level 1 — TI Campus",
-		"boss"    : "Raja Syntax",
-		"question": "Ketik kode untuk menampilkan Hello World di Python:",
+		"boss"    : "Dosen Bug",
+		"question": "Lengkapi baris kode Python berikut:\nprint(____)",
 		"answer"  : 'print("Hello World")'
 	}
 ]

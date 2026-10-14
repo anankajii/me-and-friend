@@ -1,231 +1,572 @@
-[gd_scene load_steps=9 format=3]
+[gd_scene format=3 uid="uid://cutvcrwwavkxx"]
 
-[ext_resource type="Script" path="res://scripts/managers/character_select_ui.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/backgrounds/BG_PSDKU.png" id="2_bg"]
-[ext_resource type="PackedScene" path="res://scenes/player/Khanan.tscn" id="3_khanan"]
-[ext_resource type="PackedScene" path="res://scenes/player/Jeki.tscn" id="4_jeki"]
-[ext_resource type="PackedScene" path="res://scenes/player/Bayu.tscn" id="5_bayu"]
-[ext_resource type="PackedScene" path="res://scenes/player/Reni.tscn" id="6_reni"]
-[ext_resource type="PackedScene" path="res://scenes/player/Ervania.tscn" id="7_ervania"]
-[ext_resource type="PackedScene" path="res://scenes/player/Laras.tscn" id="8_laras"]
-
-[node name="CharacterSelectUI" type="CanvasLayer"]
+[ext_resource type="Script" uid="uid://btcygqd2ystwn" path="res://scripts/managers/character_select_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://cw542j110w487" path="res://assets/backgrounds/BG_PSDKU.png" id="2_bg"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="3_ghxtx"]
+[ext_resource type="Texture2D" uid="uid://k0vnyk0fu0g" path="res://assets/ui/pause_v2/pause_panel.png" id="3_panel"]
+[ext_resource type="Texture2D" uid="uid://bv1jixm5knjal" path="res://assets/ui/character_portraits/khanan.png" id="4_khanan_portrait"]
+[ext_resource type="Texture2D" uid="uid://dsssbfwgk6dx" path="res://assets/ui/character_portraits/jeki.png" id="5_jeki_portrait"]
+[ext_resource type="Texture2D" uid="uid://dpfmkm7c6v34o" path="res://assets/ui/character_portraits/bayu.png" id="6_bayu_portrait"]
+[ext_resource type="Texture2D" uid="uid://duxni5nyx64ul" path="res://assets/ui/character_portraits/reni.png" id="7_reni_portrait"]
+[ext_resource type="Texture2D" uid="uid://bhfk1206rntlm" path="res://assets/ui/character_portraits/ervania.png" id="8_ervania_portrait"]
+[ext_resource type="Texture2D" uid="uid://cmvci4b1hfvmb" path="res://assets/ui/character_portraits/laras.png" id="9_laras_portrait"]
+[ext_resource type="PackedScene" uid="uid://wuk7avff6n7b" path="res://scenes/player/Khanan.tscn" id="10_khanan"]
+[ext_resource type="PackedScene" path="res://scenes/player/Jeki.tscn" id="11_jeki"]
+[ext_resource type="PackedScene" path="res://scenes/player/Bayu.tscn" id="12_bayu"]
+[ext_resource type="PackedScene" path="res://scenes/player/Reni.tscn" id="13_reni"]
+[ext_resource type="PackedScene" path="res://scenes/player/Ervania.tscn" id="14_ervania"]
+[ext_resource type="PackedScene" path="res://scenes/player/Laras.tscn" id="15_laras"]
+[ext_resource type="Texture2D" uid="uid://d22d4po6tyyfu" path="res://assets/ui/character_cards/normal.png" id="16_card_normal"]
+[ext_resource type="Texture2D" uid="uid://dsup2d3lcvhi7" path="res://assets/ui/pause_v2/continue.png" id="17_button_green"]
+[ext_resource type="Texture2D" uid="uid://4jrkgxfrx51h" path="res://assets/ui/pause_v2/standard.png" id="18_button_brown"]  
+[node name="CharacterSelectUI" type="CanvasLayer" unique_id=1593510295]
 script = ExtResource("1_script")
-[node name="UI" type="Control" parent="."]
+
+[node name="UI" type="Control" parent="." unique_id=1876385091]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-[node name="Background" type="TextureRect" parent="UI"]
+
+[node name="Background" type="TextureRect" parent="UI" unique_id=961801589]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_bg")
 expand_mode = 1
 stretch_mode = 6
-mouse_filter = 2
-[node name="Shade" type="ColorRect" parent="UI"]
+
+[node name="Shade" type="ColorRect" parent="UI" unique_id=1811830996]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.02, 0.05, 0.1, 0.25)
 mouse_filter = 2
-[node name="Header" type="Panel" parent="UI"]
-offset_left = 250.0
-offset_top = 25.0
-offset_right = 900.0
-offset_bottom = 115.0
-[node name="Title" type="Label" parent="UI/Header"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+color = Color(0.01, 0.025, 0.07, 0.56)
+
+[node name="Title" type="Label" parent="UI" unique_id=1725721648]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 19.0
+offset_right = 904.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(1, 0.85882354, 0.27058825, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.04, 0.08, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("3_ghxtx")
 theme_override_font_sizes/font_size = 38
 text = "PILIH KARAKTER"
 horizontal_alignment = 1
 vertical_alignment = 1
-[node name="Cards" type="Control" parent="UI"]
 
-[node name="KhananCard" type="Panel" parent="UI/Cards"]
-offset_left = 35.0
-offset_top = 345.0
-offset_right = 175.0
-offset_bottom = 520.0
-[node name="Character" parent="UI/Cards/KhananCard" instance=ExtResource("3_khanan")]
-position = Vector2(70, 75)
-scale = Vector2(0.78, 0.78)
-[node name="Name" type="Label" parent="UI/Cards/KhananCard"]
-offset_top = 135.0
-offset_right = 140.0
-offset_bottom = 172.0
+[node name="ListTitle" type="Label" parent="UI" unique_id=1673361794]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 168.0
+offset_right = 497.0
+offset_bottom = 196.0
+theme_override_colors/font_color = Color(1, 0.85882354, 0.27058825, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.1, 0.18, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
+text = "DAFTAR KARAKTER"
+
+[node name="Cards" type="Control" parent="UI" unique_id=1189436531]
+anchors_preset = 0
+
+[node name="KhananCard" type="Control" parent="UI/Cards" unique_id=1932424379]
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 205.0
+offset_right = 335.0
+offset_bottom = 269.0
+
+[node name="CardBackground" type="TextureRect" parent="UI/Cards/KhananCard" unique_id=865062741]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_card_normal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="UI/Cards/KhananCard" unique_id=1749613810]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("4_khanan_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="UI/Cards/KhananCard" unique_id=1498486106]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.02, 0.01, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
 text = "KHANAN"
-horizontal_alignment = 1
-[node name="SelectButton" type="Button" parent="UI/Cards/KhananCard"]
-flat = true
-offset_right = 140.0
-offset_bottom = 175.0
 
-[node name="JekiCard" type="Panel" parent="UI/Cards"]
-offset_left = 180.0
-offset_top = 345.0
-offset_right = 320.0
-offset_bottom = 520.0
-[node name="Character" parent="UI/Cards/JekiCard" instance=ExtResource("4_jeki")]
-position = Vector2(70, 75)
-scale = Vector2(0.78, 0.78)
-[node name="Name" type="Label" parent="UI/Cards/JekiCard"]
-offset_top = 135.0
-offset_right = 140.0
-offset_bottom = 172.0
+[node name="Check" type="Label" parent="UI/Cards/KhananCard" unique_id=2035020472]
+layout_mode = 0
+offset_left = 250.0
+offset_top = 5.0
+offset_right = 282.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.3, 1, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.14, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "✓"
+
+[node name="SelectButton" type="Button" parent="UI/Cards/KhananCard" unique_id=84506077]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 64.0
+flat = true
+
+[node name="JekiCard" type="Control" parent="UI/Cards" unique_id=1980528325]
+anchors_preset = 0
+offset_left = 355.0
+offset_top = 205.0
+offset_right = 645.0
+offset_bottom = 269.0
+
+[node name="CardBackground" type="TextureRect" parent="UI/Cards/JekiCard" unique_id=2073941795]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_card_normal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="UI/Cards/JekiCard" unique_id=1417072041]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("5_jeki_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="UI/Cards/JekiCard" unique_id=1236400400]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.12, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
 text = "JEKI"
-horizontal_alignment = 1
-[node name="SelectButton" type="Button" parent="UI/Cards/JekiCard"]
-flat = true
-offset_right = 140.0
-offset_bottom = 175.0
 
-[node name="BayuCard" type="Panel" parent="UI/Cards"]
-offset_left = 325.0
-offset_top = 345.0
-offset_right = 465.0
-offset_bottom = 520.0
-[node name="Character" parent="UI/Cards/BayuCard" instance=ExtResource("5_bayu")]
-position = Vector2(70, 75)
-scale = Vector2(0.78, 0.78)
-[node name="Name" type="Label" parent="UI/Cards/BayuCard"]
-offset_top = 135.0
-offset_right = 140.0
-offset_bottom = 172.0
-text = "BAYU"
-horizontal_alignment = 1
-[node name="SelectButton" type="Button" parent="UI/Cards/BayuCard"]
-flat = true
-offset_right = 140.0
-offset_bottom = 175.0
-
-[node name="ReniCard" type="Panel" parent="UI/Cards"]
-offset_left = 470.0
-offset_top = 345.0
-offset_right = 610.0
-offset_bottom = 520.0
-[node name="Character" parent="UI/Cards/ReniCard" instance=ExtResource("6_reni")]
-position = Vector2(70, 75)
-scale = Vector2(0.78, 0.78)
-[node name="Name" type="Label" parent="UI/Cards/ReniCard"]
-offset_top = 135.0
-offset_right = 140.0
-offset_bottom = 172.0
-text = "RENI"
-horizontal_alignment = 1
-[node name="SelectButton" type="Button" parent="UI/Cards/ReniCard"]
-flat = true
-offset_right = 140.0
-offset_bottom = 175.0
-
-[node name="ErvaniaCard" type="Panel" parent="UI/Cards"]
-offset_left = 615.0
-offset_top = 345.0
-offset_right = 755.0
-offset_bottom = 520.0
-[node name="Character" parent="UI/Cards/ErvaniaCard" instance=ExtResource("7_ervania")]
-position = Vector2(70, 75)
-scale = Vector2(0.78, 0.78)
-[node name="Name" type="Label" parent="UI/Cards/ErvaniaCard"]
-offset_top = 135.0
-offset_right = 140.0
-offset_bottom = 172.0
-text = "ERVANIA"
-horizontal_alignment = 1
-[node name="SelectButton" type="Button" parent="UI/Cards/ErvaniaCard"]
-flat = true
-offset_right = 140.0
-offset_bottom = 175.0
-
-[node name="LarasCard" type="Panel" parent="UI/Cards"]
-offset_left = 760.0
-offset_top = 345.0
-offset_right = 900.0
-offset_bottom = 520.0
-[node name="Character" parent="UI/Cards/LarasCard" instance=ExtResource("8_laras")]
-position = Vector2(70, 75)
-scale = Vector2(0.78, 0.78)
-[node name="Name" type="Label" parent="UI/Cards/LarasCard"]
-offset_top = 135.0
-offset_right = 140.0
-offset_bottom = 172.0
-text = "LARAS"
-horizontal_alignment = 1
-[node name="SelectButton" type="Button" parent="UI/Cards/LarasCard"]
-flat = true
-offset_right = 140.0
-offset_bottom = 175.0
-
-[node name="Details" type="Panel" parent="UI"]
+[node name="Check" type="Label" parent="UI/Cards/JekiCard" unique_id=845491991]
 visible = false
-offset_left = 920.0
-offset_top = 145.0
-offset_right = 1125.0
-offset_bottom = 525.0
-[node name="Name" type="Label" parent="UI/Details"]
-offset_left = 10.0
-offset_top = 15.0
-offset_right = 195.0
-offset_bottom = 55.0
-theme_override_font_sizes/font_size = 24
+layout_mode = 0
+offset_left = 250.0
+offset_top = 5.0
+offset_right = 282.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.3, 1, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.14, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "✓"
+
+[node name="SelectButton" type="Button" parent="UI/Cards/JekiCard" unique_id=1575891338]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 64.0
+flat = true
+
+[node name="BayuCard" type="Control" parent="UI/Cards" unique_id=190822376]
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 285.0
+offset_right = 335.0
+offset_bottom = 349.0
+
+[node name="CardBackground" type="TextureRect" parent="UI/Cards/BayuCard" unique_id=42750598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_card_normal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="UI/Cards/BayuCard" unique_id=1629927909]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("6_bayu_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="UI/Cards/BayuCard" unique_id=1276566840]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.04, 0.12, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
+text = "BAYU"
+
+[node name="Check" type="Label" parent="UI/Cards/BayuCard" unique_id=807515156]
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 5.0
+offset_right = 282.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.3, 1, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.14, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "✓"
+
+[node name="SelectButton" type="Button" parent="UI/Cards/BayuCard" unique_id=20910413]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 64.0
+flat = true
+
+[node name="ReniCard" type="Control" parent="UI/Cards" unique_id=101641448]
+anchors_preset = 0
+offset_left = 355.0
+offset_top = 285.0
+offset_right = 645.0
+offset_bottom = 349.0
+
+[node name="CardBackground" type="TextureRect" parent="UI/Cards/ReniCard" unique_id=1751293325]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_card_normal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="UI/Cards/ReniCard" unique_id=777173379]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("7_reni_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="UI/Cards/ReniCard" unique_id=1822134617]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.02, 0.08, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
+text = "RENI"
+
+[node name="Check" type="Label" parent="UI/Cards/ReniCard" unique_id=1505370488]
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 5.0
+offset_right = 282.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.3, 1, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.14, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "✓"
+
+[node name="SelectButton" type="Button" parent="UI/Cards/ReniCard" unique_id=1829026307]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 64.0
+flat = true
+
+[node name="ErvaniaCard" type="Control" parent="UI/Cards" unique_id=1059637776]
+anchors_preset = 0
+offset_left = 45.0
+offset_top = 365.0
+offset_right = 335.0
+offset_bottom = 429.0
+
+[node name="CardBackground" type="TextureRect" parent="UI/Cards/ErvaniaCard" unique_id=875125162]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_card_normal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="UI/Cards/ErvaniaCard" unique_id=2053529574]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("8_ervania_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="UI/Cards/ErvaniaCard" unique_id=1090398632]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.1, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
+text = "ERVANIA"
+
+[node name="Check" type="Label" parent="UI/Cards/ErvaniaCard" unique_id=2035487673]
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 5.0
+offset_right = 282.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.3, 1, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.14, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "✓"
+
+[node name="SelectButton" type="Button" parent="UI/Cards/ErvaniaCard" unique_id=359127973]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 64.0
+flat = true
+
+[node name="LarasCard" type="Control" parent="UI/Cards" unique_id=1863092523]
+anchors_preset = 0
+offset_left = 355.0
+offset_top = 365.0
+offset_right = 645.0
+offset_bottom = 429.0
+
+[node name="CardBackground" type="TextureRect" parent="UI/Cards/LarasCard" unique_id=1899712188]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_card_normal")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Portrait" type="TextureRect" parent="UI/Cards/LarasCard" unique_id=558509794]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 52.0
+offset_bottom = 52.0
+mouse_filter = 2
+texture = ExtResource("9_laras_portrait")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Name" type="Label" parent="UI/Cards/LarasCard" unique_id=116250862]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 10.0
+offset_right = 184.0
+offset_bottom = 35.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.02, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 28
+text = "LARAS"
+
+[node name="Check" type="Label" parent="UI/Cards/LarasCard" unique_id=431391613]
+visible = false
+layout_mode = 0
+offset_left = 250.0
+offset_top = 5.0
+offset_right = 282.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.3, 1, 0.43, 1)
+theme_override_colors/font_outline_color = Color(0.01, 0.14, 0.05, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "✓"
+
+[node name="SelectButton" type="Button" parent="UI/Cards/LarasCard" unique_id=604003780]
+layout_mode = 0
+offset_right = 290.0
+offset_bottom = 64.0
+flat = true
+
+[node name="PreviewPanel" type="TextureRect" parent="UI" unique_id=1429008485]
+texture_filter = 1
+layout_mode = 0
+offset_left = 700.0
+offset_top = 117.0
+offset_right = 1100.0
+offset_bottom = 597.0
+mouse_filter = 2
+texture = ExtResource("3_panel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PreviewName" type="Label" parent="UI" unique_id=1844059895]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 180.0
+offset_right = 1050.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(1, 0.84, 0.28, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.06, 0.02, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 42
 text = "KHANAN"
 horizontal_alignment = 1
-[node name="Previews" type="Node2D" parent="UI/Details"]
-[node name="Khanan" parent="UI/Details/Previews" instance=ExtResource("3_khanan")]
-position = Vector2(102, 135)
-scale = Vector2(1.35, 1.35)
-[node name="Jeki" parent="UI/Details/Previews" instance=ExtResource("4_jeki")]
-visible = false
-position = Vector2(102, 135)
-scale = Vector2(1.35, 1.35)
-[node name="Bayu" parent="UI/Details/Previews" instance=ExtResource("5_bayu")]
-visible = false
-position = Vector2(102, 135)
-scale = Vector2(1.35, 1.35)
-[node name="Reni" parent="UI/Details/Previews" instance=ExtResource("6_reni")]
-visible = false
-position = Vector2(102, 135)
-scale = Vector2(1.35, 1.35)
-[node name="Ervania" parent="UI/Details/Previews" instance=ExtResource("7_ervania")]
-visible = false
-position = Vector2(102, 135)
-scale = Vector2(1.35, 1.35)
-[node name="Laras" parent="UI/Details/Previews" instance=ExtResource("8_laras")]
-visible = false
-position = Vector2(102, 135)
-scale = Vector2(1.35, 1.35)
-[node name="Stats" type="Label" parent="UI/Details"]
-offset_left = 25.0
-offset_top = 235.0
-offset_right = 180.0
-offset_bottom = 350.0
-theme_override_font_sizes/font_size = 18
-text = "❤  HP       ■■■□□\n⚔  ATTACK   ■■■□□\n◆  SPEED    ■■■■□\n⬟  DEFENSE  ■■■□□"
 
-[node name="StartButton" type="Button" parent="UI"]
-offset_left = 390.0
-offset_top = 550.0
-offset_right = 710.0
-offset_bottom = 615.0
-theme_override_font_sizes/font_size = 25
-text = "▶  MULAI"
-[node name="BackButton" type="Button" parent="UI"]
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 170.0
-offset_bottom = 70.0
-text = "← KEMBALI"
+[node name="PreviewCharacters" type="Node2D" parent="UI" unique_id=1453617666]
+
+[node name="Khanan" parent="UI/PreviewCharacters" unique_id=98143009 instance=ExtResource("10_khanan")]
+position = Vector2(900, 355)
+scale = Vector2(1.75, 1.75)
+
+[node name="Jeki" parent="UI/PreviewCharacters" unique_id=1750124681 instance=ExtResource("11_jeki")]
+visible = false
+position = Vector2(900, 355)
+scale = Vector2(1.75, 1.75)
+
+[node name="Bayu" parent="UI/PreviewCharacters" unique_id=2116004409 instance=ExtResource("12_bayu")]
+visible = false
+position = Vector2(900, 355)
+scale = Vector2(1.75, 1.75)
+
+[node name="Reni" parent="UI/PreviewCharacters" unique_id=1773468744 instance=ExtResource("13_reni")]
+visible = false
+position = Vector2(900, 355)
+scale = Vector2(1.75, 1.75)
+
+[node name="Ervania" parent="UI/PreviewCharacters" unique_id=1837229157 instance=ExtResource("14_ervania")]
+visible = false
+position = Vector2(900, 355)
+scale = Vector2(1.75, 1.75)
+
+[node name="Laras" parent="UI/PreviewCharacters" unique_id=582333552 instance=ExtResource("15_laras")]
+visible = false
+position = Vector2(900, 355)
+scale = Vector2(1.75, 1.75)
+
+[node name="StartButton" type="TextureButton" parent="UI" unique_id=2013194179]
+texture_filter = 1
+layout_mode = 0
+offset_left = 735.0
+offset_top = 508.0
+offset_right = 1065.0
+offset_bottom = 568.0
+texture_normal = ExtResource("17_button_green")
+texture_pressed = ExtResource("17_button_green")
+texture_hover = ExtResource("17_button_green")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/StartButton" unique_id=456265567]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.78, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.16, 0.08, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 42
+text = "MULAI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="UI" unique_id=1017409536]
+texture_filter = 1
+layout_mode = 0
+offset_left = 34.0
+offset_top = 34.0
+offset_right = 214.0
+offset_bottom = 72.0
+texture_normal = ExtResource("18_button_brown")
+texture_pressed = ExtResource("18_button_brown")
+texture_hover = ExtResource("18_button_brown")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/BackButton" unique_id=1638950896]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.8, 1)
+theme_override_colors/font_outline_color = Color(0.14, 0.06, 0.02, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_ghxtx")
+theme_override_font_sizes/font_size = 24
+text = "KEMBALI"
+horizontal_alignment = 1
+vertical_alignment = 1
