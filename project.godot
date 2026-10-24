@@ -28,6 +28,10 @@ window/stretch/aspect="expand"
 
 3d/physics_engine="Jolt Physics"
 
+[python_sandbox]
+
+executable="C:/Python313/python.exe"
+
 [rendering]
 
 rendering_device/driver.windows="d3d12"

@@ -113,9 +113,9 @@ horizontal_alignment = 1
 [node name="CoinIcon" type="TextureRect" parent="UI" unique_id=895576377]
 texture_filter = 1
 layout_mode = 0
-offset_left = 458.0
-offset_top = 365.0
-offset_right = 496.0
+offset_left = 447.0
+offset_top = 371.0
+offset_right = 479.0
 offset_bottom = 405.0
 mouse_filter = 2
 texture = ExtResource("4_coin")
@@ -124,10 +124,10 @@ stretch_mode = 5
 
 [node name="CoinValue" type="Label" parent="UI" unique_id=37345361]
 layout_mode = 0
-offset_left = 497.0
-offset_top = 367.0
-offset_right = 549.0
-offset_bottom = 403.0
+offset_left = 488.0
+offset_top = 365.0
+offset_right = 540.0
+offset_bottom = 401.0
 theme_override_colors/font_color = Color(1, 0.84, 0.29, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
 theme_override_constants/outline_size = 3
@@ -151,15 +151,15 @@ horizontal_alignment = 1
 
 [node name="TimeValue" type="Label" parent="UI" unique_id=487467151]
 layout_mode = 0
-offset_left = 594.0
+offset_left = 584.0
 offset_top = 369.0
-offset_right = 732.0
+offset_right = 722.0
 offset_bottom = 405.0
 theme_override_colors/font_color = Color(0.91, 0.96, 1, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.07, 0.12, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 19
+theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -180,13 +180,17 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -15.0
+offset_right = -5.0
+offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0.98, 0.8, 1)
 theme_override_colors/font_outline_color = Color(0.03, 0.16, 0.06, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("5_font")
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
 vertical_alignment = 1
 

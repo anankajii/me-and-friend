@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://scripts/ui/boss_defeat_fade.gd" id="1_script"]
 
 [node name="BossDefeatFade" type="CanvasLayer"]
-layer = 30
+; LevelResult memakai layer 20 agar hasil selalu tampil di atas transisi ini.
+layer = 10
 process_mode = 3
 script = ExtResource("1_script")
 
@@ -14,4 +15,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.015, 0.025, 0.06, 1)
+color = Color(0.015, 0.025, 0.06, 0)

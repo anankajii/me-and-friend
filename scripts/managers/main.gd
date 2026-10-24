@@ -6,14 +6,24 @@ extends Node2D
 
 # ─── Preload scenes ───────────────────────────────────────────
 const DefaultCharacterScene = preload("res://scenes/player/Jeki.tscn")
-const LevelScene        = preload("res://scenes/levels/Level01.tscn")
+const LevelScenes := [
+	preload("res://scenes/levels/Level01.tscn"),
+	preload("res://scenes/levels/Level02.tscn"),
+	preload("res://scenes/levels/Level03.tscn")
+]
 const MainMenuScene     = preload("res://scenes/main_menu/MainMenuUI.tscn")
 const CharacterSelectScene = preload("res://scenes/main_menu/CharacterSelectUI.tscn")
+const LevelSelectScene = preload("res://scenes/main_menu/LevelSelectUI.tscn")
 const LevelResultScene = preload("res://scenes/ui/LevelResult.tscn")
 const BossDefeatFadeScene = preload("res://scenes/ui/BossDefeatFade.tscn")
 
 # ─── Preload scripts ──────────────────────────────────────────
 const HUDScript         = preload("res://scripts/managers/hud.gd")
+
+# Offset ini menjaga player sedikit di bawah tengah layar dan membuat kamera
+# tetap bebas bergerak ke atas saat player melompat.
+const PLAYER_CAMERA_OFFSET := Vector2(0, -90)
+const PythonChallengeJudge = preload("res://scripts/ui/python_challenge_judge.gd")
 
 # ─── State game ───────────────────────────────────────────────
 var selected_char_id := "Khanan"   # id karakter yang dipilih
@@ -40,6 +50,7 @@ var _result_open := false
 #  INISIALISASI
 # ═════════════════════════════════════════════════════════════
 func _ready() -> void:
+	GameData.load_progress()
 	show_menu()
 
 # ═════════════════════════════════════════════════════════════
@@ -61,8 +72,15 @@ func show_character_select() -> void:
 	select_ui.back_requested.connect(show_menu)
 	select_ui.character_selected.connect(func(character_id: String):
 		selected_char_id = character_id
-		start_level(0)
+		show_level_select()
 	)
+
+func show_level_select() -> void:
+	_clear_world()
+	var level_select = LevelSelectScene.instantiate()
+	add_child(level_select)
+	level_select.back_requested.connect(show_character_select)
+	level_select.level_selected.connect(start_level)
 
 # ═════════════════════════════════════════════════════════════
 #  REGION: LEVEL SETUP
@@ -75,7 +93,10 @@ func start_level(index: int) -> void:
 	_boss_open   = false
 	_result_open  = false
 
-	world = LevelScene.instantiate()
+	if index < 0 or index >= LevelScenes.size() or index >= GameData.LEVELS.size():
+		show_menu()
+		return
+	world = LevelScenes[index].instantiate()
 	add_child(world)
 	_read_level_nodes()
 	_total_coins = coin_nodes.size()
@@ -90,8 +111,26 @@ func start_level(index: int) -> void:
 func _read_level_nodes() -> void:
 	boss_visual = world.get_node_or_null("Boss") as Node2D
 	enemies.assign(world.get_node("Enemies").get_children())
+	for enemy in enemies:
+		if enemy.has_signal("projectile_hit"):
+			enemy.projectile_hit.connect(_on_enemy_projectile_hit)
 	coin_nodes.assign(world.get_node("Coins").get_children())
+	var question_blocks := world.get_node_or_null("QuestionBlocks")
+	if question_blocks != null:
+		for block in question_blocks.get_children():
+			if block.has_signal("reward_spawned"):
+				block.reward_spawned.connect(_on_question_block_reward_spawned)
 	respawn_position = (world.get_node("PlayerSpawn") as Marker2D).position
+
+func _on_question_block_reward_spawned(reward: Node) -> void:
+	if reward is Area2D:
+		coin_nodes.append(reward as Area2D)
+		_total_coins += 1
+		return
+	if reward is Enemy:
+		enemies.append(reward)
+		if reward.has_signal("projectile_hit"):
+			reward.projectile_hit.connect(_on_enemy_projectile_hit)
 
 # ─── Player ───────────────────────────────────────────────────
 func _build_player() -> void:
@@ -100,18 +139,22 @@ func _build_player() -> void:
 	player = packed_scene.instantiate() if packed_scene != null else DefaultCharacterScene.instantiate()
 	player.position = respawn_position
 	world.add_child(player)
+	player.add_to_group("player")
 	player.apply_character(char_data)
 
 	# Kamera mengikuti player
 	player_camera = Camera2D.new()
 	player_camera.position_smoothing_enabled = true
-	player_camera.position_smoothing_speed   = 7.0
+	player_camera.position_smoothing_speed   = 20.0
+	player_camera.position = PLAYER_CAMERA_OFFSET
 	var camera_start := world.get_node("CameraStart") as Marker2D
 	var camera_end := world.get_node("CameraEnd") as Marker2D
 	player_camera.limit_left   = int(camera_start.position.x)
 	player_camera.limit_right  = int(camera_end.position.x)
 	player_camera.limit_top    = int(camera_start.position.y)
-	player_camera.limit_bottom = int(camera_end.position.y)
+	# Beri ruang vertikal agar kamera dapat ikut naik ketika player melompat.
+	# Sebelumnya batas bawah terlalu dekat sehingga posisi kamera terkunci di lantai.
+	player_camera.limit_bottom = int(camera_end.position.y + 110.0)
 	player.add_child(player_camera)
 
 # ─── HUD ──────────────────────────────────────────────────────
@@ -152,7 +195,7 @@ func _check_checkpoint() -> void:
 func _check_coins() -> void:
 	for coin in coin_nodes.duplicate():
 		if not is_instance_valid(coin): continue
-		if player.position.distance_to(coin.position) < 38:
+		if coin.overlaps_body(player):
 			coin.queue_free()
 			coin_nodes.erase(coin)
 			coins += 1
@@ -160,15 +203,36 @@ func _check_coins() -> void:
 			_refresh_hud()
 
 func _check_enemies() -> void:
+	# Kontak fisik dari move_and_slide: paling akurat untuk enemy yang diam.
+	for collision_index in player.get_slide_collision_count():
+		var collision := player.get_slide_collision(collision_index)
+		var collided_enemy := collision.get_collider() as Enemy
+		if collided_enemy == null or not is_instance_valid(collided_enemy):
+			continue
+		if collided_enemy.can_be_stomped(player):
+			_defeat_enemy(collided_enemy)
+		else:
+			_take_damage()
+		return
+
+	# Fallback untuk enemy yang bergerak masuk ke player.
 	for enemy in enemies.duplicate():
 		if not is_instance_valid(enemy): continue
 		if enemy.can_be_stomped(player):
-			enemy.queue_free()
-			enemies.erase(enemy)
-			player.velocity.y = -380   # bouncing setelah stomp
+			_defeat_enemy(enemy)
 		elif enemy.touches(player):
 			_take_damage()
 			break
+
+func _defeat_enemy(enemy: Enemy) -> void:
+	enemy.queue_free()
+	enemies.erase(enemy)
+	player.velocity.y = -380   # bouncing setelah stomp
+
+func _on_enemy_projectile_hit() -> void:
+	if _boss_open or _result_open or player == null:
+		return
+	_take_damage()
 
 func _check_boss_trigger() -> void:
 	if player == null or world == null:
@@ -208,11 +272,14 @@ func _open_boss() -> void:
 	player.velocity = Vector2.ZERO
 	player.show_idle()
 
-	# Boss tampil dan menyelesaikan animasi kemunculannya terlebih dahulu.
-	if boss_visual and is_instance_valid(boss_visual):
-		await _zoom_to_boss()
-		boss_visual.visible = true
-		await boss_visual.play_spawn()
+	# Simpan referensi lokal. Saat await berjalan, referensi global dapat berubah
+	# ketika world dibersihkan atau scene berganti.
+	var active_boss := boss_visual
+	if is_instance_valid(active_boss):
+		await _zoom_to_boss(active_boss)
+		if is_instance_valid(active_boss):
+			active_boss.visible = true
+			await active_boss.play_spawn()
 		await get_tree().create_timer(0.55).timeout
 		await _return_camera_to_player()
 
@@ -228,11 +295,11 @@ func _open_boss() -> void:
 		func(answer: String): _validate_answer(answer, challenge)
 	)
 
-func _zoom_to_boss() -> void:
-	if player_camera == null or boss_visual == null:
+func _zoom_to_boss(target_boss: Node2D) -> void:
+	if player_camera == null or not is_instance_valid(target_boss) or player == null:
 		return
 	player_camera.position_smoothing_enabled = false
-	var boss_offset := boss_visual.global_position - player.global_position + Vector2(0, -45)
+	var boss_offset := target_boss.global_position - player.global_position + Vector2(0, -45)
 	var cinematic := create_tween().set_parallel(true)
 	cinematic.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
 	cinematic.tween_property(player_camera, "position", boss_offset, 1.15)
@@ -244,22 +311,26 @@ func _return_camera_to_player() -> void:
 		return
 	var cinematic := create_tween().set_parallel(true)
 	cinematic.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN_OUT)
-	cinematic.tween_property(player_camera, "position", Vector2.ZERO, 0.85)
+	cinematic.tween_property(player_camera, "position", PLAYER_CAMERA_OFFSET, 0.85)
 	cinematic.tween_property(player_camera, "zoom", Vector2.ONE, 0.85)
 	await cinematic.finished
-	player_camera.position = Vector2.ZERO
+	player_camera.position = PLAYER_CAMERA_OFFSET
 	player_camera.position_smoothing_enabled = true
 
 func _validate_answer(given: String, challenge: BossChallenge) -> void:
-	var expected: String = GameData.LEVELS[level_index].answer
-	if given.strip_edges() == expected:
-		challenge.show_result("✔ BENAR!  Dosen Bug dikalahkan!", true)
+	var evaluation: Dictionary = PythonChallengeJudge.validate(given, GameData.LEVELS[level_index])
+	if evaluation.get("ok", false):
+		var victory_text := str(GameData.LEVELS[level_index].get("victory_text", "KODE BENAR! Data Kampus berhasil dipulihkan."))
+		challenge.show_result("✔ %s" % victory_text, true)
 		await get_tree().create_timer(0.8).timeout
 		if boss_visual and is_instance_valid(boss_visual):
 			await boss_visual.play_death()
-		challenge.hide()
-		challenge.queue_free()
-		_boss_open = false
+		if is_instance_valid(challenge):
+			challenge.close_challenge()
+			challenge.queue_free()
+		# queue_free bersifat tertunda; tunggu satu frame agar dialog tidak
+		# sempat terlihat di belakang result screen.
+		await get_tree().process_frame
 		await _start_boss_defeat_transition()
 		return
 	else:
@@ -270,7 +341,7 @@ func _validate_answer(given: String, challenge: BossChallenge) -> void:
 			_show_level_result(false)
 			return
 		else:
-			challenge.show_result("✘ Salah! HP berkurang. Coba lagi.", false)
+			challenge.show_result("✘ %s HP berkurang." % str(evaluation.get("message", "Jawaban belum sesuai.")), false)
 
 # ═════════════════════════════════════════════════════════════
 #  REGION: VICTORY
@@ -280,7 +351,10 @@ func _start_boss_defeat_transition() -> void:
 	AudioManager.stop_music()
 	var fade = BossDefeatFadeScene.instantiate()
 	add_child(fade)
-	await fade.covered
+	# Mulai fade, lalu lanjutkan lewat timer yang pasti selesai. Result berada
+	# di layer lebih tinggi sehingga tidak dapat lagi tertahan layar hitam.
+	fade.cover_screen()
+	await get_tree().create_timer(0.36).timeout
 	_show_level_result(true, fade)
 	await get_tree().process_frame
 	AudioManager.play_sfx(&"game_win")
@@ -291,11 +365,14 @@ func _show_level_result(won: bool, fade = null) -> void:
 	if _result_open:
 		return
 	_result_open = true
+	var elapsed_seconds := int((Time.get_ticks_msec() - _level_started_at) / 1000)
+	if won:
+		GameData.record_level_result(level_index, GameData.calculate_stars(true, coins, _total_coins), elapsed_seconds)
+		GameData.unlock_level(level_index + 1)
 	if fade == null:
 		AudioManager.stop_sfx()
 		if not won:
 			AudioManager.play_sfx(&"game_over")
-	var elapsed_seconds := int((Time.get_ticks_msec() - _level_started_at) / 1000)
 	_clear_world(fade)
 	var result: LevelResult = LevelResultScene.instantiate()
 	add_child(result)

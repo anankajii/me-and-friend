@@ -28,14 +28,7 @@ func setup(won: bool, earned_coins: int, total_coins: int, elapsed_seconds: int,
 	_animate_stars(star_count)
 
 func _star_count(won: bool, earned: int, total: int) -> int:
-	if not won or total <= 0:
-		return 0
-	var ratio := float(earned) / float(total)
-	if ratio >= 1.0:
-		return 3
-	if ratio >= 0.65:
-		return 2
-	return 1
+	return GameData.calculate_stars(won, earned, total)
 
 func _animate_stars(filled_count: int) -> void:
 	for index in stars.size():

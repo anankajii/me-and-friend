@@ -1,9 +1,10 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://p8o8w8jkn7ur"]
 
 [sub_resource type="RectangleShape2D" id="FloorShape"]
-size = Vector2(4801, 242)
+size = Vector2(3911.5, 237)
 
-[node name="Floor" type="StaticBody2D"]
+[node name="Floor" type="StaticBody2D" unique_id=1782115958]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=806515375]
+position = Vector2(816.25, 18.5)
 shape = SubResource("FloorShape")

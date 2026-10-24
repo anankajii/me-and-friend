@@ -1,0 +1,493 @@
+[gd_scene format=3 uid="uid://cyufsa443cxsr"]
+
+[ext_resource type="Script" uid="uid://ceutppq0f6osh" path="res://scripts/managers/level_select_ui.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://biasa7fk1icjn" path="res://assets/backgrounds/BG_Menu.png" id="2_background"]
+[ext_resource type="Texture2D" uid="uid://8wut7kkby0fc" path="res://assets/ui/level_select_card_wood.png" id="3_card"]
+[ext_resource type="Texture2D" uid="uid://dm26jj6lhlr6g" path="res://assets/ui/level_select_lock.png" id="4_lock"]
+[ext_resource type="Texture2D" uid="uid://dsup2d3lcvhi7" path="res://assets/ui/pause_v2/continue.png" id="5_play"]
+[ext_resource type="Texture2D" uid="uid://4jrkgxfrx51h" path="res://assets/ui/pause_v2/standard.png" id="6_back"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="7_font"]
+
+[node name="LevelSelectUI" type="CanvasLayer" unique_id=2085167675]
+script = ExtResource("1_script")
+
+[node name="UI" type="Control" parent="." unique_id=291078670]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="UI" unique_id=327590600]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Shade" type="ColorRect" parent="UI" unique_id=209561276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.005, 0.018, 0.05, 0.63)
+
+[node name="Title" type="Label" parent="UI" unique_id=1069497108]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 28.0
+offset_right = 914.0
+offset_bottom = 91.0
+theme_override_colors/font_color = Color(1, 0.84, 0.24, 1)
+theme_override_colors/font_outline_color = Color(0.09, 0.03, 0.01, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 43
+text = "PILIH LEVEL PETUALANGAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hint" type="Label" parent="UI" unique_id=522659902]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 94.0
+offset_right = 962.0
+offset_bottom = 122.0
+theme_override_colors/font_color = Color(0.86, 0.95, 1, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 17
+text = "PILIH SATU LOKASI KAMPUS UNTUK MELANJUTKAN PETUALANGAN"
+horizontal_alignment = 1
+
+[node name="ArrowLeft" type="Label" parent="UI" unique_id=586241338]
+layout_mode = 0
+offset_left = 61.0
+offset_top = 305.0
+offset_right = 132.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(1, 0.85, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.01, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 56
+text = "‹"
+horizontal_alignment = 1
+
+[node name="ArrowRight" type="Label" parent="UI" unique_id=870345714]
+layout_mode = 0
+offset_left = 1018.0
+offset_top = 305.0
+offset_right = 1090.0
+offset_bottom = 375.0
+theme_override_colors/font_color = Color(1, 0.85, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0.08, 0.03, 0.01, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 56
+text = "›"
+horizontal_alignment = 1
+
+[node name="Level1Button" type="TextureButton" parent="UI" unique_id=1459783389]
+layout_mode = 0
+offset_left = 155.0
+offset_top = 150.0
+offset_right = 415.0
+offset_bottom = 520.0
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Header" type="Label" parent="UI/Level1Button" unique_id=1491002641]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 0.85, 0.29, 1)
+theme_override_colors/font_outline_color = Color(0.07, 0.025, 0.01, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 23
+text = "LEVEL"
+horizontal_alignment = 1
+
+[node name="Number" type="Label" parent="UI/Level1Button" unique_id=863060222]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 87.0
+offset_right = 230.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0.96, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.15, 0.06, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 94
+text = "1"
+horizontal_alignment = 1
+
+[node name="Place" type="Label" parent="UI/Level1Button" unique_id=2015228966]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 215.0
+offset_right = 240.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(0.89, 0.95, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 18
+text = "TI CAMPUS"
+horizontal_alignment = 1
+
+[node name="Stars" type="Label" parent="UI/Level1Button" unique_id=737264941]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 257.0
+offset_right = 235.0
+offset_bottom = 285.0
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.01, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "★ ★ ★"
+horizontal_alignment = 1
+
+[node name="BestTime" type="Label" parent="UI/Level1Button"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 286.0
+offset_right = 240.0
+offset_bottom = 305.0
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.03, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="UI/Level1Button" unique_id=1412385842]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 309.0
+offset_right = 240.0
+offset_bottom = 333.0
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="Selected" type="Label" parent="UI/Level1Button" unique_id=355436150]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 25.0
+offset_right = 181.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.64, 1, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.12, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 15
+text = "DIPILIH"
+horizontal_alignment = 1
+
+[node name="LockIcon" type="TextureRect" parent="UI/Level1Button" unique_id=1323580937]
+visible = false
+layout_mode = 0
+offset_left = 94.0
+offset_top = 90.0
+offset_right = 166.0
+offset_bottom = 162.0
+mouse_filter = 2
+texture = ExtResource("4_lock")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level2Button" type="TextureButton" parent="UI" unique_id=1244716861]
+layout_mode = 0
+offset_left = 445.0
+offset_top = 150.0
+offset_right = 705.0
+offset_bottom = 520.0
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Header" type="Label" parent="UI/Level2Button" unique_id=440621838]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 0.85, 0.29, 1)
+theme_override_colors/font_outline_color = Color(0.07, 0.025, 0.01, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 23
+text = "LEVEL"
+horizontal_alignment = 1
+
+[node name="Number" type="Label" parent="UI/Level2Button" unique_id=1633533264]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 87.0
+offset_right = 230.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0.96, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.15, 0.06, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 94
+text = "2"
+horizontal_alignment = 1
+
+[node name="Place" type="Label" parent="UI/Level2Button" unique_id=1602487496]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 215.0
+offset_right = 240.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(0.89, 0.95, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 18
+text = "GEDUNG JTI"
+horizontal_alignment = 1
+
+[node name="Stars" type="Label" parent="UI/Level2Button" unique_id=1848942749]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 257.0
+offset_right = 235.0
+offset_bottom = 285.0
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.01, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "★ ★ ★"
+horizontal_alignment = 1
+
+[node name="BestTime" type="Label" parent="UI/Level2Button"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 286.0
+offset_right = 240.0
+offset_bottom = 305.0
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.03, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="UI/Level2Button" unique_id=1138738470]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 309.0
+offset_right = 240.0
+offset_bottom = 333.0
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="Selected" type="Label" parent="UI/Level2Button" unique_id=342294614]
+visible = false
+layout_mode = 0
+offset_left = 79.0
+offset_top = 25.0
+offset_right = 181.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.64, 1, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.12, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 15
+text = "DIPILIH"
+horizontal_alignment = 1
+
+[node name="LockIcon" type="TextureRect" parent="UI/Level2Button" unique_id=2066732789]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 90.0
+offset_right = 166.0
+offset_bottom = 162.0
+mouse_filter = 2
+texture = ExtResource("4_lock")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Level3Button" type="TextureButton" parent="UI" unique_id=113807879]
+layout_mode = 0
+offset_left = 735.0
+offset_top = 150.0
+offset_right = 995.0
+offset_bottom = 520.0
+texture_normal = ExtResource("3_card")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Header" type="Label" parent="UI/Level3Button" unique_id=1302981257]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 55.0
+offset_right = 230.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(1, 0.85, 0.29, 1)
+theme_override_colors/font_outline_color = Color(0.07, 0.025, 0.01, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 23
+text = "LEVEL"
+horizontal_alignment = 1
+
+[node name="Number" type="Label" parent="UI/Level3Button" unique_id=1894334199]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 87.0
+offset_right = 230.0
+offset_bottom = 208.0
+theme_override_colors/font_color = Color(1, 0.96, 0.7, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.15, 0.06, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 94
+text = "3"
+horizontal_alignment = 1
+
+[node name="Place" type="Label" parent="UI/Level3Button" unique_id=1802242322]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 215.0
+offset_right = 245.0
+offset_bottom = 243.0
+theme_override_colors/font_color = Color(0.89, 0.95, 1, 1)
+theme_override_colors/font_outline_color = Color(0.03, 0.06, 0.1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 18
+text = "GEDUNG REKTORAT"
+horizontal_alignment = 1
+
+[node name="Stars" type="Label" parent="UI/Level3Button" unique_id=663242198]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 257.0
+offset_right = 235.0
+offset_bottom = 285.0
+theme_override_colors/font_outline_color = Color(0.1, 0.05, 0.01, 1)
+theme_override_constants/outline_size = 3
+theme_override_font_sizes/font_size = 25
+text = "★ ★ ★"
+horizontal_alignment = 1
+
+[node name="BestTime" type="Label" parent="UI/Level3Button"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 286.0
+offset_right = 240.0
+offset_bottom = 305.0
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.03, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+
+[node name="Status" type="Label" parent="UI/Level3Button" unique_id=1732323607]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 309.0
+offset_right = 240.0
+offset_bottom = 333.0
+theme_override_colors/font_outline_color = Color(0.03, 0.08, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 14
+horizontal_alignment = 1
+
+[node name="Selected" type="Label" parent="UI/Level3Button" unique_id=1193743567]
+visible = false
+layout_mode = 0
+offset_left = 79.0
+offset_top = 25.0
+offset_right = 181.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0.64, 1, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.12, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 15
+text = "DIPILIH"
+horizontal_alignment = 1
+
+[node name="LockIcon" type="TextureRect" parent="UI/Level3Button" unique_id=1277018060]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 90.0
+offset_right = 166.0
+offset_bottom = 162.0
+mouse_filter = 2
+texture = ExtResource("4_lock")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PlayButton" type="TextureButton" parent="UI" unique_id=1723185792]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 562.0
+offset_right = 722.0
+offset_bottom = 622.0
+texture_normal = ExtResource("5_play")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/PlayButton" unique_id=1490440762]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.88, 1)
+theme_override_colors/font_outline_color = Color(0.02, 0.13, 0.04, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 28
+text = "MULAI"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackButton" type="TextureButton" parent="UI" unique_id=1794265268]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 32.0
+offset_right = 221.0
+offset_bottom = 83.0
+texture_normal = ExtResource("6_back")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/BackButton" unique_id=168957958]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.94, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.06, 0.02, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("7_font")
+theme_override_font_sizes/font_size = 20
+text = "KEMBALI"
+horizontal_alignment = 1
+vertical_alignment = 1

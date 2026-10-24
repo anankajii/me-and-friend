@@ -1,0 +1,299 @@
+[gd_scene format=3 uid="uid://dfhony7m0tmon"]
+
+[ext_resource type="Script" uid="uid://dg1hqh2b1ipm1" path="res://scripts/ui/pause_menu.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://k0vnyk0fu0g" path="res://assets/ui/pause_v2/pause_panel.png" id="2_panel"]
+[ext_resource type="Texture2D" uid="uid://dsup2d3lcvhi7" path="res://assets/ui/pause_v2/continue.png" id="3_continue"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="3_v5pi0"]
+[ext_resource type="Texture2D" uid="uid://4jrkgxfrx51h" path="res://assets/ui/pause_v2/standard.png" id="4_standard"]
+
+[node name="PauseMenu" type="Control" unique_id=1950645297]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_script")
+
+[node name="PauseButton" type="TextureButton" parent="." unique_id=487080472]
+texture_filter = 1
+layout_mode = 0
+offset_left = 18.0
+offset_top = 16.0
+offset_right = 190.0
+offset_bottom = 51.0
+texture_normal = ExtResource("3_continue")
+texture_pressed = ExtResource("3_continue")
+texture_hover = ExtResource("3_continue")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseButton" unique_id=541070286]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.22, 0.1, 0.03, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_v5pi0")
+theme_override_font_sizes/font_size = 26
+text = "PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseOverlay" type="Control" parent="." unique_id=504156636]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="PauseOverlay" unique_id=144324368]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.02, 0.08, 0.78)
+
+[node name="Panel" type="TextureRect" parent="PauseOverlay" unique_id=533471410]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -276.0
+offset_right = 230.0
+offset_bottom = 276.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+texture = ExtResource("2_panel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="PauseOverlay/Panel" unique_id=1549190373]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 48.0
+offset_right = 346.0
+offset_bottom = 106.0
+theme_override_colors/font_color = Color(1, 0.94, 0.69, 1)
+theme_override_colors/font_outline_color = Color(0.3, 0.13, 0.055, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("3_v5pi0")
+theme_override_font_sizes/font_size = 32
+text = "GAME DI-PAUSE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MenuButtons" type="Control" parent="PauseOverlay/Panel" unique_id=2131944791]
+anchors_preset = 0
+
+[node name="ResumeButton" type="TextureButton" parent="PauseOverlay/Panel/MenuButtons" unique_id=1367197903]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.0
+offset_top = 96.0
+offset_right = 415.0
+offset_bottom = 176.0
+texture_normal = ExtResource("3_continue")
+texture_pressed = ExtResource("3_continue")
+texture_hover = ExtResource("3_continue")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseOverlay/Panel/MenuButtons/ResumeButton" unique_id=2141564108]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.22, 0.1, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_v5pi0")
+theme_override_font_sizes/font_size = 26
+text = "LANJUTKAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RestartButton" type="TextureButton" parent="PauseOverlay/Panel/MenuButtons" unique_id=1990282851]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.0
+offset_top = 184.0
+offset_right = 415.0
+offset_bottom = 264.0
+texture_normal = ExtResource("4_standard")
+texture_pressed = ExtResource("4_standard")
+texture_hover = ExtResource("4_standard")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseOverlay/Panel/MenuButtons/RestartButton" unique_id=1472528999]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.22, 0.1, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_v5pi0")
+theme_override_font_sizes/font_size = 26
+text = "ULANGI LEVEL"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="PauseOverlay/Panel/MenuButtons" unique_id=1371977768]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.0
+offset_top = 272.0
+offset_right = 415.0
+offset_bottom = 352.0
+texture_normal = ExtResource("4_standard")
+texture_pressed = ExtResource("4_standard")
+texture_hover = ExtResource("4_standard")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseOverlay/Panel/MenuButtons/SettingsButton" unique_id=39834657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.22, 0.1, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_v5pi0")
+theme_override_font_sizes/font_size = 26
+text = "PENGATURAN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenuButton" type="TextureButton" parent="PauseOverlay/Panel/MenuButtons" unique_id=933295416]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.0
+offset_top = 360.0
+offset_right = 415.0
+offset_bottom = 440.0
+texture_normal = ExtResource("4_standard")
+texture_pressed = ExtResource("4_standard")
+texture_hover = ExtResource("4_standard")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseOverlay/Panel/MenuButtons/MainMenuButton" unique_id=840518434]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.22, 0.1, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("3_v5pi0")
+theme_override_font_sizes/font_size = 26
+text = "MENU UTAMA"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsPanel" type="Control" parent="PauseOverlay/Panel" unique_id=694128885]
+visible = false
+anchors_preset = 0
+
+[node name="Title" type="Label" parent="PauseOverlay/Panel/SettingsPanel" unique_id=1485655130]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 100.0
+offset_right = 385.0
+offset_bottom = 145.0
+theme_override_colors/font_color = Color(0.85, 0.76, 1, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.05, 0.22, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 23
+text = "PENGATURAN AUDIO"
+horizontal_alignment = 1
+
+[node name="MusicLabel" type="Label" parent="PauseOverlay/Panel/SettingsPanel" unique_id=729364806]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 165.0
+offset_right = 375.0
+offset_bottom = 193.0
+theme_override_colors/font_color = Color(0.62, 0.86, 1, 1)
+theme_override_font_sizes/font_size = 17
+text = "MUSIC"
+
+[node name="MusicSlider" type="HSlider" parent="PauseOverlay/Panel/SettingsPanel" unique_id=220025638]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 195.0
+offset_right = 375.0
+offset_bottom = 225.0
+value = 80.0
+
+[node name="SfxLabel" type="Label" parent="PauseOverlay/Panel/SettingsPanel" unique_id=951308592]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 255.0
+offset_right = 375.0
+offset_bottom = 283.0
+theme_override_colors/font_color = Color(1, 0.7, 0.86, 1)
+theme_override_font_sizes/font_size = 17
+text = "SOUND EFFECT"
+
+[node name="SfxSlider" type="HSlider" parent="PauseOverlay/Panel/SettingsPanel" unique_id=56717548]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 285.0
+offset_right = 375.0
+offset_bottom = 315.0
+value = 80.0
+
+[node name="BackButton" type="TextureButton" parent="PauseOverlay/Panel/SettingsPanel" unique_id=477373027]
+texture_filter = 1
+layout_mode = 0
+offset_left = 45.0
+offset_top = 370.0
+offset_right = 415.0
+offset_bottom = 450.0
+texture_normal = ExtResource("4_standard")
+texture_pressed = ExtResource("4_standard")
+texture_hover = ExtResource("4_standard")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PauseOverlay/Panel/SettingsPanel/BackButton" unique_id=1665304176]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.96, 0.82, 1)
+theme_override_colors/font_outline_color = Color(0.22, 0.1, 0.03, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
+text = "KEMBALI"
+horizontal_alignment = 1
+vertical_alignment = 1

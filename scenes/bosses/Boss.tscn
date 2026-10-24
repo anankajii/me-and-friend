@@ -1,7 +1,117 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://8vsoediy82p0"]
 
 [ext_resource type="PackedScene" path="res://scenes/bosses/BossBase.tscn" id="1_base"]
-[ext_resource type="Script" path="res://scripts/boss/boss.gd" id="2_script"]
+[ext_resource type="Script" uid="uid://dl0wjbb23jnrp" path="res://scripts/boss/boss.gd" id="2_script"]
+[ext_resource type="Texture2D" uid="uid://cjjqhcr5ojr0b" path="res://assets/bosses/script_kiddie_hd.png" id="3_iqf1n"]
 
-[node name="Boss" instance=ExtResource("1_base")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t1eny"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(0, 724, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ab2fq"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(362, 724, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhjv3"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(724, 724, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdxs7"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(1086, 724, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bccll"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(0, 362, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h6u27"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(362, 362, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_475wv"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(724, 362, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kirof"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(1086, 362, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25fsg"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(0, 0, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvrpl"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(362, 0, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0so0a"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(724, 0, 362, 362)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ay8i"]
+atlas = ExtResource("3_iqf1n")
+region = Rect2(1086, 0, 362, 362)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_werax"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t1eny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ab2fq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhjv3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdxs7")
+}],
+"loop": 0,
+"name": &"death",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bccll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h6u27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_475wv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kirof")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25fsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvrpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0so0a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ay8i")
+}],
+"loop": 0,
+"name": &"spawn",
+"speed": 4.0
+}]
+
+[node name="Boss" unique_id=1140411679 instance=ExtResource("1_base")]
 script = ExtResource("2_script")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.28, 0.28)
+sprite_frames = SubResource("SpriteFrames_werax")
+animation = &"idle"
+frame_progress = 0.97557807
+flip_h = true

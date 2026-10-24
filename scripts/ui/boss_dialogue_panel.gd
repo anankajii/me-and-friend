@@ -7,6 +7,7 @@ signal advance_requested
 @onready var speaker: Label = $Speaker
 @onready var dialogue_text: Label = $DialogueText
 @onready var continue_hint: Label = $ContinueHint
+@onready var portrait: TextureRect = $Portrait
 
 var _boss_name := ""
 var _pending_text := ""
@@ -16,10 +17,14 @@ func _ready() -> void:
 	_apply_boss_name()
 	_apply_dialogue()
 
-func configure(boss_name: String) -> void:
+func configure(boss_name: String, portrait_path := "") -> void:
 	_boss_name = boss_name
 	if is_node_ready():
 		_apply_boss_name()
+	if not portrait_path.is_empty():
+		var portrait_texture := load(portrait_path) as Texture2D
+		if portrait_texture != null:
+			portrait.texture = portrait_texture
 
 func show_dialogue(text: String, is_last := false) -> void:
 	_pending_text = text

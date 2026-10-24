@@ -1,44 +1,22 @@
-# Dokumentasi Game **Me And Friend**
+# Dokumentasi Game: Me And Friend
 
-## 1. Gambaran Umum
+## Gambaran Umum
 
-**Me And Friend** adalah game edukasi 2D bergenre *platformer* yang dibuat sebagai proyek pembelajaran mata kuliah **Multimedia Permainan**. Pemain menjelajahi area kampus bergaya *pixel-art*, mengumpulkan koin, menghindari atau mengalahkan musuh, dan menyelesaikan tantangan kode saat menghadapi boss.
+**Me And Friend** adalah game edukasi platformer 2D bergaya pixel-art yang dibuat untuk mata kuliah **Multimedia Permainan**. Game dikembangkan menggunakan **Godot Engine 4.7** dan GDScript. Pemain memilih satu dari enam mahasiswa, menjelajahi tiga area kampus, mengumpulkan koin, menghadapi enemy, lalu menyelesaikan challenge Python untuk menghentikan serangan ransomware.
 
-Konsep utama game ini adalah menggabungkan unsur permainan platformer dengan latihan berpikir logis dan pengenalan pemrograman. Pemain tidak hanya diminta bergerak dan melompat, tetapi juga harus membaca instruksi, memahami tantangan kode, lalu mengirimkan jawaban yang benar agar dapat menyelesaikan level.
+Game menggabungkan visual pixel-art, sprite dan animasi, musik, efek suara, antarmuka interaktif, gameplay platformer, serta latihan logika pemrograman dalam satu aplikasi.
 
-Game dibuat menggunakan **Godot Engine 4** dengan bahasa **GDScript**. Tampilan menggunakan aset visual *pixel-art*, animasi karakter, UI interaktif, musik latar, dan efek suara.
+## Premis Cerita
 
----
+Menjelang masa KRS, jaringan kampus lumpuh total. Sekelompok hacker misterius menyandera database mahasiswa dan meminta tebusan nilai A. Malware menyebar dari Area Kampus Cabang, Gedung JTI, hingga Gedung Rektorat.
 
-## 2. Tujuan Pengembangan
+Pemain bertugas melacak sinyal ransomware, menghentikan malware, mengaktifkan pertahanan lokal, lalu mendekripsi Data Kampus utama sebelum data hilang.
 
-Tujuan aplikasi ini adalah:
+## Karakter Pemain
 
-- Menerapkan konsep dasar pengembangan game 2D.
-- Membuat pengalaman belajar yang lebih interaktif melalui permainan.
-- Menggabungkan elemen multimedia: gambar, animasi, teks, interaksi, musik, dan efek suara.
-- Melatih pemahaman logika dasar pemrograman melalui tantangan kode.
-- Menerapkan desain antarmuka permainan yang mudah dipahami pemain.
+Tersedia tepat enam karakter, masing-masing memiliki scene dan sprite sendiri sehingga ukuran, collision, serta animasinya dapat diedit manual melalui Godot Editor.
 
-Dalam konteks mata kuliah Multimedia Permainan, proyek ini menunjukkan penggunaan aset grafis, animasi sprite, pengelolaan scene, collision, UI, audio, dan logika permainan dalam satu aplikasi.
-
----
-
-## 3. Konsep Cerita dan Tema
-
-Permainan mengambil latar lingkungan kampus teknologi informasi. Pemain memilih salah satu mahasiswa untuk memulai petualangan di area kampus. Sepanjang level, pemain menemukan rintangan, musuh berbentuk bug, dan koin.
-
-Di akhir level terdapat boss bernama **Dosen Bug**. Boss ini menjadi representasi masalah atau bug dalam proses pemrograman. Untuk mengalahkannya, pemain harus menyelesaikan tantangan kode yang ditampilkan melalui editor bergaya *code editor*.
-
-Tema ini dipilih agar pembelajaran pemrograman terasa lebih dekat dengan konteks mahasiswa dan lebih menarik dibandingkan latihan kode biasa.
-
----
-
-## 4. Karakter yang Tersedia
-
-Game menyediakan enam karakter yang dapat dipilih pemain.
-
-| Karakter | Peran/Identitas dalam Game |
+| Karakter | Peran |
 |---|---|
 | Khanan | Pemimpin tim |
 | Jeki | Super kompas |
@@ -47,272 +25,134 @@ Game menyediakan enam karakter yang dapat dipilih pemain.
 | Ervania | Logika UI |
 | Laras | Data explorer |
 
-Setiap karakter memiliki scene sendiri agar sprite, animasi, dan tampilannya dapat diatur secara terpisah melalui Godot Editor. Pemilihan karakter dilakukan sebelum level dimulai melalui scene pemilihan karakter.
+Animasi yang digunakan adalah `idle`, `walk`, `jump`, `damaged`, dan `coding`. Animasi `coding` hanya dipakai ketika dialog boss selesai dan code editor dibuka.
 
-Animasi karakter meliputi:
-
-- **Idle**, saat karakter diam.
-- **Walk/run**, saat karakter bergerak ke kiri atau kanan.
-- **Jump**, saat karakter melompat.
-- **Damaged**, saat terkena musuh.
-- **Coding**, saat pemain memasuki tahap pengerjaan kode.
-
----
-
-## 5. Alur Permainan
-
-Alur utama permainan adalah sebagai berikut:
-
-1. Pemain membuka **Main Menu**.
-2. Pemain dapat menekan tombol Main/Play, membuka Pengaturan, atau keluar dari game.
-3. Pemain memilih salah satu dari enam karakter.
-4. Level 1 dimulai pada area kampus TI.
-5. Pemain bergerak, melompat, mengumpulkan koin, dan menghadapi musuh.
-6. Setelah mencapai area boss, kamera menampilkan kemunculan boss terlebih dahulu.
-7. Dosen Bug menampilkan dialog pengantar tantangan.
-8. Editor kode muncul setelah dialog selesai.
-9. Pemain mengirim jawaban kode melalui tombol Kirim/Validasi.
-10. Jika jawaban benar, boss dikalahkan dan game menampilkan layar hasil menang.
-11. Jika jawaban salah sebanyak tiga kali atau HP pemain habis, game menampilkan layar hasil kalah.
-
----
-
-## 6. Mekanik Gameplay
-
-### 6.1 Pergerakan Pemain
-
-Pemain dapat bergerak ke kiri dan kanan menggunakan tombol panah atau tombol **A** dan **D**. Pemain dapat melompat menggunakan tombol panah atas, tombol *accept*, atau **Space**.
-
-Nilai dasar gerakan dalam game meliputi:
-
-- Kecepatan horizontal: `300`.
-- Kecepatan lompatan: `-520`.
-- Gravitasi: `1200`.
-
-Nilai ini dapat disesuaikan pada script pemain apabila diperlukan perubahan rasa kontrol permainan.
-
-### 6.2 Koin
-
-Koin ditempatkan secara manual pada scene level. Saat karakter berada dalam radius pengambilan koin, koin akan hilang, jumlah koin bertambah, HUD diperbarui, dan efek suara koin dimainkan.
-
-Jumlah seluruh koin pada level digunakan sebagai dasar perhitungan bintang pada layar hasil.
-
-### 6.3 Musuh
-
-Musuh memiliki dua perilaku utama:
-
-- **Idle**: musuh diam pada posisi yang ditempatkan di level.
-- **Patrol**: musuh bergerak maju dan mundur dalam jarak yang dapat diatur.
-
-Pemain dapat mengalahkan musuh dengan menginjaknya dari atas. Jika pemain menyentuh musuh dari samping atau bawah, HP pemain berkurang.
-
-### 6.4 HP dan Checkpoint
-
-Pemain memulai level dengan tiga HP. HUD menampilkan indikator hati untuk merepresentasikan HP.
-
-- Jika terkena musuh, HP berkurang satu.
-- Jika HP masih tersisa, pemain kembali ke checkpoint terakhir.
-- Jika HP habis, permainan menampilkan layar hasil kalah.
-- Checkpoint digunakan agar pemain tidak selalu kembali ke awal level.
-
-### 6.5 Boss dan Tantangan Kode
-
-Boss level pertama adalah **Dosen Bug**. Saat pemain memasuki area boss:
-
-- Kamera melakukan zoom ke boss.
-- Boss memainkan animasi kemunculan.
-- Pemain tetap pada animasi idle selama dialog.
-- Dialog boss menjelaskan bahwa pemain perlu memperbaiki atau melengkapi kode.
-- Setelah dialog selesai, karakter pemain masuk ke animasi coding dan editor kode dibuka.
-
-Tantangan level pertama meminta pemain melengkapi kode Python. Jawaban yang divalidasi pada data level adalah:
-
-```python
-print("Hello World")
-```
-
-Editor kode menggunakan font **JetBrains Mono** dan *syntax highlighter* sederhana. Warna teks membedakan kata kunci, fungsi, string, angka, komentar, dan identifier agar tampilannya menyerupai editor kode asli.
-
----
-
-## 7. Sistem Menang, Kalah, dan Penilaian
-
-### 7.1 Kondisi Menang
-
-Pemain menang apabila berhasil mengirim jawaban kode yang benar saat menghadapi boss. Boss memainkan animasi kematian, kemudian arena melakukan fade singkat sebelum layar hasil tampil.
-
-Saat boss dikalahkan:
-
-1. Musik latar dan SFX aktif dihentikan.
-2. Layar game melakukan fade gelap singkat.
-3. Scene hasil permainan dimunculkan.
-4. Efek suara kemenangan dimainkan.
-
-### 7.2 Kondisi Kalah
-
-Pemain kalah jika:
-
-- HP habis setelah terkena musuh; atau
-- Pemain salah mengirim jawaban tantangan kode sebanyak tiga kali.
-
-Layar hasil kalah tetap menampilkan jumlah koin dan waktu yang telah diperoleh, tetapi jumlah bintangnya adalah nol.
-
-### 7.3 Sistem Bintang
-
-Penilaian hasil kemenangan didasarkan pada rasio koin yang dikumpulkan terhadap seluruh koin dalam level.
-
-| Kondisi | Bintang |
-|---|---:|
-| Semua koin terkumpul | 3 bintang |
-| Minimal 65% koin terkumpul | 2 bintang |
-| Kurang dari 65% koin terkumpul | 1 bintang |
-| Kalah | 0 bintang |
-
-Layar hasil juga menampilkan:
-
-- Jumlah koin: `koin didapat / total koin`.
-- Durasi waktu penyelesaian level dalam format menit dan detik.
-- Animasi kemunculan bintang.
-- Tombol untuk mengulangi level, melanjutkan level berikutnya, atau kembali ke menu utama sesuai kondisi permainan.
-
----
-
-## 8. Antarmuka Pengguna
-
-### 8.1 Main Menu
-
-Main menu menggunakan background kampus dan aset UI bertema *pixel-art*. Elemen utamanya adalah:
-
-- Judul game dalam bentuk aset gambar.
-- Tombol Main/Play.
-- Tombol Settings/Pengaturan.
-- Tombol Quit/Keluar.
-- Preview karakter dengan animasi idle di bagian bawah menu.
-
-Tombol menggunakan animasi *hover* berupa pembesaran kecil agar lebih responsif dan tidak terlihat datar.
-
-### 8.2 Pemilihan Karakter
-
-Scene pemilihan karakter menampilkan daftar enam kartu karakter di sisi kiri dan preview karakter terpilih di sisi kanan. Pemain dapat mengganti karakter sebelum memulai permainan.
-
-Kartu karakter memuat portrait, nama, dan deskripsi singkat. Warna kartu normal serta kartu terpilih dibuat berbeda agar status pilihan mudah dikenali.
-
-### 8.3 HUD dalam Level
-
-HUD permainan menampilkan informasi penting secara langsung:
-
-- Nama karakter yang digunakan.
-- Indikator HP berbentuk hati.
-- Jumlah koin yang telah dikumpulkan.
-- Tombol pause.
-
-### 8.4 Pause Menu
-
-Menu pause dapat digunakan saat permainan berjalan. Pilihan yang tersedia adalah:
-
-- Lanjutkan permainan.
-- Ulangi level.
-- Buka pengaturan.
-- Kembali ke menu utama.
-
-### 8.5 Pengaturan Audio
-
-Panel pengaturan menyediakan slider terpisah untuk:
-
-- **Music**, mengatur volume musik latar.
-- **Sound Effect**, mengatur volume efek suara.
-
----
-
-## 9. Sistem Audio
-
-Audio dikelola melalui autoload `AudioManager`. Sistem ini membuat dua audio bus:
-
-- `Music` untuk musik latar.
-- `SFX` untuk seluruh efek suara.
-
-Audio yang digunakan saat ini adalah:
-
-| Audio | Kondisi Diputar |
-|---|---|
-| `the_mountain-retro-game-music.mp3` | Musik latar menu dan permainan |
-| `game-start.mp3` | Saat pemain memulai permainan dari menu |
-| `coin.mp3` | Saat pemain mengambil koin |
-| `game-win.mp3` | Saat layar hasil kemenangan tampil |
-| `game-over.mp3` | Saat pemain kalah |
-
-Pengaturan volume tetap memengaruhi audio walaupun pemain berpindah antara scene menu, level, dan hasil permainan.
-
----
-
-## 10. Struktur Scene dan Script
-
-Berikut struktur utama proyek.
+## Alur Permainan
 
 ```text
-scenes/
-├── main_menu/
-│   ├── Main.tscn                 # Scene utama dan controller game
-│   ├── MainMenuUI.tscn           # Tampilan menu utama
-│   └── CharacterSelectUI.tscn    # Tampilan pemilihan karakter
-├── levels/
-│   └── Level01.tscn              # Level kampus TI
-├── player/
-│   ├── CharacterBase.tscn
-│   ├── Khanan.tscn
-│   ├── Jeki.tscn
-│   ├── Bayu.tscn
-│   ├── Reni.tscn
-│   ├── Ervania.tscn
-│   └── Laras.tscn
-├── enemies/
-│   ├── Enemy.tscn
-│   └── Coin.tscn
-├── bosses/
-│   └── Boss.tscn
-└── ui/
-    ├── BossDialoguePanel.tscn
-    ├── CodeChallengeEditor.tscn
-    ├── LevelResult.tscn
-    └── BossDefeatFade.tscn
-
-scripts/
-├── managers/
-│   ├── main.gd                   # Alur utama game dan pergantian scene
-│   ├── game_data.gd              # Data karakter, level, soal, dan jawaban
-│   ├── hud.gd                    # HUD, pause, dan pengaturan audio
-│   └── audio_manager.gd           # Musik serta efek suara global
-├── player/player.gd              # Gerak dan animasi karakter
-├── enemy/
-│   ├── enemy.gd                  # Musuh idle dan patroli
-│   └── coin.gd                   # Perilaku koin
-├── boss/
-│   ├── boss.gd                   # Animasi boss
-│   └── boss_challenge.gd         # Dialog dan tantangan boss
-└── ui/
-    ├── code_challenge_editor.gd
-    ├── python_code_highlighter.gd
-    ├── boss_dialogue_panel.gd
-    ├── level_result.gd
-    └── boss_defeat_fade.gd
+Main Menu
+  -> Pilih Karakter
+  -> Pilih Level
+  -> Platformer: koin, platform, enemy, checkpoint
+  -> Boss trigger
+  -> Kamera zoom dan animasi boss
+  -> Dialog boss
+  -> Code editor challenge
+  -> Menang / kalah
+  -> Result screen
 ```
 
----
+Level berikutnya terkunci sampai level sebelumnya diselesaikan. Progres pembukaan level tersimpan secara lokal pada `user://me_and_friend_progress.cfg`.
 
-## 11. Pengembangan Lanjutan
+## Level, Boss, dan Challenge
 
-Beberapa pengembangan yang dapat dilakukan pada versi berikutnya adalah:
+| Level | Lokasi | Boss | Challenge |
+|---|---|---|---|
+| 1 | Area Kampus Cabang | Poor Hacker (Script Kiddie) | Menulis kode Python bebas yang valid untuk menembus firewall dasar. |
+| 2 | Gedung JTI | Poor Hacker (Malware Spammer) | Menulis Python valid dengan minimal satu variabel untuk mengaktifkan pertahanan lokal. |
+| 3 | Gedung Rektorat | Ketua Sindikat Hacker | Memperbaiki program Python sembilan baris hingga mencetak `Data Kampus: pulih`. |
 
-- Menambah level baru dengan soal pemrograman yang lebih bervariasi.
-- Menambahkan jenis musuh dan pola gerak yang lebih kompleks.
-- Menambahkan SFX untuk lompatan, serangan, kerusakan, tombol UI, dan boss.
-- Menambah sistem penyimpanan skor, waktu terbaik, dan progres level.
-- Menambah variasi tantangan Python, seperti percabangan, perulangan, variabel, dan fungsi.
-- Menambahkan narasi antar-level agar cerita lebih kuat.
-- Mengoptimalkan game untuk perangkat mobile atau web.
+Ketiga boss memakai aset pixel-art dan animasi spawn, idle, serta death. Khusus boss Level 3 menggunakan visual hacker ber-hoodie dengan topeng anonim.
 
----
+Saat pemain memasuki `BossTrigger`, player berhenti dalam posisi idle, kamera melakukan zoom, boss muncul, lalu dialog ditampilkan di bawah layar. Player dapat menekan dialog untuk melanjutkan. Code editor baru tampil setelah dialog terakhir selesai.
 
-## 12. Kesimpulan
+## Gameplay
 
-Me And Friend menunjukkan penerapan unsur multimedia permainan secara menyeluruh: visual pixel-art, animasi karakter, gameplay platformer, audio, UI, interaksi, dan pembelajaran coding. Game ini dirancang agar pemain dapat belajar konsep pemrograman dasar melalui aktivitas bermain yang lebih menarik, sekaligus menjadi media praktik pengembangan game menggunakan Godot Engine.
+### Kontrol
+
+- Bergerak: `A` / `D` atau panah kiri / kanan.
+- Lompat: `Space`, panah atas, atau aksi accept.
+- Pause: tombol pause pada HUD.
+
+### Koin dan bintang
+
+Koin ditempatkan manual pada node `Coins` di setiap scene level. Nilai bintang pada result screen dihitung dari rasio koin yang dikumpulkan.
+
+| Hasil | Bintang |
+|---|---:|
+| Semua koin didapat | 3 |
+| Minimal 65% koin didapat | 2 |
+| Di bawah 65% koin didapat | 1 |
+| Kalah | 0 |
+
+Result screen selalu menampilkan jumlah koin dan durasi permainan. Bintang muncul dengan animasi.
+
+### HP, checkpoint, dan gagal
+
+Pemain memiliki tiga HP, yang ditampilkan sebagai ikon hati pada HUD. Tersentuh enemy atau proyektil akan mengurangi HP dan pemain kembali ke checkpoint jika HP masih ada. Pemain kalah apabila HP habis, termasuk setelah tiga jawaban code challenge yang salah.
+
+### Enemy dan question block
+
+Enemy dapat dibuat idle atau patrol melalui Inspector. Pada level lanjut, enemy dapat menembak satu atau tiga proyektil horizontal; tembakan tidak mengejar posisi player.
+
+Level 3 memiliki `QuestionBlock.tscn`, yaitu blok tanda tanya yang dipukul dari bawah. Hadiahnya dapat diatur manual melalui Inspector menjadi koin atau enemy.
+
+## Code Editor dan Keamanan
+
+Code editor reusable menggunakan tampilan seperti VS Code: panel gelap tidak transparan, nomor baris, font JetBrains Mono, dan syntax highlighting untuk keyword, fungsi, string, angka, komentar, serta identifier.
+
+Validasi challenge memakai Python asli melalui `scripts/tools/safe_python_runner.py`. Script tersebut memeriksa AST lebih dahulu dan hanya memperbolehkan subset aman seperti assignment sederhana, kondisi dasar, operasi sederhana, dan `print()`. Import, akses file, atribut, class, function, loop, `eval`, serta `exec` ditolak.
+
+## UI dan Audio
+
+### Main menu dan pengaturan
+
+Main menu memakai background kampus, judul aset, serta tombol Play, Settings, dan Quit. Enam karakter idle tampil di bagian bawah.
+
+Panel Settings dibuat langsung dalam scene `MainMenuUI.tscn`, bukan dibuat lewat kode. Di bawah `UI/SettingsPanel` tersedia node `SettingsCard`, `MusicSlider`, `SfxSlider`, dan `BackButton`. Artinya posisi, teks, warna, ukuran, atau aset tombol dapat diubah langsung lewat Inspector Godot tanpa mengubah script.
+
+### Pemilihan karakter dan level
+
+Scene pemilihan karakter menampilkan enam kartu di sisi kiri serta preview karakter aktif di sisi kanan. Scene pemilihan level menampilkan tiga kartu, status lock, dan bintang progres.
+
+### HUD dan pause
+
+HUD menampilkan nama karakter, tiga hati HP, jumlah koin, dan tombol pause di sisi kiri. Pause menu menyediakan Lanjutkan, Ulangi Level, Pengaturan, dan Menu Utama.
+
+### Audio
+
+`AudioManager` mengelola bus `Music` dan `SFX`. Volume keduanya diatur melalui slider Settings dan tetap berlaku saat berpindah menu atau level.
+
+| Audio | Kondisi |
+|---|---|
+| Musik latar | Menu dan permainan |
+| Game start | Saat level dimulai |
+| Coin | Saat koin diambil |
+| Game win | Saat result menang muncul |
+| Game over | Saat result kalah muncul |
+
+Saat boss dikalahkan, musik dan SFX aktif dihentikan, fade transisi dimainkan, kemudian result screen muncul dan SFX kemenangan diputar.
+
+## Struktur Penting Proyek
+
+```text
+scenes/main_menu/  Main.tscn, MainMenuUI.tscn, CharacterSelectUI.tscn, LevelSelectUI.tscn
+scenes/levels/     Level01.tscn, Level02.tscn, Level03.tscn
+scenes/player/     Khanan.tscn, Jeki.tscn, Bayu.tscn, Reni.tscn, Ervania.tscn, Laras.tscn
+scenes/enemies/    Coin.tscn, Enemy.tscn, EnemyProjectile.tscn
+scenes/bosses/     Boss level 1 sampai 3
+scenes/tiles/      Floor, Platform, Obstacle, QuestionBlock
+scenes/ui/         Dialog boss, code editor, result, fade
+scripts/managers/  Controller utama, data game, HUD, audio, UI menu
+```
+
+## Titik Kustomisasi Manual
+
+| Keperluan | Lokasi |
+|---|---|
+| Posisi coin, enemy, platform, obstacle | Scene `Level01`, `Level02`, atau `Level03` di Godot Editor |
+| Perilaku enemy | Inspector pada instance Enemy atau `scripts/enemy/enemy.gd` |
+| Hadiah question block | Inspector instance `QuestionBlock.tscn` |
+| Dialog, boss, dan challenge | `scripts/managers/game_data.gd` |
+| Tampilan menu dan settings | `scenes/main_menu/MainMenuUI.tscn` |
+| Kartu karakter | `CharacterSelectUI.tscn` dan `character_select_ui.gd` |
+| Kartu level dan lock | `LevelSelectUI.tscn`, `level_select_ui.gd`, dan `game_data.gd` |
+| Audio | Aset audio dan `audio_manager.gd` |
+
+## Status Audit dan Pembersihan
+
+Setelah audit, proyek berhasil memuat Main Menu serta Level 1--3 tanpa error game pada pemeriksaan headless. Referensi `res://` aktif ditemukan. Scene template karakter lama, spike obstacle yang sudah tidak digunakan, helper UI lama, cache Python, dan metadata `.uid` yatim telah dibersihkan. Aset serta skrip yang masih dipakai dipertahankan.
+
+## Kesimpulan
+
+Me And Friend menerapkan unsur multimedia permainan secara terpadu: visual pixel-art, animasi, audio, interaksi UI, gameplay platformer, penyimpanan progres, dan latihan Python berbasis konteks ransomware kampus. Proyek ini dapat dikembangkan lebih lanjut dengan menambah level, pola enemy, jenis challenge, dan variasi audio tanpa mengubah struktur dasar permainan.

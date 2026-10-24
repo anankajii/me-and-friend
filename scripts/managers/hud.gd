@@ -7,6 +7,7 @@ signal main_menu_requested
 const HEART_FULL := preload("res://assets/ui/hud/heart_full.png")
 const HEART_EMPTY := preload("res://assets/ui/hud/heart_empty.png")
 const COIN_ICON := preload("res://assets/ui/hud/coin.png")
+const PauseMenuScene := preload("res://scenes/ui/PauseMenu.tscn")
 
 var _status_label: Label
 var _heart_icons: Array[TextureRect] = []
@@ -16,12 +17,12 @@ var _message_timer: SceneTreeTimer
 var _pause_overlay: Control
 var _menu_buttons: Control
 var _settings_panel: Control
+var _pause_menu
 
 func setup() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_build_status()
-	_build_pause_button()
-	_build_pause_menu()
+	_build_pause_menu_scene()
 
 func _build_status() -> void:
 	_status_label = Label.new()
@@ -70,6 +71,12 @@ func _hud_icon(texture: Texture2D, icon_position: Vector2, icon_size: Vector2) -
 	icon.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 	icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	return icon
+
+func _build_pause_menu_scene() -> void:
+	_pause_menu = PauseMenuScene.instantiate()
+	add_child(_pause_menu)
+	_pause_menu.restart_requested.connect(_restart_level)
+	_pause_menu.main_menu_requested.connect(_return_to_menu)
 
 func _build_pause_button() -> void:
 	var pause_button := _texture_button("continue", "Ⅱ  PAUSE")
@@ -218,12 +225,7 @@ func _add_audio_slider(parent: Control, label_text: String, bus_name: String, to
 	parent.add_child(slider)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"):
-		if _pause_overlay and _pause_overlay.visible:
-			_close_pause()
-		else:
-			_open_pause()
-		get_viewport().set_input_as_handled()
+	pass
 
 func _open_pause() -> void:
 	if _pause_overlay == null or _pause_overlay.visible:

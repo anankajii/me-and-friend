@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://eatbdsbyo5pi"]
+
+[ext_resource type="Texture2D" uid="uid://42cu5lmb7pxa" path="res://assets/backgrounds/BG_Level03_Rektorat_Pixel.png" id="1_background"]
+[ext_resource type="PackedScene" path="res://scenes/tiles/FloorLevel03.tscn" id="2_floor"]
+[ext_resource type="PackedScene" uid="uid://d12vmlqtnoaq4" path="res://scenes/enemies/Coin.tscn" id="3_coin"]
+[ext_resource type="PackedScene" uid="uid://c6ee0ibnwyaas" path="res://scenes/enemies/Enemy.tscn" id="4_enemy"]
+[ext_resource type="PackedScene" uid="uid://ca6eolkmxwqb3" path="res://scenes/bosses/BossSyndicate.tscn" id="5_boss"]
+[ext_resource type="PackedScene" uid="uid://b2eb38iofeouv" path="res://scenes/tiles/Platform.tscn" id="6_platform"]
+[ext_resource type="PackedScene" uid="uid://cvp24hlc1odul" path="res://scenes/tiles/Obstacle.tscn" id="7_obstacle"]
+[ext_resource type="PackedScene" path="res://scenes/tiles/QuestionBlock.tscn" id="8_question_block"]
+
+[node name="Level03" type="Node2D" unique_id=1969340361]
+
+[node name="RektoratBackground" type="Sprite2D" parent="." unique_id=1516176249]
+position = Vector2(2400, 390)
+scale = Vector2(2.87, 1.45)
+texture = ExtResource("1_background")
+
+[node name="Floor" parent="." unique_id=1013846043 instance=ExtResource("2_floor")]
+position = Vector2(2399, 935)
+
+[node name="Platforms" type="Node2D" parent="." unique_id=259138055]
+
+[node name="Platform01" parent="Platforms" unique_id=1448281709 instance=ExtResource("6_platform")]
+position = Vector2(578, 630)
+
+[node name="Platform02" parent="Platforms" unique_id=385537995 instance=ExtResource("6_platform")]
+position = Vector2(1040, 620)
+
+[node name="Platform03" parent="Platforms" unique_id=1580909144 instance=ExtResource("6_platform")]
+position = Vector2(1617, 648)
+
+[node name="Platform04" parent="Platforms" unique_id=412957261 instance=ExtResource("6_platform")]
+position = Vector2(2180, 600)
+
+[node name="Platform05" parent="Platforms" unique_id=1741707460 instance=ExtResource("6_platform")]
+position = Vector2(2800, 650)
+
+[node name="Platform06" parent="Platforms" unique_id=30256302 instance=ExtResource("6_platform")]
+position = Vector2(3420, 585)
+
+[node name="Obstacles" type="Node2D" parent="." unique_id=361043366]
+
+[node name="Obstacle01" parent="Obstacles" unique_id=594578739 instance=ExtResource("7_obstacle")]
+position = Vector2(1415, 778)
+
+[node name="Obstacle02" parent="Obstacles" unique_id=314220107 instance=ExtResource("7_obstacle")]
+position = Vector2(2563, 779)
+
+[node name="QuestionBlocks" type="Node2D" parent="." unique_id=1990262613]
+
+[node name="CoinBlock01" parent="QuestionBlocks" unique_id=696123781 instance=ExtResource("8_question_block")]
+position = Vector2(796, 606)
+coin_count = 2
+
+[node name="EnemyBlock01" parent="QuestionBlocks" unique_id=49438975 instance=ExtResource("8_question_block")]
+position = Vector2(1325, 612)
+reward_type = "Enemy"
+enemy_drop_offset = Vector2(0, 195)
+
+[node name="CoinBlock02" parent="QuestionBlocks" unique_id=1880493146 instance=ExtResource("8_question_block")]
+position = Vector2(1891, 622)
+
+[node name="EnemyBlock02" parent="QuestionBlocks" unique_id=1151288466 instance=ExtResource("8_question_block")]
+position = Vector2(2396, 611)
+reward_type = "Enemy"
+enemy_drop_offset = Vector2(0, 127)
+
+[node name="CoinBlock03" parent="QuestionBlocks" unique_id=311237281 instance=ExtResource("8_question_block")]
+position = Vector2(3159, 614)
+coin_count = 3
+
+[node name="Coins" type="Node2D" parent="." unique_id=2003250387]
+
+[node name="Coin01" parent="Coins" unique_id=2112026303 instance=ExtResource("3_coin")]
+position = Vector2(306, 740)
+
+[node name="Coin02" parent="Coins" unique_id=178185531 instance=ExtResource("3_coin")]
+position = Vector2(543, 570)
+
+[node name="Coin03" parent="Coins" unique_id=91229939 instance=ExtResource("3_coin")]
+position = Vector2(796, 530)
+
+[node name="Coin04" parent="Coins" unique_id=140280564 instance=ExtResource("3_coin")]
+position = Vector2(1040, 548)
+
+[node name="Coin05" parent="Coins" unique_id=1614584587 instance=ExtResource("3_coin")]
+position = Vector2(1120, 548)
+
+[node name="Coin06" parent="Coins" unique_id=1415313269 instance=ExtResource("3_coin")]
+position = Vector2(1594, 575)
+
+[node name="Coin07" parent="Coins" unique_id=1671316202 instance=ExtResource("3_coin")]
+position = Vector2(2180, 525)
+
+[node name="Coin08" parent="Coins" unique_id=338460830 instance=ExtResource("3_coin")]
+position = Vector2(2260, 525)
+
+[node name="Coin09" parent="Coins" unique_id=382940612 instance=ExtResource("3_coin")]
+position = Vector2(2800, 595)
+
+[node name="Coin10" parent="Coins" unique_id=127767994 instance=ExtResource("3_coin")]
+position = Vector2(3420, 510)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=482507689]
+
+[node name="EnemyPatrol01" parent="Enemies" unique_id=2097710834 instance=ExtResource("4_enemy")]
+position = Vector2(1147, 792)
+patrol_enabled = true
+shoot_enabled = true
+
+[node name="EnemyIdle01" parent="Enemies" unique_id=1388922061 instance=ExtResource("4_enemy")]
+position = Vector2(2007, 793)
+shoot_enabled = true
+projectile_count = 3
+
+[node name="EnemyPatrol02" parent="Enemies" unique_id=536675393 instance=ExtResource("4_enemy")]
+position = Vector2(2964, 799)
+patrol_enabled = true
+shoot_enabled = true
+
+[node name="Boss" parent="." unique_id=1394768350 instance=ExtResource("5_boss")]
+visible = false
+position = Vector2(4100, 730)
+scale = Vector2(2.5, 2.5)
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=861233437]
+position = Vector2(120, 790)
+
+[node name="Checkpoint" type="Marker2D" parent="." unique_id=2114427337]
+position = Vector2(2260, 790)
+
+[node name="BossTrigger" type="Marker2D" parent="." unique_id=1741488826]
+position = Vector2(3726, 822)
+
+[node name="DeathLimit" type="Marker2D" parent="." unique_id=1463118065]
+position = Vector2(0, 1061)
+
+[node name="CameraStart" type="Marker2D" parent="." unique_id=48246391]
+
+[node name="CameraEnd" type="Marker2D" parent="." unique_id=677478325]
+position = Vector2(4700, 941)

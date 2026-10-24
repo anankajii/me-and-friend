@@ -11,15 +11,17 @@ const PythonHighlighter := preload("res://scripts/ui/python_code_highlighter.gd"
 @onready var send_button: Button = $SendButton
 
 var _question_text := ""
+var _starter_code := ""
 
 func _ready() -> void:
-	question.text = _question_text
+	_apply_challenge_data()
 	_apply_syntax_highlighting()
 
-func configure(question_text: String) -> void:
-	_question_text = question_text
+func configure(challenge_data: Dictionary) -> void:
+	_question_text = str(challenge_data.get("instruction", ""))
+	_starter_code = str(challenge_data.get("starter_code", ""))
 	if is_node_ready():
-		question.text = question_text
+		_apply_challenge_data()
 
 func open_editor() -> void:
 	visible = true
@@ -36,3 +38,9 @@ func _on_send_pressed() -> void:
 
 func _apply_syntax_highlighting() -> void:
 	code_input.syntax_highlighter = PythonHighlighter.new()
+
+func _apply_challenge_data() -> void:
+	question.text = _question_text
+	code_input.text = _starter_code
+	feedback.text = ""
+	send_button.disabled = false

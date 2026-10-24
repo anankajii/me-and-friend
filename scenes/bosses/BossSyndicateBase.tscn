@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/bosses/syndicate_leader_anonymous_hd.png" id="1_sheet"]
+[ext_resource type="Script" path="res://scripts/boss/boss_sprite_sheet.gd" id="2_grid"]
+
+[node name="BossSyndicateBase" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+script = ExtResource("2_grid")
+sheet_texture = ExtResource("1_sheet")
+display_scale = Vector2(0.38, 0.38)

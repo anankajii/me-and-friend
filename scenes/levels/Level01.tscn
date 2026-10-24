@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dobotbrampksx"]
 
 [ext_resource type="Texture2D" uid="uid://ckr64flcefqbb" path="res://assets/backgrounds/BG_Level01_Pixel.png" id="1_uq7hp"]
-[ext_resource type="PackedScene" path="res://scenes/tiles/Floor.tscn" id="2_floor"]
+[ext_resource type="PackedScene" uid="uid://p8o8w8jkn7ur" path="res://scenes/tiles/Floor.tscn" id="2_floor"]
 [ext_resource type="PackedScene" uid="uid://d12vmlqtnoaq4" path="res://scenes/enemies/Coin.tscn" id="5_coin"]
 [ext_resource type="PackedScene" uid="uid://c6ee0ibnwyaas" path="res://scenes/enemies/Enemy.tscn" id="6_enemy"]
-[ext_resource type="PackedScene" path="res://scenes/bosses/Boss.tscn" id="7_boss"]
+[ext_resource type="PackedScene" uid="uid://8vsoediy82p0" path="res://scenes/bosses/Boss.tscn" id="7_boss"]
 [ext_resource type="PackedScene" uid="uid://b2eb38iofeouv" path="res://scenes/tiles/Platform.tscn" id="8_platform"]
 [ext_resource type="PackedScene" uid="uid://cvp24hlc1odul" path="res://scenes/tiles/Obstacle.tscn" id="9_obstacle"]
 
@@ -12,49 +12,49 @@
 
 [node name="CampusBackground" type="Sprite2D" parent="." unique_id=1808549392]
 position = Vector2(2401.5, 470.5)
-scale = Vector2(2.21142, 1.29972)
+scale = Vector2(2.21142, 1.62)
 texture = ExtResource("1_uq7hp")
 
 [node name="Floor" parent="." unique_id=509323952 instance=ExtResource("2_floor")]
-position = Vector2(2404, 944)
+position = Vector2(1138, 1025)
 
 [node name="Coins" type="Node2D" parent="." unique_id=812655982]
 
 [node name="Coin01" parent="Coins" unique_id=302662109 instance=ExtResource("5_coin")]
-position = Vector2(350, 790)
+position = Vector2(333, 879)
 
 [node name="Coin02" parent="Coins" unique_id=954861834 instance=ExtResource("5_coin")]
-position = Vector2(760, 790)
+position = Vector2(941, 874)
 
 [node name="Coin03" parent="Coins" unique_id=567657906 instance=ExtResource("5_coin")]
-position = Vector2(1157, 716)
+position = Vector2(1130, 567)
 
 [node name="Coin04" parent="Coins" unique_id=1673984638 instance=ExtResource("5_coin")]
 position = Vector2(1550, 790)
 
 [node name="Coin05" parent="Coins" unique_id=1885858992 instance=ExtResource("5_coin")]
-position = Vector2(2050, 790)
+position = Vector2(2093, 794)
 
 [node name="Coin06" parent="Coins" unique_id=920474274 instance=ExtResource("5_coin")]
-position = Vector2(2420, 790)
+position = Vector2(2475, 798)
 
 [node name="Coin07" parent="Coins" unique_id=29138282 instance=ExtResource("5_coin")]
-position = Vector2(2850, 790)
+position = Vector2(2955, 843)
 
 [node name="Coin08" parent="Coins" unique_id=109116762 instance=ExtResource("5_coin")]
-position = Vector2(3180, 790)
+position = Vector2(3155, 844)
 
 [node name="Coin09" parent="Coins" unique_id=1520587366 instance=ExtResource("5_coin")]
-position = Vector2(551, 676)
+position = Vector2(563, 704)
 
 [node name="Coin10" parent="Coins" unique_id=512806572 instance=ExtResource("5_coin")]
-position = Vector2(767, 544)
+position = Vector2(1330, 890)
 
 [node name="Coin11" parent="Coins" unique_id=445194042 instance=ExtResource("5_coin")]
-position = Vector2(620, 607)
+position = Vector2(701, 640)
 
 [node name="Coin12" parent="Coins" unique_id=1521218689 instance=ExtResource("5_coin")]
-position = Vector2(936, 608)
+position = Vector2(895, 622)
 
 [node name="Coin13" parent="Coins" unique_id=849826731 instance=ExtResource("5_coin")]
 position = Vector2(1350, 640)
@@ -63,22 +63,22 @@ position = Vector2(1350, 640)
 position = Vector2(1631, 592)
 
 [node name="Coin15" parent="Coins" unique_id=573858990 instance=ExtResource("5_coin")]
-position = Vector2(1709, 503)
+position = Vector2(1794, 885)
 
 [node name="Coin16" parent="Coins" unique_id=650486683 instance=ExtResource("5_coin")]
-position = Vector2(1807, 502)
+position = Vector2(1789, 544)
 
 [node name="Coin17" parent="Coins" unique_id=438136800 instance=ExtResource("5_coin")]
-position = Vector2(2260, 657)
+position = Vector2(2097, 605)
 
 [node name="Coin18" parent="Coins" unique_id=1084425662 instance=ExtResource("5_coin")]
-position = Vector2(2582, 602)
+position = Vector2(2592, 693)
 
 [node name="Coin19" parent="Coins" unique_id=72655845 instance=ExtResource("5_coin")]
-position = Vector2(2660, 530)
+position = Vector2(2669, 630)
 
 [node name="Coin20" parent="Coins" unique_id=1459880520 instance=ExtResource("5_coin")]
-position = Vector2(2737, 591)
+position = Vector2(2803, 565)
 
 [node name="Coin21" parent="Coins" unique_id=1547562872 instance=ExtResource("5_coin")]
 position = Vector2(2956, 649)
@@ -86,23 +86,23 @@ position = Vector2(2956, 649)
 [node name="Enemies" type="Node2D" parent="." unique_id=1084902109]
 
 [node name="EnemyPatrol01" parent="Enemies" unique_id=811239931 instance=ExtResource("6_enemy")]
-position = Vector2(856, 806)
+position = Vector2(749, 906)
 patrol_enabled = true
 
 [node name="EnemyIdle01" parent="Enemies" unique_id=1719342058 instance=ExtResource("6_enemy")]
-position = Vector2(1447, 807)
+position = Vector2(1546, 905)
 
 [node name="EnemyPatrol02" parent="Enemies" unique_id=1557160110 instance=ExtResource("6_enemy")]
-position = Vector2(2150, 832)
+position = Vector2(2189, 903)
 patrol_enabled = true
 
 [node name="EnemyIdle02" parent="Enemies" unique_id=2067709720 instance=ExtResource("6_enemy")]
-position = Vector2(2751, 802)
+position = Vector2(2812, 906)
 
 [node name="Boss" parent="." unique_id=1214513974 instance=ExtResource("7_boss")]
 visible = false
-position = Vector2(3650, 745)
-scale = Vector2(3, 3)
+position = Vector2(3766, 835)
+scale = Vector2(2, 2)
 
 [node name="PlayerSpawn" type="Marker2D" parent="." unique_id=1608910836]
 position = Vector2(120, 790)
@@ -111,7 +111,7 @@ position = Vector2(120, 790)
 position = Vector2(2050, 790)
 
 [node name="BossTrigger" type="Marker2D" parent="." unique_id=135420842]
-position = Vector2(3150, 805)
+position = Vector2(3333, 823)
 
 [node name="DeathLimit" type="Marker2D" parent="." unique_id=1040122239]
 position = Vector2(0, 1061)
@@ -124,22 +124,22 @@ position = Vector2(4600, 941)
 [node name="Platforms" type="Node2D" parent="." unique_id=1971667123]
 
 [node name="Platform01" parent="Platforms" unique_id=1078615314 instance=ExtResource("8_platform")]
-position = Vector2(576, 719)
+position = Vector2(553, 795)
 
 [node name="Platform02" parent="Platforms" unique_id=1944760277 instance=ExtResource("8_platform")]
-position = Vector2(960, 640)
+position = Vector2(895, 698)
 
 [node name="Platform03" parent="Platforms" unique_id=1705583212 instance=ExtResource("8_platform")]
 position = Vector2(1344, 704)
 
 [node name="Platform04" parent="Platforms" unique_id=142933453 instance=ExtResource("8_platform")]
-position = Vector2(1792, 640)
+position = Vector2(1746, 657)
 
 [node name="Platform05" parent="Platforms" unique_id=1190973143 instance=ExtResource("8_platform")]
-position = Vector2(2240, 704)
+position = Vector2(2107, 656)
 
 [node name="Platform06" parent="Platforms" unique_id=575204762 instance=ExtResource("8_platform")]
-position = Vector2(2624, 640)
+position = Vector2(2626, 746)
 
 [node name="Platform07" parent="Platforms" unique_id=1999793079 instance=ExtResource("8_platform")]
 position = Vector2(3008, 704)
@@ -147,13 +147,13 @@ position = Vector2(3008, 704)
 [node name="Obstacles" type="Node2D" parent="." unique_id=440553086]
 
 [node name="Obstacle01" parent="Obstacles" unique_id=770673101 instance=ExtResource("9_obstacle")]
-position = Vector2(2492, 788)
+position = Vector2(2382, 889)
 
 [node name="Obstacle02" parent="Obstacles" unique_id=1500065211 instance=ExtResource("9_obstacle")]
-position = Vector2(1792, 576)
+position = Vector2(1782, 614)
 
 [node name="Obstacle03" parent="Obstacles" unique_id=49594642 instance=ExtResource("9_obstacle")]
-position = Vector2(2624, 576)
+position = Vector2(2658, 699)
 
 [node name="Obstacle04" parent="Obstacles" unique_id=144009162 instance=ExtResource("9_obstacle")]
-position = Vector2(1152, 768)
+position = Vector2(1123, 889)

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/tiles/question_block.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/tiles/question_block.png" id="2_texture"]
+
+[sub_resource type="RectangleShape2D" id="QuestionBlockShape"]
+size = Vector2(64, 64)
+
+[node name="QuestionBlock" type="StaticBody2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.058, 0.058)
+texture = ExtResource("2_texture")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("QuestionBlockShape")

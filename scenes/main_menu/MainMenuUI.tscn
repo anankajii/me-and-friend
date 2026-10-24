@@ -6,12 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://dilxwtjcwtkx8" path="res://assets/ui/play.png" id="4_0bauv"]
 [ext_resource type="Texture2D" uid="uid://cmcftnnjtrsbp" path="res://assets/ui/settings.png" id="5_settings"]
 [ext_resource type="Texture2D" uid="uid://cmyna0d22eqp6" path="res://assets/ui/quit.png" id="6_quit"]
-[ext_resource type="PackedScene" path="res://scenes/player/Khanan.tscn" id="7_khanan"]
-[ext_resource type="PackedScene" path="res://scenes/player/Jeki.tscn" id="8_jeki"]
-[ext_resource type="PackedScene" path="res://scenes/player/Bayu.tscn" id="9_bayu"]
-[ext_resource type="PackedScene" path="res://scenes/player/Reni.tscn" id="10_reni"]
-[ext_resource type="PackedScene" path="res://scenes/player/Ervania.tscn" id="11_ervania"]
-[ext_resource type="PackedScene" path="res://scenes/player/Laras.tscn" id="12_laras"]
+[ext_resource type="PackedScene" uid="uid://wuk7avff6n7b" path="res://scenes/player/Khanan.tscn" id="7_khanan"]
+[ext_resource type="PackedScene" uid="uid://dc5gp0su0p2eo" path="res://scenes/player/Jeki.tscn" id="8_jeki"]
+[ext_resource type="PackedScene" uid="uid://nxfvbpm6whux" path="res://scenes/player/Bayu.tscn" id="9_bayu"]
+[ext_resource type="PackedScene" uid="uid://blfv8hpocgb6j" path="res://scenes/player/Reni.tscn" id="10_reni"]
+[ext_resource type="PackedScene" uid="uid://c1f3x8v5bhikv" path="res://scenes/player/Ervania.tscn" id="11_ervania"]
+[ext_resource type="PackedScene" uid="uid://b5dnskfyfwco7" path="res://scenes/player/Laras.tscn" id="12_laras"]
+[ext_resource type="Texture2D" uid="uid://k0vnyk0fu0g" path="res://assets/ui/pause_v2/pause_panel.png" id="13_settings_panel"]
+[ext_resource type="FontFile" uid="uid://70cu5niat15x" path="res://assets/fonts/ByteBounce.ttf" id="14_fjgl2"]
+[ext_resource type="Texture2D" uid="uid://4jrkgxfrx51h" path="res://assets/ui/pause_v2/standard.png" id="14_settings_back"]
 
 [node name="MainMenuUI" type="CanvasLayer" unique_id=1660500882]
 script = ExtResource("1_script")
@@ -148,31 +151,43 @@ text = "QUIT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Characters" type="Node2D" parent="UI"]
+[node name="Characters" type="Node2D" parent="UI" unique_id=1743082470]
 
-[node name="Khanan" parent="UI/Characters" instance=ExtResource("7_khanan")]
+[node name="Khanan" type="Node2D" parent="UI/Characters" unique_id=658017229]
 position = Vector2(276, 574)
-scale = Vector2(0.58, 0.58)
+scale = Vector2(0.3, 0.3)
 
-[node name="Jeki" parent="UI/Characters" instance=ExtResource("8_jeki")]
+[node name="Character" parent="UI/Characters/Khanan" unique_id=1614195000 instance=ExtResource("7_khanan")]
+
+[node name="Jeki" type="Node2D" parent="UI/Characters" unique_id=868800825]
 position = Vector2(396, 574)
-scale = Vector2(0.58, 0.58)
+scale = Vector2(0.3, 0.3)
 
-[node name="Bayu" parent="UI/Characters" instance=ExtResource("9_bayu")]
+[node name="Character" parent="UI/Characters/Jeki" unique_id=938414760 instance=ExtResource("8_jeki")]
+
+[node name="Bayu" type="Node2D" parent="UI/Characters" unique_id=45803520]
 position = Vector2(516, 574)
-scale = Vector2(0.58, 0.58)
+scale = Vector2(0.3, 0.3)
 
-[node name="Reni" parent="UI/Characters" instance=ExtResource("10_reni")]
+[node name="Character" parent="UI/Characters/Bayu" unique_id=714284279 instance=ExtResource("9_bayu")]
+
+[node name="Reni" type="Node2D" parent="UI/Characters" unique_id=119847262]
 position = Vector2(636, 574)
-scale = Vector2(0.58, 0.58)
+scale = Vector2(0.3, 0.3)
 
-[node name="Ervania" parent="UI/Characters" instance=ExtResource("11_ervania")]
+[node name="Character" parent="UI/Characters/Reni" unique_id=1833440211 instance=ExtResource("10_reni")]
+
+[node name="Ervania" type="Node2D" parent="UI/Characters" unique_id=870843358]
 position = Vector2(756, 574)
-scale = Vector2(0.58, 0.58)
+scale = Vector2(0.3, 0.3)
 
-[node name="Laras" parent="UI/Characters" instance=ExtResource("12_laras")]
+[node name="Character" parent="UI/Characters/Ervania" unique_id=1558074865 instance=ExtResource("11_ervania")]
+
+[node name="Laras" type="Node2D" parent="UI/Characters" unique_id=364116583]
 position = Vector2(876, 574)
-scale = Vector2(0.58, 0.58)
+scale = Vector2(0.3, 0.3)
+
+[node name="Character" parent="UI/Characters/Laras" unique_id=1338266856 instance=ExtResource("12_laras")]
 
 [node name="Controls" type="Label" parent="UI" unique_id=251777140]
 layout_mode = 0
@@ -188,70 +203,121 @@ theme_override_font_sizes/font_size = 17
 text = "A / ←  KIRI        D / →  KANAN        SPACE  LOMPAT"
 horizontal_alignment = 1
 
-[node name="SettingsPanel" type="ColorRect" parent="UI" unique_id=1574677513]
+[node name="SettingsPanel" type="Control" parent="UI" unique_id=1574677513]
 visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="UI/SettingsPanel" unique_id=954688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.01, 0.025, 0.055, 0.64)
+
+[node name="SettingsCard" type="TextureRect" parent="UI/SettingsPanel" unique_id=1518391670]
 layout_mode = 0
-offset_left = 326.0
-offset_top = 180.0
-offset_right = 826.0
-offset_bottom = 480.0
-color = Color(0.04, 0.08, 0.14, 0.94)
+offset_left = 331.0
+offset_top = 42.0
+offset_right = 821.0
+offset_bottom = 604.0
+mouse_filter = 2
+texture = ExtResource("13_settings_panel")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Title" type="Label" parent="UI/SettingsPanel" unique_id=1830632186]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 30.0
-offset_right = 460.0
-offset_bottom = 75.0
-theme_override_font_sizes/font_size = 28
-text = "SETTING"
+offset_left = 466.0
+offset_top = 115.0
+offset_right = 692.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(1, 0.82, 0.32, 1)
+theme_override_colors/font_outline_color = Color(0.12, 0.045, 0.018, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("14_fjgl2")
+theme_override_font_sizes/font_size = 29
+text = "PENGATURAN AUDIO"
 horizontal_alignment = 1
 
-[node name="MusicLabel" type="Label" parent="UI/SettingsPanel"]
+[node name="MusicLabel" type="Label" parent="UI/SettingsPanel" unique_id=1294034717]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 88.0
-offset_right = 180.0
-offset_bottom = 120.0
-theme_override_font_sizes/font_size = 18
+offset_left = 434.0
+offset_top = 231.0
+offset_right = 496.0
+offset_bottom = 258.0
+theme_override_colors/font_color = Color(1, 0.93, 0.76, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.035, 0.01, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("14_fjgl2")
+theme_override_font_sizes/font_size = 19
 text = "MUSIC"
+vertical_alignment = 1
 
-[node name="MusicSlider" type="HSlider" parent="UI/SettingsPanel"]
+[node name="MusicSlider" type="HSlider" parent="UI/SettingsPanel" unique_id=481455820]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 88.0
-offset_right = 420.0
-offset_bottom = 120.0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
+offset_left = 539.0
+offset_top = 228.0
+offset_right = 718.0
+offset_bottom = 268.0
 value = 80.0
 
-[node name="SfxLabel" type="Label" parent="UI/SettingsPanel"]
+[node name="SfxLabel" type="Label" parent="UI/SettingsPanel" unique_id=596845838]
 layout_mode = 0
-offset_left = 40.0
-offset_top = 145.0
-offset_right = 180.0
-offset_bottom = 177.0
-theme_override_font_sizes/font_size = 18
+offset_left = 427.0
+offset_top = 318.0
+offset_right = 525.0
+offset_bottom = 351.0
+theme_override_colors/font_color = Color(1, 0.93, 0.76, 1)
+theme_override_colors/font_shadow_color = Color(0.1, 0.035, 0.01, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/font = ExtResource("14_fjgl2")
+theme_override_font_sizes/font_size = 19
 text = "SOUND EFFECT"
+vertical_alignment = 1
 
-[node name="SfxSlider" type="HSlider" parent="UI/SettingsPanel"]
+[node name="SfxSlider" type="HSlider" parent="UI/SettingsPanel" unique_id=1258477326]
 layout_mode = 0
-offset_left = 180.0
-offset_top = 145.0
-offset_right = 420.0
-offset_bottom = 177.0
-min_value = 0.0
-max_value = 100.0
-step = 1.0
+offset_left = 540.0
+offset_top = 322.0
+offset_right = 719.0
+offset_bottom = 348.0
 value = 80.0
 
-[node name="BackButton" type="Button" parent="UI/SettingsPanel" unique_id=1467001999]
+[node name="BackButton" type="TextureButton" parent="UI/SettingsPanel" unique_id=1467001999]
 layout_mode = 0
-offset_left = 150.0
-offset_top = 220.0
-offset_right = 350.0
-offset_bottom = 265.0
-theme_override_font_sizes/font_size = 18
+offset_left = 441.0
+offset_top = 443.0
+offset_right = 711.0
+offset_bottom = 507.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("14_settings_back")
+texture_pressed = ExtResource("14_settings_back")
+texture_hover = ExtResource("14_settings_back")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="UI/SettingsPanel/BackButton" unique_id=1600874237]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.95, 0.84, 1)
+theme_override_colors/font_outline_color = Color(0.16, 0.055, 0.015, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("14_fjgl2")
+theme_override_font_sizes/font_size = 21
 text = "KEMBALI"
+horizontal_alignment = 1
+vertical_alignment = 1

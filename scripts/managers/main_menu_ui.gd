@@ -78,17 +78,14 @@ func _hide_settings() -> void:
 
 func _setup_character_preview() -> void:
 	var previews := character_previews.get_children()
-	for i in previews.size():
-		var preview := previews[i] as Node2D
+	for preview_node in previews:
+		var preview := preview_node as Node2D
 		var preview_sprite := preview.find_child("AnimatedSprite2D", true, false) as AnimatedSprite2D
 		if preview_sprite and preview_sprite.sprite_frames.has_animation("idle"):
-			preview_sprite.play("idle")
-		var base_y := preview.position.y
-		var bob := create_tween().set_loops()
-		bob.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-		bob.tween_interval(i * 0.08)
-		bob.tween_property(preview, "position:y", base_y - 5.0, 1.0 + i * 0.04)
-		bob.tween_property(preview, "position:y", base_y, 1.0 + i * 0.04)
+			# Preview Main Menu harus benar-benar diam pada pose idle pertama.
+			preview_sprite.stop()
+			preview_sprite.animation = &"idle"
+			preview_sprite.frame = 0
 
 func _setup_audio_controls() -> void:
 	music_slider.value = AudioManager.get_bus_volume(&"Music")

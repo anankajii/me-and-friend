@@ -11,14 +11,15 @@
 [ext_resource type="Texture2D" uid="uid://bhfk1206rntlm" path="res://assets/ui/character_portraits/ervania.png" id="8_ervania_portrait"]
 [ext_resource type="Texture2D" uid="uid://cmvci4b1hfvmb" path="res://assets/ui/character_portraits/laras.png" id="9_laras_portrait"]
 [ext_resource type="PackedScene" uid="uid://wuk7avff6n7b" path="res://scenes/player/Khanan.tscn" id="10_khanan"]
-[ext_resource type="PackedScene" path="res://scenes/player/Jeki.tscn" id="11_jeki"]
-[ext_resource type="PackedScene" path="res://scenes/player/Bayu.tscn" id="12_bayu"]
-[ext_resource type="PackedScene" path="res://scenes/player/Reni.tscn" id="13_reni"]
-[ext_resource type="PackedScene" path="res://scenes/player/Ervania.tscn" id="14_ervania"]
-[ext_resource type="PackedScene" path="res://scenes/player/Laras.tscn" id="15_laras"]
+[ext_resource type="PackedScene" uid="uid://dc5gp0su0p2eo" path="res://scenes/player/Jeki.tscn" id="11_jeki"]
+[ext_resource type="PackedScene" uid="uid://nxfvbpm6whux" path="res://scenes/player/Bayu.tscn" id="12_bayu"]
+[ext_resource type="PackedScene" uid="uid://blfv8hpocgb6j" path="res://scenes/player/Reni.tscn" id="13_reni"]
+[ext_resource type="PackedScene" uid="uid://c1f3x8v5bhikv" path="res://scenes/player/Ervania.tscn" id="14_ervania"]
+[ext_resource type="PackedScene" uid="uid://b5dnskfyfwco7" path="res://scenes/player/Laras.tscn" id="15_laras"]
 [ext_resource type="Texture2D" uid="uid://d22d4po6tyyfu" path="res://assets/ui/character_cards/normal.png" id="16_card_normal"]
 [ext_resource type="Texture2D" uid="uid://dsup2d3lcvhi7" path="res://assets/ui/pause_v2/continue.png" id="17_button_green"]
-[ext_resource type="Texture2D" uid="uid://4jrkgxfrx51h" path="res://assets/ui/pause_v2/standard.png" id="18_button_brown"]  
+[ext_resource type="Texture2D" uid="uid://4jrkgxfrx51h" path="res://assets/ui/pause_v2/standard.png" id="18_button_brown"]
+
 [node name="CharacterSelectUI" type="CanvasLayer" unique_id=1593510295]
 script = ExtResource("1_script")
 
@@ -484,32 +485,26 @@ horizontal_alignment = 1
 
 [node name="Khanan" parent="UI/PreviewCharacters" unique_id=98143009 instance=ExtResource("10_khanan")]
 position = Vector2(900, 355)
-scale = Vector2(1.75, 1.75)
 
 [node name="Jeki" parent="UI/PreviewCharacters" unique_id=1750124681 instance=ExtResource("11_jeki")]
 visible = false
 position = Vector2(900, 355)
-scale = Vector2(1.75, 1.75)
 
 [node name="Bayu" parent="UI/PreviewCharacters" unique_id=2116004409 instance=ExtResource("12_bayu")]
 visible = false
 position = Vector2(900, 355)
-scale = Vector2(1.75, 1.75)
 
 [node name="Reni" parent="UI/PreviewCharacters" unique_id=1773468744 instance=ExtResource("13_reni")]
 visible = false
 position = Vector2(900, 355)
-scale = Vector2(1.75, 1.75)
 
 [node name="Ervania" parent="UI/PreviewCharacters" unique_id=1837229157 instance=ExtResource("14_ervania")]
 visible = false
 position = Vector2(900, 355)
-scale = Vector2(1.75, 1.75)
 
 [node name="Laras" parent="UI/PreviewCharacters" unique_id=582333552 instance=ExtResource("15_laras")]
 visible = false
 position = Vector2(900, 355)
-scale = Vector2(1.75, 1.75)
 
 [node name="StartButton" type="TextureButton" parent="UI" unique_id=2013194179]
 texture_filter = 1

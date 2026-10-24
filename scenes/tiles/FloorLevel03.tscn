@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3]
+
+; Floor khusus Level 3. Ukuran dan posisinya dapat diubah tanpa mengubah level lain.
+[sub_resource type="RectangleShape2D" id="FloorShape"]
+size = Vector2(4800, 242)
+
+[node name="FloorLevel03" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("FloorShape")
