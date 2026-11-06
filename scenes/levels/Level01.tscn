@@ -24,7 +24,7 @@ position = Vector2(1138, 1025)
 position = Vector2(333, 879)
 
 [node name="Coin02" parent="Coins" unique_id=954861834 instance=ExtResource("5_coin")]
-position = Vector2(941, 874)
+position = Vector2(927, 873)
 
 [node name="Coin03" parent="Coins" unique_id=567657906 instance=ExtResource("5_coin")]
 position = Vector2(1130, 567)
@@ -45,25 +45,25 @@ position = Vector2(2955, 843)
 position = Vector2(3155, 844)
 
 [node name="Coin09" parent="Coins" unique_id=1520587366 instance=ExtResource("5_coin")]
-position = Vector2(563, 704)
+position = Vector2(563, 671)
 
 [node name="Coin10" parent="Coins" unique_id=512806572 instance=ExtResource("5_coin")]
-position = Vector2(1330, 890)
+position = Vector2(1330, 877)
 
 [node name="Coin11" parent="Coins" unique_id=445194042 instance=ExtResource("5_coin")]
-position = Vector2(701, 640)
+position = Vector2(723, 498)
 
 [node name="Coin12" parent="Coins" unique_id=1521218689 instance=ExtResource("5_coin")]
-position = Vector2(895, 622)
+position = Vector2(903, 582)
 
 [node name="Coin13" parent="Coins" unique_id=849826731 instance=ExtResource("5_coin")]
-position = Vector2(1350, 640)
+position = Vector2(1340, 440)
 
 [node name="Coin14" parent="Coins" unique_id=2095837645 instance=ExtResource("5_coin")]
 position = Vector2(1631, 592)
 
 [node name="Coin15" parent="Coins" unique_id=573858990 instance=ExtResource("5_coin")]
-position = Vector2(1794, 885)
+position = Vector2(1794, 882)
 
 [node name="Coin16" parent="Coins" unique_id=650486683 instance=ExtResource("5_coin")]
 position = Vector2(1789, 544)
@@ -72,25 +72,25 @@ position = Vector2(1789, 544)
 position = Vector2(2097, 605)
 
 [node name="Coin18" parent="Coins" unique_id=1084425662 instance=ExtResource("5_coin")]
-position = Vector2(2592, 693)
+position = Vector2(2575, 667)
 
 [node name="Coin19" parent="Coins" unique_id=72655845 instance=ExtResource("5_coin")]
-position = Vector2(2669, 630)
+position = Vector2(2662, 565)
 
 [node name="Coin20" parent="Coins" unique_id=1459880520 instance=ExtResource("5_coin")]
-position = Vector2(2803, 565)
+position = Vector2(2806, 484)
 
 [node name="Coin21" parent="Coins" unique_id=1547562872 instance=ExtResource("5_coin")]
-position = Vector2(2956, 649)
+position = Vector2(3004, 609)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=1084902109]
 
 [node name="EnemyPatrol01" parent="Enemies" unique_id=811239931 instance=ExtResource("6_enemy")]
-position = Vector2(749, 906)
+position = Vector2(748, 902)
 patrol_enabled = true
 
 [node name="EnemyIdle01" parent="Enemies" unique_id=1719342058 instance=ExtResource("6_enemy")]
-position = Vector2(1546, 905)
+position = Vector2(1543, 902)
 
 [node name="EnemyPatrol02" parent="Enemies" unique_id=1557160110 instance=ExtResource("6_enemy")]
 position = Vector2(2189, 903)
@@ -124,13 +124,13 @@ position = Vector2(4600, 941)
 [node name="Platforms" type="Node2D" parent="." unique_id=1971667123]
 
 [node name="Platform01" parent="Platforms" unique_id=1078615314 instance=ExtResource("8_platform")]
-position = Vector2(553, 795)
+position = Vector2(565, 764)
 
 [node name="Platform02" parent="Platforms" unique_id=1944760277 instance=ExtResource("8_platform")]
-position = Vector2(895, 698)
+position = Vector2(901, 675)
 
 [node name="Platform03" parent="Platforms" unique_id=1705583212 instance=ExtResource("8_platform")]
-position = Vector2(1344, 704)
+position = Vector2(1341, 547)
 
 [node name="Platform04" parent="Platforms" unique_id=142933453 instance=ExtResource("8_platform")]
 position = Vector2(1746, 657)
@@ -147,13 +147,13 @@ position = Vector2(3008, 704)
 [node name="Obstacles" type="Node2D" parent="." unique_id=440553086]
 
 [node name="Obstacle01" parent="Obstacles" unique_id=770673101 instance=ExtResource("9_obstacle")]
-position = Vector2(2382, 889)
+position = Vector2(2382, 886)
 
 [node name="Obstacle02" parent="Obstacles" unique_id=1500065211 instance=ExtResource("9_obstacle")]
 position = Vector2(1782, 614)
 
 [node name="Obstacle03" parent="Obstacles" unique_id=49594642 instance=ExtResource("9_obstacle")]
-position = Vector2(2658, 699)
+position = Vector2(2661, 699)
 
 [node name="Obstacle04" parent="Obstacles" unique_id=144009162 instance=ExtResource("9_obstacle")]
-position = Vector2(1123, 889)
+position = Vector2(1119, 880)

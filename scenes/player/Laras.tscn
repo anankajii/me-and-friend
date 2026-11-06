@@ -216,7 +216,7 @@ script = ExtResource("1_sq7s6")
 shape = SubResource("PlayerShape")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=344951532]
-position = Vector2(4, -14)
-scale = Vector2(2.0674868, 2.0821466)
+position = Vector2(1.9999998, -4.000001)
+scale = Vector2(1.8607382, 1.8739319)
 sprite_frames = SubResource("SpriteFrames_pj2dg")
 animation = &"idle"

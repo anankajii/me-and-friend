@@ -218,10 +218,10 @@ shape = SubResource("PlayerShape")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=2010001067]
 texture_filter = 1
-position = Vector2(8, 2.999999)
-scale = Vector2(2.4809842, 2.498576)
+position = Vector2(4, 10)
+scale = Vector2(2.2328858, 2.2487185)
 sprite_frames = SubResource("SpriteFrames_7qptl")
 animation = &"idle"
 frame_progress = 0.7249972
 script = ExtResource("2_grid")
-display_scale = Vector2(2.4809842, 2.498576)
+display_scale = Vector2(2.2328858, 2.2487185)

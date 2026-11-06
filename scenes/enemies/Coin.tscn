@@ -90,7 +90,7 @@ polygon = PackedVector2Array(0, -12, 9, 0, 0, 12, -9, 0)
 shape = SubResource("CoinShape")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=1997275234]
-position = Vector2(-1.0000019, -1.0000019)
-scale = Vector2(0.6197916, 0.59374994)
+position = Vector2(9.536743e-07, -1.9073486e-06)
+scale = Vector2(0.8515625, 0.78645825)
 sprite_frames = SubResource("SpriteFrames_o1heb")
 frame_progress = 0.94690603

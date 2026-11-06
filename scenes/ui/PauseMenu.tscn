@@ -46,6 +46,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PauseOverlay" type="Control" parent="." unique_id=504156636]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,7 +55,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Dim" type="ColorRect" parent="PauseOverlay" unique_id=144324368]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -64,7 +64,6 @@ grow_vertical = 2
 color = Color(0.01, 0.02, 0.08, 0.78)
 
 [node name="Panel" type="TextureRect" parent="PauseOverlay" unique_id=533471410]
-visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 8

@@ -286,7 +286,9 @@ func _open_boss() -> void:
 	# Percakapan boss ditampilkan dan dikontrol klik di panel bawah.
 	var challenge := BossChallenge.new()
 	add_child(challenge)
-	challenge.setup(GameData.LEVELS[level_index])
+	var char_data := GameData.get_character(selected_char_id)
+	var player_portrait := str(char_data.get("portrait", ""))
+	challenge.setup(GameData.LEVELS[level_index], player_portrait)
 	challenge.code_phase_started.connect(func():
 		if player and is_instance_valid(player):
 			player.show_coding()

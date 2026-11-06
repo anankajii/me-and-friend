@@ -12,7 +12,9 @@ Setiap objek gameplay memakai scene yang dapat diedit di Godot. Tambahkan atau g
 | Laras | `scenes/player/Laras.tscn` | `AnimatedSprite2D` |
 | Enemy | `scenes/enemies/Enemy.tscn` | `AnimatedSprite2D` |
 | Coin | `scenes/enemies/Coin.tscn` | `AnimatedSprite2D` |
-| Boss | `scenes/bosses/Boss.tscn` | `AnimatedSprite2D` turunan dari Enemy |
+| Boss Level 1 | `scenes/bosses/BossBase.tscn` | `AnimatedSprite2D` + `boss_sprite_sheet.gd` |
+| Boss Level 2 | `scenes/bosses/BossAlgorithmBase.tscn` | `AnimatedSprite2D` + `boss_sprite_sheet.gd` |
+| Boss Level 3 | `scenes/bosses/BossSyndicateBase.tscn` | `AnimatedSprite2D` + `boss_sprite_sheet.gd` |
 | Obstacle | `scenes/tiles/Obstacle.tscn` | Ganti node `Visual` dengan `Sprite2D` atau `AnimatedSprite2D` |
 
 ## Character animations
@@ -33,7 +35,7 @@ Tambahkan `AnimatedSprite2D`, buat `SpriteFrames`, slice spritesheet, dan beri n
 
 Tambahkan `AnimatedSprite2D` ke scene masing-masing dan pilih animasi default di Inspector. `enemy.gd` dan `coin.gd` akan otomatis memutarnya pada `_ready()`.
 
-`CollisionShape2D` jangan dihapus; atur bentuk/ukuran collision langsung di scene objeknya.
+`CollisionShape2D` jangan dihapus; atur bentuk/ukuran collision langsung di scene objeknya. Enemy juga mempunyai `HitArea` untuk mendeteksi damage saat player menyentuhnya dari samping/depan.
 
 ## Tileset dan obstacle map
 
@@ -51,3 +53,7 @@ Inspector. Semua properti tersebut dapat diatur tanpa mengubah kode.
 
 Marker `PlayerSpawn`, `Checkpoint`, `BossTrigger`, `DeathLimit`, `CameraStart`, dan
 `CameraEnd` juga dapat dipindahkan langsung melalui editor.
+
+## Pause menu
+
+Tampilan pause dapat diedit tanpa kode pada `scenes/ui/PauseMenu.tscn`. Pilih node `PauseButton` untuk tombol kiri atas, atau `PauseOverlay/Panel` untuk panel, tombol menu, dan slider audio.

@@ -25,7 +25,7 @@ Tersedia tepat enam karakter, masing-masing memiliki scene dan sprite sendiri se
 | Ervania | Logika UI |
 | Laras | Data explorer |
 
-Animasi yang digunakan adalah `idle`, `walk`, `jump`, `damaged`, dan `coding`. Animasi `coding` hanya dipakai ketika dialog boss selesai dan code editor dibuka.
+Animasi yang digunakan adalah `idle`, `walk`, `jump`, `damaged`, dan `coding`. Animasi `coding` hanya dipakai ketika dialog boss selesai dan code editor dibuka. Visual keenam karakter telah diperkecil secara konsisten agar proporsional dengan level, sedangkan collision tetap stabil.
 
 ## Alur Permainan
 
@@ -42,17 +42,17 @@ Main Menu
   -> Result screen
 ```
 
-Level berikutnya terkunci sampai level sebelumnya diselesaikan. Progres pembukaan level tersimpan secara lokal pada `user://me_and_friend_progress.cfg`.
+Level berikutnya terkunci sampai level sebelumnya diselesaikan. Progres pembukaan level, bintang tertinggi, dan waktu terbaik tersimpan secara lokal pada `user://me_and_friend_progress.cfg`.
 
 ## Level, Boss, dan Challenge
 
 | Level | Lokasi | Boss | Challenge |
 |---|---|---|---|
-| 1 | Area Kampus Cabang | Poor Hacker (Script Kiddie) | Menulis kode Python bebas yang valid untuk menembus firewall dasar. |
-| 2 | Gedung JTI | Poor Hacker (Malware Spammer) | Menulis Python valid dengan minimal satu variabel untuk mengaktifkan pertahanan lokal. |
-| 3 | Gedung Rektorat | Ketua Sindikat Hacker | Memperbaiki program Python sembilan baris hingga mencetak `Data Kampus: pulih`. |
+| 1 | Area Kampus Cabang | Hacker Magang | Menulis kode Python bebas yang valid untuk menembus firewall dasar. |
+| 2 | Gedung JTI | Malware Maestro | Menulis Python valid dengan minimal satu variabel untuk mengaktifkan pertahanan lokal. |
+| 3 | Gedung Rektorat | 404-FatalError | Memperbaiki program Python sembilan baris hingga mencetak `Data Kampus: pulih`. |
 
-Ketiga boss memakai aset pixel-art dan animasi spawn, idle, serta death. Khusus boss Level 3 menggunakan visual hacker ber-hoodie dengan topeng anonim.
+Ketiga boss memakai aset pixel-art dan animasi spawn, idle, serta death. Khusus 404-FatalError di Level 3 menggunakan visual hacker ber-hoodie dengan topeng anonim.
 
 Saat pemain memasuki `BossTrigger`, player berhenti dalam posisi idle, kamera melakukan zoom, boss muncul, lalu dialog ditampilkan di bawah layar. Player dapat menekan dialog untuk melanjutkan. Code editor baru tampil setelah dialog terakhir selesai.
 
@@ -66,7 +66,7 @@ Saat pemain memasuki `BossTrigger`, player berhenti dalam posisi idle, kamera me
 
 ### Koin dan bintang
 
-Koin ditempatkan manual pada node `Coins` di setiap scene level. Nilai bintang pada result screen dihitung dari rasio koin yang dikumpulkan.
+Koin ditempatkan manual pada node `Coins` di setiap scene level. Coin memakai `Area2D`, sehingga dikumpulkan berdasarkan collider saat player menyentuhnya. Nilai bintang pada result screen dihitung dari rasio koin yang dikumpulkan.
 
 | Hasil | Bintang |
 |---|---:|
@@ -75,7 +75,7 @@ Koin ditempatkan manual pada node `Coins` di setiap scene level. Nilai bintang p
 | Di bawah 65% koin didapat | 1 |
 | Kalah | 0 |
 
-Result screen selalu menampilkan jumlah koin dan durasi permainan. Bintang muncul dengan animasi.
+Result screen selalu menampilkan jumlah koin dan durasi permainan. Bintang muncul dengan animasi. Level Select menampilkan bintang tertinggi serta `TERBAIK: mm:ss`; level yang belum pernah diselesaikan menampilkan 0 bintang dan `TERBAIK: --:--`.
 
 ### HP, checkpoint, dan gagal
 
@@ -83,7 +83,7 @@ Pemain memiliki tiga HP, yang ditampilkan sebagai ikon hati pada HUD. Tersentuh 
 
 ### Enemy dan question block
 
-Enemy dapat dibuat idle atau patrol melalui Inspector. Pada level lanjut, enemy dapat menembak satu atau tiga proyektil horizontal; tembakan tidak mengejar posisi player.
+Enemy dapat dibuat idle atau patrol melalui Inspector. Enemy memakai body fisik dan `HitArea`: sentuhan dari samping/depan mengurangi HP, sedangkan player yang mendarat tepat di atasnya akan mengalahkan enemy dan memantul. Pada level lanjut, enemy dapat menembak satu atau tiga proyektil horizontal; tembakan tidak mengejar posisi player.
 
 Level 3 memiliki `QuestionBlock.tscn`, yaitu blok tanda tanya yang dipukul dari bawah. Hadiahnya dapat diatur manual melalui Inspector menjadi koin atau enemy.
 
@@ -107,7 +107,7 @@ Scene pemilihan karakter menampilkan enam kartu di sisi kiri serta preview karak
 
 ### HUD dan pause
 
-HUD menampilkan nama karakter, tiga hati HP, jumlah koin, dan tombol pause di sisi kiri. Pause menu menyediakan Lanjutkan, Ulangi Level, Pengaturan, dan Menu Utama.
+HUD menampilkan nama karakter, tiga hati HP, jumlah koin, dan tombol pause di sisi kiri. Pause menu menyediakan Lanjutkan, Ulangi Level, Pengaturan, dan Menu Utama. Pause UI berada pada `scenes/ui/PauseMenu.tscn`, sehingga posisi, ukuran, teks, slider, dan texture tombol dapat diedit langsung melalui Inspector.
 
 ### Audio
 
@@ -132,7 +132,7 @@ scenes/player/     Khanan.tscn, Jeki.tscn, Bayu.tscn, Reni.tscn, Ervania.tscn, L
 scenes/enemies/    Coin.tscn, Enemy.tscn, EnemyProjectile.tscn
 scenes/bosses/     Boss level 1 sampai 3
 scenes/tiles/      Floor, Platform, Obstacle, QuestionBlock
-scenes/ui/         Dialog boss, code editor, result, fade
+scenes/ui/         Dialog boss, code editor, result, fade, PauseMenu
 scripts/managers/  Controller utama, data game, HUD, audio, UI menu
 ```
 
@@ -147,6 +147,7 @@ scripts/managers/  Controller utama, data game, HUD, audio, UI menu
 | Tampilan menu dan settings | `scenes/main_menu/MainMenuUI.tscn` |
 | Kartu karakter | `CharacterSelectUI.tscn` dan `character_select_ui.gd` |
 | Kartu level dan lock | `LevelSelectUI.tscn`, `level_select_ui.gd`, dan `game_data.gd` |
+| Tombol/panel pause dalam game | `scenes/ui/PauseMenu.tscn` |
 | Audio | Aset audio dan `audio_manager.gd` |
 
 ## Status Audit dan Pembersihan

@@ -49,6 +49,8 @@ Main Menu
 
 Terdapat tepat **enam karakter**. Masing-masing memiliki scene sendiri supaya sprite, ukuran, collision, dan animasi dapat disesuaikan melalui Godot Editor.
 
+Visual seluruh karakter dibuat sedikit lebih kecil dan konsisten agar sesuai dengan medan level. CollisionShape2D tetap berukuran gameplay agar pergerakan, platform, koin, serta enemy tidak berubah hanya karena visual sprite diganti.
+
 | Karakter | ID | Peran tampilan | Scene |
 |---|---|---|---|
 | Khanan | `Khanan` | Pemimpin tim | `scenes/player/Khanan.tscn` |
@@ -76,9 +78,9 @@ Format animasi yang dipakai oleh controller karakter:
 
 | Level | Scene | Latar | Boss | Tujuan pembelajaran |
 |---|---|---|---|---|
-| 1 | `scenes/levels/Level01.tscn` | Area Kampus Cabang | Poor Hacker (Script Kiddie) | Menulis Python bebas yang valid untuk menembus firewall dasar |
-| 2 | `scenes/levels/Level02.tscn` | Gedung JTI | Poor Hacker (Malware Spammer) | Menulis Python valid dengan minimal satu variabel untuk mengaktifkan pertahanan lokal |
-| 3 | `scenes/levels/Level03.tscn` | Gedung Rektorat | Ketua Sindikat Hacker | Memperbaiki kode Python Data Kampus yang sengaja error untuk dekripsi database utama |
+| 1 | `scenes/levels/Level01.tscn` | Area Kampus Cabang | Hacker Magang | Menulis Python bebas yang valid untuk menembus firewall dasar |
+| 2 | `scenes/levels/Level02.tscn` | Gedung JTI | Malware Maestro | Menulis Python valid dengan minimal satu variabel untuk mengaktifkan pertahanan lokal |
+| 3 | `scenes/levels/Level03.tscn` | Gedung Rektorat | 404-FatalError | Memperbaiki kode Python Data Kampus yang sengaja error untuk dekripsi database utama |
 
 Setiap scene level ditempatkan dan diedit manual melalui Godot. Node penting yang perlu tetap ada pada setiap level adalah:
 
@@ -124,7 +126,7 @@ Karakter memakai `CharacterBody2D`. Kamera adalah `Camera2D` yang ditambahkan ke
 ### Koin dan bintang
 
 - Koin diletakkan manual di node `Coins` setiap level.
-- Koin diambil berdasarkan jarak player dengan node koin.
+- Koin diambil melalui collider `Area2D` saat player menyentuhnya.
 - Jumlah koin tampil di HUD dan result screen.
 - Hasil kemenangan memiliki bintang berdasarkan persentase koin:
 
@@ -136,6 +138,8 @@ Karakter memakai `CharacterBody2D`. Kamera adalah `Camera2D` yang ditambahkan ke
 | Kalah | 0 |
 
 Result screen juga menampilkan waktu bermain. Challenge box lama tidak ditampilkan pada result screen.
+
+Level Select membaca hasil terbaik yang tersimpan: jumlah bintang tertinggi serta waktu selesai tercepat. Level yang belum pernah dimenangkan tampil dengan 0 bintang dan `TERBAIK: --:--`.
 
 ### Enemy
 
@@ -152,7 +156,7 @@ Enemy diatur melalui Inspector pada instance `Enemy.tscn`.
 | `projectile_count` | Pilihan satu atau tiga proyektil. |
 | `triple_shot_spacing` | Jarak vertikal antar proyektil saat tiga tembakan. |
 
-Proyektil bergerak **horizontal**, sesuai arah enemy, dan tidak membidik posisi player. Player dapat mengalahkan enemy dengan menginjaknya dari atas saat sedang jatuh.
+Proyektil bergerak **horizontal**, sesuai arah enemy, dan tidak membidik posisi player. Enemy memakai `CharacterBody2D` dan `HitArea`: kontak dari samping/depan mengurangi HP player, sedangkan tabrakan dari atas mengalahkan enemy dan membuat player memantul.
 
 ### Obstacle dan platform
 
@@ -246,7 +250,7 @@ Scene: `scenes/main_menu/LevelSelectUI.tscn`
 
 ### HUD dan pause
 
-HUD dibuat runtime oleh `scripts/managers/hud.gd`.
+HUD dibuat runtime oleh `scripts/managers/hud.gd`, sementara tampilan pause dibuat sebagai scene terpisah agar dapat diedit manual.
 
 Elemen yang tampil:
 
@@ -255,7 +259,7 @@ Elemen yang tampil:
 - Ikon serta jumlah koin.
 - Tombol pause di sisi kiri.
 
-Menu pause menyediakan Lanjutkan, Ulangi Level, Pengaturan, dan Menu Utama. Menu dan tombol menggunakan aset bergaya kayu/pixel agar konsisten dengan tema permainan.
+Menu pause tersedia di `scenes/ui/PauseMenu.tscn` dan menyediakan Lanjutkan, Ulangi Level, Pengaturan, dan Menu Utama. Posisi, ukuran, teks, texture, slider Music, dan slider SFX dapat diubah langsung dari scene; `scripts/ui/pause_menu.gd` menangani fungsi tombolnya.
 
 ### Result screen
 
@@ -287,7 +291,7 @@ Progres level disimpan lokal melalui `ConfigFile` di:
 user://me_and_friend_progress.cfg
 ```
 
-Data yang disimpan adalah `unlocked_level`. Saat level dimenangkan, game membuka level berikutnya dengan `GameData.unlock_level(level_index + 1)`. Untuk menguji game dari awal, hapus file tersebut melalui FileSystem Godot atau lokasi `user://` proyek.
+Data yang disimpan adalah `unlocked_level`, `stars`, dan `best_time` untuk setiap level. Saat level dimenangkan, game menyimpan bintang tertinggi, waktu tercepat, lalu membuka level berikutnya dengan `GameData.unlock_level(level_index + 1)`. Untuk menguji game dari awal, hapus file tersebut melalui FileSystem Godot atau lokasi `user://` proyek.
 
 ## 11. Struktur Direktori Penting
 
@@ -359,6 +363,7 @@ scripts/
 | Mengubah UI menu | `MainMenuUI.tscn`, aset dalam `assets/ui/` |
 | Mengubah karakter select | `CharacterSelectUI.tscn` dan `character_select_ui.gd` |
 | Mengubah kartu level dan lock | `LevelSelectUI.tscn`, `level_select_ui.gd`, `GameData` |
+| Mengubah tombol/menu pause | `scenes/ui/PauseMenu.tscn` |
 | Mengganti audio | Ganti file aset lalu perbarui path di `audio_manager.gd` bila nama berubah |
 | Mengatur font | Inspector node `Label` / `RichTextLabel` serta aset font proyek |
 

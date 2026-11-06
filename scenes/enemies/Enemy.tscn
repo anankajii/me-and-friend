@@ -73,24 +73,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="EnemyShape"]
-size = Vector2(52, 40)
+size = Vector2(88, 64)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2051862319]
 script = ExtResource("1_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=543063041]
-position = Vector2(-1.0000012, -2.4999964)
-scale = Vector2(0.14446953, 0.13318285)
+position = Vector2(0.49999958, 6.556511e-07)
+scale = Vector2(0.20090292, 0.14446951)
 sprite_frames = SubResource("EnemyFrames")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=607339677]
 shape = SubResource("EnemyShape")
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="." unique_id=1058710448]
 collision_layer = 0
-collision_mask = 1
-monitoring = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1129013466]
 shape = SubResource("EnemyShape")

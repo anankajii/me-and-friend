@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" path="res://scenes/tiles/FloorLevel02.tscn" id="2_floor"]
 [ext_resource type="PackedScene" uid="uid://d12vmlqtnoaq4" path="res://scenes/enemies/Coin.tscn" id="3_coin"]
 [ext_resource type="PackedScene" uid="uid://c6ee0ibnwyaas" path="res://scenes/enemies/Enemy.tscn" id="4_enemy"]
-[ext_resource type="PackedScene" path="res://scenes/bosses/BossAlgorithm.tscn" id="5_boss"]
+[ext_resource type="PackedScene" uid="uid://ddc7i2gyglw48" path="res://scenes/bosses/BossAlgorithm.tscn" id="5_boss"]
 [ext_resource type="PackedScene" uid="uid://b2eb38iofeouv" path="res://scenes/tiles/Platform.tscn" id="6_platform"]
 [ext_resource type="PackedScene" uid="uid://cvp24hlc1odul" path="res://scenes/tiles/Obstacle.tscn" id="7_obstacle"]
 
@@ -35,13 +35,13 @@ position = Vector2(928, 622)
 position = Vector2(1335, 731)
 
 [node name="Platform04" parent="Platforms" unique_id=39999601 instance=ExtResource("6_platform")]
-position = Vector2(1735, 598)
+position = Vector2(1709, 621)
 
 [node name="Platform05" parent="Platforms" unique_id=1834368907 instance=ExtResource("6_platform")]
-position = Vector2(2165, 680)
+position = Vector2(2198, 766)
 
 [node name="Platform06" parent="Platforms" unique_id=1504909404 instance=ExtResource("6_platform")]
-position = Vector2(2590, 600)
+position = Vector2(2582, 648)
 
 [node name="Platform07" parent="Platforms" unique_id=1759604508 instance=ExtResource("6_platform")]
 position = Vector2(3020, 672)
@@ -55,13 +55,13 @@ position = Vector2(3379, 594)
 position = Vector2(1121, 875)
 
 [node name="Obstacle02" parent="Obstacles" unique_id=601240410 instance=ExtResource("7_obstacle")]
-position = Vector2(1769, 553)
+position = Vector2(1754, 574)
 
 [node name="Obstacle03" parent="Obstacles" unique_id=1594549072 instance=ExtResource("7_obstacle")]
-position = Vector2(2588, 536)
+position = Vector2(2621, 598)
 
 [node name="Obstacle04" parent="Obstacles" unique_id=790454827 instance=ExtResource("7_obstacle")]
-position = Vector2(3117, 645)
+position = Vector2(3064, 625)
 
 [node name="Coins" type="Node2D" parent="." unique_id=1687830911]
 
@@ -69,13 +69,13 @@ position = Vector2(3117, 645)
 position = Vector2(320, 790)
 
 [node name="Coin02" parent="Coins" unique_id=1486772402 instance=ExtResource("3_coin")]
-position = Vector2(550, 652)
+position = Vector2(556, 629)
 
 [node name="Coin03" parent="Coins" unique_id=216286713 instance=ExtResource("3_coin")]
-position = Vector2(733, 579)
+position = Vector2(741, 515)
 
 [node name="Coin04" parent="Coins" unique_id=995632420 instance=ExtResource("3_coin")]
-position = Vector2(969, 494)
+position = Vector2(923, 542)
 
 [node name="Coin05" parent="Coins" unique_id=1484843069 instance=ExtResource("3_coin")]
 position = Vector2(1148, 450)
@@ -84,37 +84,37 @@ position = Vector2(1148, 450)
 position = Vector2(1335, 663)
 
 [node name="Coin07" parent="Coins" unique_id=2067842312 instance=ExtResource("3_coin")]
-position = Vector2(1685, 543)
+position = Vector2(1658, 556)
 
 [node name="Coin08" parent="Coins" unique_id=1581023145 instance=ExtResource("3_coin")]
-position = Vector2(1775, 495)
+position = Vector2(1757, 454)
 
 [node name="Coin09" parent="Coins" unique_id=605113820 instance=ExtResource("3_coin")]
 position = Vector2(1957, 850)
 
 [node name="Coin10" parent="Coins" unique_id=974449205 instance=ExtResource("3_coin")]
-position = Vector2(2165, 625)
+position = Vector2(2198, 688)
 
 [node name="Coin11" parent="Coins" unique_id=1985545997 instance=ExtResource("3_coin")]
-position = Vector2(2348, 549)
+position = Vector2(2537, 592)
 
 [node name="Coin12" parent="Coins" unique_id=12027703 instance=ExtResource("3_coin")]
-position = Vector2(2590, 525)
+position = Vector2(2625, 503)
 
 [node name="Coin13" parent="Coins" unique_id=1960425050 instance=ExtResource("3_coin")]
-position = Vector2(2670, 525)
+position = Vector2(2796, 422)
 
 [node name="Coin14" parent="Coins" unique_id=1689767294 instance=ExtResource("3_coin")]
-position = Vector2(2865, 790)
+position = Vector2(2833, 809)
 
 [node name="Coin15" parent="Coins" unique_id=1495166503 instance=ExtResource("3_coin")]
-position = Vector2(3020, 617)
+position = Vector2(2978, 623)
 
 [node name="Coin16" parent="Coins" unique_id=381932968 instance=ExtResource("3_coin")]
-position = Vector2(3348, 546)
+position = Vector2(3383, 511)
 
 [node name="Coin17" parent="Coins" unique_id=38839418 instance=ExtResource("3_coin")]
-position = Vector2(3546, 854)
+position = Vector2(3203, 511)
 
 [node name="Coin18" parent="Coins" unique_id=1577801542 instance=ExtResource("3_coin")]
 position = Vector2(3409, 856)
@@ -142,6 +142,7 @@ position = Vector2(3294, 893)
 shoot_enabled = true
 
 [node name="Boss" parent="." unique_id=668399303 instance=ExtResource("5_boss")]
+visible = false
 position = Vector2(4155, 711)
 scale = Vector2(2.5, 2.5)
 

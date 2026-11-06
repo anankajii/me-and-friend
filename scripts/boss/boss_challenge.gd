@@ -16,20 +16,20 @@ const DEFAULT_DIALOGUES: Array[String] = [
 	"Baca soalnya di editor, lalu kirim jawaban yang benar. Tiga kesalahan berarti kamu kalah.",
 	"Siap? Buktikan kemampuan coding-mu!"
 ]
-var _dialogues: Array[String] = []
+var _dialogues: Array = []
 
-func setup(level_data: Dictionary) -> void:
+func setup(level_data: Dictionary, player_portrait_path := "") -> void:
 	layer = 12
 	_dialogues.clear()
 	var story_dialogues = level_data.get("boss_dialogues", DEFAULT_DIALOGUES)
 	for line in story_dialogues:
-		_dialogues.append(str(line))
+		_dialogues.append(line)
 	if _dialogues.is_empty():
 		_dialogues = DEFAULT_DIALOGUES.duplicate()
 	_dialogue_panel = DIALOGUE_PANEL_SCENE.instantiate()
 	_dialogue_panel.position = Vector2(155, 432)
 	add_child(_dialogue_panel)
-	_dialogue_panel.configure(str(level_data.boss), str(level_data.get("boss_portrait", "")))
+	_dialogue_panel.configure(str(level_data.boss), str(level_data.get("boss_portrait", "")), player_portrait_path)
 	_dialogue_panel.advance_requested.connect(_advance_dialogue)
 
 	_code_editor = CODE_EDITOR_SCENE.instantiate()
@@ -54,19 +54,33 @@ func _advance_dialogue() -> void:
 	code_phase_started.emit()
 
 func _show_dialogue() -> void:
+	var entry = _dialogues[_dialogue_step]
+	var text: String
+	var speaker: String = ""
+	if entry is Dictionary:
+		text = str(entry.get("text", ""))
+		speaker = str(entry.get("speaker", ""))
+	else:
+		text = str(entry)
 	_dialogue_panel.show_dialogue(
-		_dialogues[_dialogue_step],
-		_dialogue_step == _dialogues.size() - 1
+		text,
+		_dialogue_step == _dialogues.size() - 1,
+		speaker
 	)
 
 func show_result(text: String, success := false) -> void:
 	if _code_editor:
 		_code_editor.show_result(text, success)
 
-## Dipanggil sebelum scene hasil dibuat agar CanvasLayer dialog tidak tersisa.
 func close_challenge() -> void:
 	visible = false
 	if is_instance_valid(_dialogue_panel):
 		_dialogue_panel.hide()
 	if is_instance_valid(_code_editor):
 		_code_editor.hide()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PAUSED:
+		visible = false
+	elif what == NOTIFICATION_UNPAUSED:
+		visible = true

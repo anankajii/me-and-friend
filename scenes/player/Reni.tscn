@@ -218,8 +218,8 @@ shape = SubResource("PlayerShape")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=344951532]
 texture_filter = 1
-position = Vector2(4.375, -7.8750033)
-scale = Vector2(2.115625, 2.203125)
+position = Vector2(0, 1.9999995)
+scale = Vector2(1.9040625, 1.9828125)
 sprite_frames = SubResource("SpriteFrames_0uw7r")
 animation = &"idle"
 frame = 2

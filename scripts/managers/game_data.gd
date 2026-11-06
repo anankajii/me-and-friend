@@ -13,13 +13,13 @@ const STORY_PREMISE := "Menjelang masa KRS, jaringan kampus lumpuh total. Sekelo
 const LEVELS := [
 	{
 		"name"    : "Level 1 — TI Campus",
-		"boss"    : "Poor Hacker (Script Kiddie)",
+		"boss"    : "Hacker Magang",
 		"boss_portrait": "res://assets/bosses/script_kiddie_portrait.png",
 		"boss_dialogues": [
-			"Terlambat! Aku Poor Hacker, Script Kiddie yang memasang malware di Area Kampus Cabang.",
-			"Jaringan kampus sedang lumpuh menjelang KRS. Sinyal database mahasiswa sudah kuarahkan ke markas sindikat!",
-			"Kalau ingin menghentikan malware-ku, tembus dulu firewall dasar kampus dengan kode Python yang valid.",
-			"Kirim kode Python-mu. Jika gagal tiga kali, malware ini akan mengunci lebih banyak data!"
+			{"speaker": "Hacker Magang", "text": "Hei, ngapain anak mahasiswa keluyuran di area sini? Mending lu balik, koneksi Wi-Fi dan portal kampus udah gue putus total!"},
+			{"speaker": "Pemain", "text": "Buka aksesnya sekarang! Kami harus mengisi KRS hari ini!"},
+			{"speaker": "Hacker Magang", "text": "Hah, ngarep! Bos gue nyuruh ngunci gerbang jaringan ini pakai script otomatis. Lu pikir lu paham cara kerja sistem ini?"},
+			{"speaker": "Hacker Magang", "text": "Sini gue tantang. Coba jalankan satu saja perintah Python yang valid di terminal ini buat nembus firewall gue. Kalau gagal, sistem ini bakal terkunci selamanya!"}
 		],
 		"victory_text": "MALWARE DI AREA KAMPUS CABANG BERHASIL DIHENTIKAN! Sinyal pertama sindikat berhasil dilacak.",
 		"challenge": {
@@ -34,13 +34,13 @@ const LEVELS := [
 	},
 	{
 		"name"    : "Level 2 — Gedung JTI",
-		"boss"    : "Poor Hacker (Malware Spammer)",
+		"boss"    : "Malware Maestro",
 		"boss_portrait": "res://assets/bosses/malware_spammer_portrait.png",
 		"boss_dialogues": [
-			"Kamu berhasil menembus firewall cabang, tetapi aku Poor Hacker, Malware Spammer, sudah menguasai Gedung JTI!",
-			"Aku mengunci ulang sistem pintu dan menyebarkan ransomware ke layanan lokal. Tidak seorang pun bisa masuk untuk KRS.",
-			"Aktifkan sistem pertahanan lokal dengan kode Python valid yang memiliki minimal satu variabel.",
-			"Gagal tiga kali, pintu gedung dan layanan akademik akan tetap terkunci. Coba hentikan spam malware-ku!"
+			{"speaker": "Malware Maestro", "text": "Mengesankan kau bisa melewati si Magang bodoh itu. Tapi ini Gedung JTI, pusat infrastruktur. Sistem keamanannya sudah kuambil alih."},
+			{"speaker": "Pemain", "text": "Hapus malware-mu dari sistem akademik kami!"},
+			{"speaker": "Malware Maestro", "text": "Terlambat. Aku sudah menimpa sistem pertahanan lokal dan menghapus semua deklarasi variabel kuncinya. Akses pintu otomatis sekarang mati total."},
+			{"speaker": "Malware Maestro", "text": "Satu-satunya cara menyalakan ulang sistem ini adalah dengan membangun kembali memorinya. Buktikan kau bisa mendeklarasikan variabel Python dengan benar, atau membusuklah di koridor ini!"}
 		],
 		"victory_text": "SISTEM PERTAHANAN GEDUNG JTI AKTIF! Ransomware lokal berhasil dihentikan.",
 		"challenge": {
@@ -55,15 +55,15 @@ const LEVELS := [
 	},
 	{
 		"name"    : "Level 3 — Gedung Rektorat",
-		"boss"    : "Ketua Sindikat Hacker",
+		"boss"    : "404-FatalError",
 		"boss_portrait": "res://assets/bosses/syndicate_leader_anonymous_portrait.png",
 		"boss_dialogues": [
-			"Akhirnya kamu tiba di Rektorat. Aku Ketua Sindikat Hacker, dalang di balik lumpuhnya jaringan kampus!",
-			"Database mahasiswa utama sudah terenkripsi. Nilai, KRS, dan dokumen kampus akan tetap tersandera sampai tebusan nilai A kami dipenuhi.",
-			"Dua jejak yang kamu rebut tidak cukup. Perbaiki kode server ini untuk mendekripsi Data Kampus utama.",
-			"Ini kesempatan terakhirmu. Selesaikan seluruh error dan rebut kembali data sebelum ransomware menghapus kuncinya!"
+			{"speaker": "404-FatalError", "text": "Peringatan... Akses ditolak. Cukup mengejutkan melihat seekor kutu buku berhasil sampai ke ruang server utama Rektorat."},
+			{"speaker": "Pemain", "text": "Permainanmu selesai! Kembalikan Data Kampus kami dan hentikan tebusan konyol ini!"},
+			{"speaker": "404-FatalError", "text": "Data kalian sudah kuenkripsi. Nilai, transkrip, KRS... semuanya kini milikku. Aku telah menanamkan cacat logika yang fatal ke dalam script peladen utama."},
+			{"speaker": "404-FatalError", "text": "Mari kita lihat apakah silabus kampusmu berguna. Aku memberimu akses ke 9 baris kode inti yang sudah kususupi bug. Perbaiki kodenya sekarang, atau seluruh data kampus akan terhapus permanen dalam hitungan detik!"}
 		],
-		"victory_text": "DATA KAMPUS BERHASIL DIDEKRIPSI! Ketua Sindikat Hacker dikalahkan dan jaringan kampus pulih menjelang KRS.",
+		"victory_text": "DATA KAMPUS BERHASIL DIDEKRIPSI! 404-FatalError dikalahkan dan jaringan kampus pulih menjelang KRS.",
 		"challenge": {
 			"title": "DEKRIPSI DATA KAMPUS",
 			"instruction": "Kode server di bawah rusak pada beberapa baris. Perbaiki seluruh error untuk mendekripsi Data Kampus sampai program mencetak: Data Kampus: pulih.",
@@ -90,37 +90,43 @@ const CHARACTERS := [
 		"id"    : "Khanan",
 		"label" : "Khanan",
 		"scene" : "res://scenes/player/Khanan.tscn",
-		"color" : Color("80cbc4")   # hijau tosca
+		"color" : Color("80cbc4"),
+		"portrait": "res://assets/ui/character_portraits/khanan.png"
 	},
 	{
 		"id"    : "Jeki",
 		"label" : "Jeki",
 		"scene" : "res://scenes/player/Jeki.tscn",
-		"color" : Color("4fc3f7")   # biru muda
+		"color" : Color("4fc3f7"),
+		"portrait": "res://assets/ui/character_portraits/jeki.png"
 	},
 	{
 		"id"    : "Bayu",
 		"label" : "Bayu",
 		"scene" : "res://scenes/player/Bayu.tscn",
-		"color" : Color("ffcb77")   # kuning
+		"color" : Color("ffcb77"),
+		"portrait": "res://assets/ui/character_portraits/bayu.png"
 	},
 	{
 		"id"    : "Reni",
 		"label" : "Reni",
 		"scene" : "res://scenes/player/Reni.tscn",
-		"color" : Color("f28482")   # merah muda
+		"color" : Color("f28482"),
+		"portrait": "res://assets/ui/character_portraits/reni.png"
 	},
 	{
 		"id"    : "Ervania",
 		"label" : "Ervania",
 		"scene" : "res://scenes/player/Ervania.tscn",
-		"color" : Color("a8dadc")   # tosca
+		"color" : Color("a8dadc"),
+		"portrait": "res://assets/ui/character_portraits/ervania.png"
 	},
 	{
 		"id"    : "Laras",
 		"label" : "Laras",
 		"scene" : "res://scenes/player/Laras.tscn",
-		"color" : Color("cdb4db")   # ungu muda
+		"color" : Color("cdb4db"),
+		"portrait": "res://assets/ui/character_portraits/laras.png"
 	}
 ]
 
