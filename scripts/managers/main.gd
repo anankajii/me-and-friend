@@ -173,6 +173,7 @@ func _physics_process(delta: float) -> void:
 	if player == null or world == null or _boss_open: return
 
 	player.move_player(delta)
+	_check_question_blocks()
 	_check_fall()
 	_check_checkpoint()
 	_check_coins()
@@ -180,6 +181,15 @@ func _physics_process(delta: float) -> void:
 	if player == null or world == null or _boss_open:
 		return
 	_check_boss_trigger()
+
+func _check_question_blocks() -> void:
+	# move_and_slide mencatat permukaan yang tersentuh pada frame ini.
+	# Normal Y positif berarti player menyentuh sisi bawah block ketika melompat.
+	for collision_index in player.get_slide_collision_count():
+		var collision := player.get_slide_collision(collision_index)
+		var block := collision.get_collider() as QuestionBlock
+		if block != null and collision.get_normal().y > 0.7:
+			block.activate_from_below()
 
 func _check_fall() -> void:
 	var death_limit := world.get_node("DeathLimit") as Marker2D

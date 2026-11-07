@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b2k0637ifn6q1" path="res://assets/characters/vania.png" id="2_ysupg"]
 
 [sub_resource type="RectangleShape2D" id="PlayerShape"]
-size = Vector2(90, 150)
+size = Vector2(76, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1hur5"]
 atlas = ExtResource("2_ysupg")
@@ -218,7 +218,7 @@ shape = SubResource("PlayerShape")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D" unique_id=2010001067]
 texture_filter = 1
-position = Vector2(4, 10)
+position = Vector2(5.000001, 10.000001)
 scale = Vector2(2.2328858, 2.2487185)
 sprite_frames = SubResource("SpriteFrames_7qptl")
 animation = &"idle"

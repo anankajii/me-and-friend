@@ -5,7 +5,7 @@ signal hit_player
 
 @export var speed := 310.0
 @export var lifetime := 3.0
-@export var hit_radius := 24.0
+@export var hit_radius := 36.0
 
 var _direction := Vector2.RIGHT
 var _remaining_life := 0.0
