@@ -72,10 +72,10 @@ position = Vector2(1789, 544)
 position = Vector2(2097, 605)
 
 [node name="Coin18" parent="Coins" unique_id=1084425662 instance=ExtResource("5_coin")]
-position = Vector2(2575, 667)
+position = Vector2(2598, 622)
 
 [node name="Coin19" parent="Coins" unique_id=72655845 instance=ExtResource("5_coin")]
-position = Vector2(2662, 565)
+position = Vector2(2689, 527)
 
 [node name="Coin20" parent="Coins" unique_id=1459880520 instance=ExtResource("5_coin")]
 position = Vector2(2806, 484)
@@ -139,7 +139,7 @@ position = Vector2(1746, 657)
 position = Vector2(2107, 656)
 
 [node name="Platform06" parent="Platforms" unique_id=575204762 instance=ExtResource("8_platform")]
-position = Vector2(2626, 746)
+position = Vector2(2639, 677)
 
 [node name="Platform07" parent="Platforms" unique_id=1999793079 instance=ExtResource("8_platform")]
 position = Vector2(3008, 704)
@@ -153,7 +153,7 @@ position = Vector2(2382, 886)
 position = Vector2(1782, 614)
 
 [node name="Obstacle03" parent="Obstacles" unique_id=49594642 instance=ExtResource("9_obstacle")]
-position = Vector2(2661, 699)
+position = Vector2(2683, 631)
 
 [node name="Obstacle04" parent="Obstacles" unique_id=144009162 instance=ExtResource("9_obstacle")]
 position = Vector2(1119, 880)

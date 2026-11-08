@@ -21,7 +21,7 @@ const LEVELS := [
 			{"speaker": "Hacker Magang", "text": "Hah, ngarep! Bos gue nyuruh ngunci gerbang jaringan ini pakai script otomatis. Lu pikir lu paham cara kerja sistem ini?"},
 			{"speaker": "Hacker Magang", "text": "Sini gue tantang. Coba jalankan satu saja perintah Python yang valid di terminal ini buat nembus firewall gue. Kalau gagal, sistem ini bakal terkunci selamanya!"}
 		],
-		"victory_text": "MALWARE DI AREA KAMPUS CABANG BERHASIL DIHENTIKAN! Sinyal pertama sindikat berhasil dilacak.",
+		"victory_text": "Berhasil! Sinyal pertama sindikat berhasil dilacak.",
 		"challenge": {
 			"title": "TEMBUS FIREWALL DASAR",
 			"instruction": "Tulis kode Python bebas yang valid untuk menembus firewall dasar dan menghentikan malware. Tidak ada jawaban khusus.",
